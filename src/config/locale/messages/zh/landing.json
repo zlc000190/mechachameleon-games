@@ -1,0 +1,123 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Mecha Chameleon Game",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Mecha Chameleon Game",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Play",
+          "url": "/#play",
+          "icon": "Gamepad2"
+        },
+        {
+          "title": "New Player",
+          "url": "/#new-player",
+          "icon": "BadgeInfo"
+        },
+        {
+          "title": "Camo Lab",
+          "url": "/#camo-lab",
+          "icon": "Brush"
+        },
+        {
+          "title": "Map Atlas",
+          "url": "/#atlas",
+          "icon": "MapPinned"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": false,
+      "show_credits": false,
+      "show_sign_out": false,
+      "items": []
+    },
+    "show_sign": false,
+    "show_theme": true,
+    "show_locale": false,
+    "topbanner": {
+      "text": "浏览器直接玩 hide-and-seek，无需下载。"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Mecha Chameleon Game",
+      "description": "面向 Mecha Chameleon 玩家的在线试玩入口和手机二屏伪装辅助工具。",
+      "logo": {
+        "src": "/logo.png",
+        "alt": "Mecha Chameleon Game",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Play",
+          "children": [
+            {
+              "title": "Play Online",
+              "url": "/#play",
+              "target": "_self"
+            },
+            {
+              "title": "New Player Guide",
+              "url": "/new-player",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Guide",
+          "children": [
+            {
+              "title": "New Player",
+              "url": "/#new-player",
+              "target": "_self"
+            },
+            {
+              "title": "Camo Lab",
+              "url": "/#camo-lab",
+              "target": "_self"
+            },
+            {
+              "title": "Map Atlas",
+              "url": "/#atlas",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": []
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_built_with": false,
+    "show_theme": true,
+    "show_locale": false
+  }
+}

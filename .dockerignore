@@ -1,0 +1,10 @@
+.next
+.vercel
+.vscode
+.wrangler
+debug
+node_modules
+.cursorrules
+.git
+vercel.json
+wrangler.toml
