@@ -90,7 +90,7 @@ export default async function LandingPage({
                 {zh ? '免费浏览器游戏 · 无需下载' : 'Free browser game · no download'}
               </p>
               <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-normal text-ink-900 md:text-6xl">
-                {zh ? 'Mecha Chameleon Game 免费在线玩' : 'Mecha Chameleon Game — Play Online Free'}
+                {zh ? 'Mecha Chameleon Game 免费在线玩' : 'Meccha Chameleon Game — Play Mecha Chameleon Free'}
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-ink-500">
                 {zh
