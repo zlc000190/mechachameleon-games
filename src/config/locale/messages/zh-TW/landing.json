@@ -2,7 +2,7 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Mecha Chameleon Game — 線上玩",
+      "title": "Mecha Chameleon Game",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -65,7 +65,7 @@
               "icon": "Brush"
             },
             {
-              "title": "地圖圖鑑（.art）",
+              "title": ".art 地圖圖鑑",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -95,7 +95,7 @@
     "show_theme": false,
     "show_locale": true,
     "topbanner": {
-      "text": "先玩，再處理連線、FPS、好友、上色、工具和公房問題。"
+      "text": "先線上玩，再處理進房、FPS、好友、上色、工具和公房問題。"
     }
   },
   "footer": {
@@ -182,7 +182,7 @@
               "target": "_self"
             },
             {
-              "title": "X发言墙",
+              "title": "X 發言牆",
               "url": "/#x-wall",
               "target": "_self"
             }

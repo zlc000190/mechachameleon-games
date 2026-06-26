@@ -37,9 +37,9 @@ const allLocales = [
 ];
 
 // Only locales with safely indexable .games content get their own <url> entry.
-// fr/es/zh-TW already have some shell translations, but the main page bodies are
-// not fully localized yet, so we keep them out of <url> entries for now.
-const indexableLocales = ['en', 'zh'];
+// As of 2026-06-26 this is en/zh (always), plus fr/es/zh-TW whose landing + common
+// JSON now ship full translations and whose pages route without falling back.
+const indexableLocales = ['en', 'zh', 'fr', 'es', 'zh-TW'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 

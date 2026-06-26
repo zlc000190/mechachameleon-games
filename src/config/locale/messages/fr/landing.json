@@ -2,7 +2,7 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Mecha Chameleon Game — Jouer en ligne",
+      "title": "Mecha Chameleon Game",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -14,7 +14,7 @@
     "nav": {
       "items": [
         {
-          "title": "Jouer",
+          "title": "Play",
           "url": "/#play",
           "icon": "Gamepad2"
         },
@@ -35,7 +35,7 @@
               "icon": "Gauge"
             },
             {
-              "title": "Lobbys publics",
+              "title": "Public Lobbies",
               "url": "/public-lobby-guide",
               "target": "_self",
               "icon": "ShieldAlert"
@@ -47,7 +47,7 @@
           "icon": "BookOpen",
           "children": [
             {
-              "title": "Jouer entre amis",
+              "title": "Play With Friends",
               "url": "/play-with-friends",
               "target": "_self",
               "icon": "UsersRound"
@@ -65,7 +65,7 @@
               "icon": "Brush"
             },
             {
-              "title": "Cartes sur .art",
+              "title": "Maps on .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -95,14 +95,14 @@
     "show_theme": false,
     "show_locale": true,
     "topbanner": {
-      "text": "Jouez d'abord. Réparez ensuite l'accès, le FPS, les amis, la peinture, les outils et les lobbies publics."
+      "text": "Jouez d'abord. Résolvez ensuite la connexion, le FPS, les amis, les couleurs, les outils et les lobbies publics."
     }
   },
   "footer": {
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "Hub de jeu à mur de briques rouges et solutionneur pratique pour les joueurs Meccha Chameleon : jouer en ligne, correctifs de connexion, jouer entre amis, booster le FPS, guide de couleurs, outils, survie en lobby public, et liens vers les cartes.",
+      "description": "Un hub de jeu en briques rouges et un solutionneur pratique pour les joueurs Meccha Chameleon : jouer en ligne, correctifs de connexion, jouer entre amis, booster le FPS, guide des couleurs, outils, survie en lobby public, et liens vers les cartes.",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -117,17 +117,17 @@
           "title": "Commencer à jouer",
           "children": [
             {
-              "title": "Jouer en ligne",
+              "title": "Jouer",
               "url": "/#play",
               "target": "_self"
             },
             {
-              "title": "Guide du nouveau joueur",
+              "title": "New Player Guide",
               "url": "/new-player",
               "target": "_self"
             },
             {
-              "title": "Jouer entre amis",
+              "title": "How to Play with Friends",
               "url": "/play-with-friends",
               "target": "_self"
             },
@@ -147,24 +147,24 @@
               "target": "_self"
             },
             {
-              "title": "Boost FPS et anti-stuttering",
+              "title": "FPS Boost & Stutter Fix",
               "url": "/fps-boost",
               "target": "_self"
             },
             {
-              "title": "Guide des couleurs",
+              "title": "Color Matching Guide",
               "url": "/color-matching",
               "target": "_self"
             },
             {
-              "title": "Guide des lobbies publics",
+              "title": "Lobbies publics",
               "url": "/public-lobby-guide",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "工具",
+          "title": "Outils",
           "children": [
             {
               "title": "Radar d'outils / Risques ESP",
@@ -182,7 +182,7 @@
               "target": "_self"
             },
             {
-              "title": "X发言墙",
+              "title": "Mur X",
               "url": "/#x-wall",
               "target": "_self"
             }

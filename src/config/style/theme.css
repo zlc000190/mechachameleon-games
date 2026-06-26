@@ -187,3 +187,24 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 }
+
+
+/* ===== RTL (Arabic) ===== */
+[dir="rtl"] {
+  /* Arabic shape tuning — keeps Arabic letters in their connected forms. */
+  font-feature-settings: "ss01", "cv01";
+}
+/* Flip the brick wallpaper so the mortar joints read naturally in RTL. */
+/* Flip the brick wallpaper so the mortar joints read naturally in RTL.
+   Decorative only — body text and card content stay LTR inside the masonry
+   so multi-language screenshots remain comparable. */
+[dir="rtl"] body::before {
+  transform: scaleX(-1);
+}
+/* Flip physical padding/margin utilities that imply start/end on opposite edges */
+[dir="rtl"] .ltr-only {
+  display: none;
+}
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
