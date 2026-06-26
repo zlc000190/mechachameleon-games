@@ -1,7 +1,13 @@
-// Build-time static sitemap generator. Replaces the Next.js dynamic
-// sitemap.ts because the operator wants a static XML that Google can
-// index regardless of server runtime state. Run via: pnpm sitemap
-// or as a prebuild step in package.json.
+// Build-time static sitemap generator.
+//
+// SEO rule for .games (2026-06-26):
+//   - Use B-scheme safely: only index locales that truly carry stable page
+//     content in <url> entries (currently en + zh).
+//   - Still emit the FULL hreflang alternate set for all supported locales so
+//     search engines understand they are alternate language versions of the
+//     same route, not unrelated pages.
+//   - x-default always points to the default-locale (en) URL.
+//   - Never list half-translated locales as first-class sitemap <url> entries.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,33 +17,42 @@ const root = path.resolve(__dirname, '..');
 const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
-const locales = ['en', 'zh'];
+// All supported locales for hreflang coverage.
+const allLocales = [
+  'en',
+  'zh',
+  'ru',
+  'it',
+  'fr',
+  'de',
+  'es',
+  'pt',
+  'ja',
+  'ko',
+  'ar',
+  'th',
+  'vi',
+  'zh-TW',
+  'nl',
+];
+
+// Only locales with safely indexable .games content get their own <url> entry.
+// fr/es/zh-TW already have some shell translations, but the main page bodies are
+// not fully localized yet, so we keep them out of <url> entries for now.
+const indexableLocales = ['en', 'zh'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 
-const locUrl = (locale, path) => {
-  const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+const locUrl = (locale, routePath) => {
+  const normalizedPath = routePath.endsWith('/') ? routePath : `${routePath}/`;
   if (locale === defaultLocale) return `${base}${normalizedPath}`;
   return `${base}/${locale}${normalizedPath}`;
 };
 
 const entries = [];
 
-// Home
-for (const loc of locales) {
-  entries.push({
-    loc: locUrl(loc, '/'),
-    alternates: Object.fromEntries(
-      locales.map((l) => [l, locUrl(l, '/')])
-    ),
-    'x-default': locUrl(defaultLocale, '/'),
-    lastmod: now,
-    changefreq: 'weekly',
-    priority: '1.0',
-  });
-}
-
 const marketingPages = [
+  { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/new-player', changefreq: 'monthly', priority: '0.7' },
   { path: '/connection-fix', changefreq: 'weekly', priority: '0.9' },
   { path: '/play-with-friends', changefreq: 'weekly', priority: '0.9' },
@@ -49,11 +64,11 @@ const marketingPages = [
 ];
 
 for (const page of marketingPages) {
-  for (const loc of locales) {
+  for (const loc of indexableLocales) {
     entries.push({
       loc: locUrl(loc, page.path),
       alternates: Object.fromEntries(
-        locales.map((l) => [l, locUrl(l, page.path)])
+        allLocales.map((l) => [l, locUrl(l, page.path)])
       ),
       'x-default': locUrl(defaultLocale, page.path),
       lastmod: now,
@@ -64,7 +79,7 @@ for (const page of marketingPages) {
 }
 
 // Map detail pages intentionally stay out of the .games sitemap.
-// They are lightweight route previews; the full indexable atlas belongs on mecchachameleon.art.
+// The full indexable atlas belongs on mecchachameleon.art.
 
 const buildUrl = (entry) => {
   let xml = '  <url>\n';
@@ -72,7 +87,6 @@ const buildUrl = (entry) => {
   xml += `    <lastmod>${entry.lastmod}</lastmod>\n`;
   xml += `    <changefreq>${entry.changefreq}</changefreq>\n`;
   xml += `    <priority>${entry.priority}</priority>\n`;
-  // xhtml:link alternates
   for (const [hreflang, href] of Object.entries(entry.alternates)) {
     xml += `    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}"/>\n`;
   }
@@ -93,3 +107,5 @@ fs.mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf-8');
 console.log(`Wrote ${outPath} (${entries.length} entries, ${xml.length} bytes)`);
+console.log(`Indexable locales in <url>: ${indexableLocales.join(', ')}`);
+console.log(`Hreflang-only locales: ${allLocales.filter((l) => !indexableLocales.includes(l)).join(', ')}`);

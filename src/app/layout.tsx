@@ -1,6 +1,7 @@
 import '@/config/style/global.css';
 
 import { getLocale, setRequestLocale } from 'next-intl/server';
+import { headers } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 
 import { envConfigs } from '@/config';
@@ -25,6 +26,27 @@ export default async function RootLayout({
 
   // app url
   const appUrl = envConfigs.app_url || '';
+
+  // current request URL from proxy middleware, used to emit correct hreflang
+  // alternates for THIS pathname (not just the homepage).
+  const headerList = await headers();
+  const requestUrl = headerList.get('x-url') || '';
+  let currentPath = '/';
+  try {
+    currentPath = requestUrl
+      ? new URL(requestUrl).pathname.replace(/\/+$/, '/') || '/'
+      : '/';
+  } catch {
+    currentPath = '/';
+  }
+  const strippedPath = currentPath.replace(
+    /^\/(en|zh|ru|it|fr|de|es|pt|ja|ko|ar|th|vi|zh-TW|nl)(?=\/|$)/,
+    ''
+  ) || '/';
+  const altUrl = (loc: string) =>
+    loc === 'en'
+      ? `${appUrl}${strippedPath === '/' ? '/' : strippedPath}`
+      : `${appUrl}/${loc}${strippedPath === '/' ? '/' : strippedPath}`;
 
   // ads components
   let adsMetaTags = null;
@@ -100,7 +122,7 @@ export default async function RootLayout({
           }}
         />
 
-        {/* inject locales */}
+        {/* hreflang alternates for the SAME pathname across locales. */}
         {locales ? (
           <>
             {locales.map((loc) => (
@@ -108,9 +130,10 @@ export default async function RootLayout({
                 key={loc}
                 rel="alternate"
                 hrefLang={loc}
-                href={`${appUrl}${loc === 'en' ? '' : `/${loc}`}`}
+                href={altUrl(loc)}
               />
             ))}
+            <link rel="alternate" hrefLang="x-default" href={altUrl('en')} />
           </>
         ) : null}
 
