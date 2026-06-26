@@ -13,15 +13,75 @@
     },
     "nav": {
       "items": [
-        { "title": "在线玩", "url": "/#play", "icon": "Gamepad2" },
-        { "title": "进房修复", "url": "/connection-fix", "icon": "WifiOff" },
-        { "title": "朋友组队", "url": "/play-with-friends", "icon": "UsersRound" },
-        { "title": "FPS优化", "url": "/fps-boost", "icon": "Gauge" },
-        { "title": "涂色指南", "url": "/color-matching", "icon": "Palette" },
-        { "title": "工具", "url": "/tools", "icon": "Wrench" },
-        { "title": "公房避坑", "url": "/public-lobby-guide", "icon": "ShieldAlert" },
-        { "title": "伪装实验室", "url": "/camo-lab", "icon": "Brush" },
-        { "title": "地图图鉴", "url": "https://mecchachameleon.art/maps", "icon": "MapPinned" }
+        {
+          "title": "在线玩",
+          "url": "/#play",
+          "icon": "Gamepad2"
+        },
+        {
+          "title": "修复",
+          "icon": "Wrench",
+          "children": [
+            {
+              "title": "进房修复",
+              "url": "/connection-fix",
+              "target": "_self",
+              "icon": "WifiOff"
+            },
+            {
+              "title": "FPS优化",
+              "url": "/fps-boost",
+              "target": "_self",
+              "icon": "Gauge"
+            },
+            {
+              "title": "公房避坑",
+              "url": "/public-lobby-guide",
+              "target": "_self",
+              "icon": "ShieldAlert"
+            }
+          ]
+        },
+        {
+          "title": "指南",
+          "icon": "BookOpen",
+          "children": [
+            {
+              "title": "朋友组队",
+              "url": "/play-with-friends",
+              "target": "_self",
+              "icon": "UsersRound"
+            },
+            {
+              "title": "涂色指南",
+              "url": "/color-matching",
+              "target": "_self",
+              "icon": "Palette"
+            },
+            {
+              "title": "伪装实验室",
+              "url": "/camo-lab",
+              "target": "_self",
+              "icon": "Brush"
+            },
+            {
+              "title": ".art 地图图鉴",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank",
+              "icon": "MapPinned"
+            }
+          ]
+        },
+        {
+          "title": "工具",
+          "url": "/tools",
+          "icon": "Wrench"
+        },
+        {
+          "title": "X发言墙",
+          "url": "/#x-wall",
+          "icon": "MessageCircle"
+        }
       ]
     },
     "buttons": [],
@@ -56,36 +116,93 @@
         {
           "title": "开始玩",
           "children": [
-            { "title": "在线玩", "url": "/#play", "target": "_self" },
-            { "title": "新手指南", "url": "/new-player", "target": "_self" },
-            { "title": "朋友组队指南", "url": "/play-with-friends", "target": "_self" },
-            { "title": ".art 地图图鉴", "url": "https://mecchachameleon.art/maps", "target": "_blank" }
+            {
+              "title": "在线玩",
+              "url": "/#play",
+              "target": "_self"
+            },
+            {
+              "title": "新手指南",
+              "url": "/new-player",
+              "target": "_self"
+            },
+            {
+              "title": "朋友组队指南",
+              "url": "/play-with-friends",
+              "target": "_self"
+            },
+            {
+              "title": ".art 地图图鉴",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank"
+            }
           ]
         },
         {
           "title": "问题解决",
           "children": [
-            { "title": "进房 / Signing in 修复", "url": "/connection-fix", "target": "_self" },
-            { "title": "FPS 与卡顿修复", "url": "/fps-boost", "target": "_self" },
-            { "title": "取色 / 涂色指南", "url": "/color-matching", "target": "_self" },
-            { "title": "公房生存指南", "url": "/public-lobby-guide", "target": "_self" }
+            {
+              "title": "进房 / Signing in 修复",
+              "url": "/connection-fix",
+              "target": "_self"
+            },
+            {
+              "title": "FPS 与卡顿修复",
+              "url": "/fps-boost",
+              "target": "_self"
+            },
+            {
+              "title": "取色 / 涂色指南",
+              "url": "/color-matching",
+              "target": "_self"
+            },
+            {
+              "title": "公房生存指南",
+              "url": "/public-lobby-guide",
+              "target": "_self"
+            }
           ]
         },
         {
           "title": "工具",
           "children": [
-            { "title": "Tools Radar / ESP 风险", "url": "/tools", "target": "_self" },
-            { "title": "伪装实验室", "url": "/camo-lab", "target": "_self" },
-            { "title": "External ESP Trainer", "url": "/#assistant", "target": "_self" }
+            {
+              "title": "Tools Radar / ESP 风险",
+              "url": "/tools",
+              "target": "_self"
+            },
+            {
+              "title": "伪装实验室",
+              "url": "/camo-lab",
+              "target": "_self"
+            },
+            {
+              "title": "External ESP Trainer",
+              "url": "/#assistant",
+              "target": "_self"
+            },
+            {
+              "title": "X发言墙",
+              "url": "/#x-wall",
+              "target": "_self"
+            }
           ]
         }
       ]
     },
-    "social": { "items": [] },
+    "social": {
+      "items": []
+    },
     "agreement": {
       "items": [
-        { "title": "隐私政策", "url": "/privacy-policy" },
-        { "title": "服务条款", "url": "/terms-of-service" }
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
       ]
     },
     "show_built_with": false,

@@ -96,7 +96,7 @@ export function Header({ header }: { header: HeaderType }) {
                     target={item.target || '_self'}
                     className={`flex flex-row items-center gap-2 px-4 py-1.5 text-sm ${
                       item.is_active || pathname.endsWith(item.url as string)
-                        ? 'bg-muted/40 text-muted-foreground'
+                        ? 'bg-brick-50 text-brick-700'
                         : ''
                     }`}
                   >
@@ -249,14 +249,14 @@ export function Header({ header }: { header: HeaderType }) {
       <header
         data-state={isMobileMenuOpen ? 'active' : 'inactive'}
         {...(isScrolled && { 'data-scrolled': true })}
-        className="has-data-[state=open]:bg-background/50 fixed inset-x-0 top-0 z-50 has-data-[state=open]:h-screen has-data-[state=open]:backdrop-blur"
+        className="has-data-[state=open]:bg-paper/95 fixed inset-x-0 top-0 z-50 has-data-[state=open]:h-screen has-data-[state=open]:backdrop-blur"
       >
         <div
           className={cn(
-            'absolute inset-x-0 top-0 z-50 h-18 border-transparent ring-1 ring-transparent transition-all duration-300',
-            'in-data-scrolled:border-foreground/5 in-data-scrolled:bg-background/75 in-data-scrolled:border-b in-data-scrolled:backdrop-blur',
+            'absolute inset-x-0 top-0 z-50 h-18 border-transparent bg-paper/90 text-ink-900 ring-1 ring-mortar/40 backdrop-blur transition-all duration-300',
+            'in-data-scrolled:border-mortar/70 in-data-scrolled:bg-paper/95 in-data-scrolled:border-b in-data-scrolled:shadow-md in-data-scrolled:backdrop-blur',
             'has-data-[state=open]:ring-foreground/5 has-data-[state=open]:bg-card/75 has-data-[state=open]:h-[calc(var(--navigation-menu-viewport-height)+3.4rem)] has-data-[state=open]:border-b has-data-[state=open]:shadow-lg has-data-[state=open]:shadow-black/10 has-data-[state=open]:backdrop-blur',
-            'max-lg:in-data-[state=active]:bg-background/75 max-lg:h-14 max-lg:overflow-hidden max-lg:border-b max-lg:in-data-[state=active]:h-screen max-lg:in-data-[state=active]:backdrop-blur'
+            'max-lg:in-data-[state=active]:bg-paper/95 max-lg:h-14 max-lg:overflow-hidden max-lg:border-b max-lg:in-data-[state=active]:h-screen max-lg:in-data-[state=active]:backdrop-blur'
           )}
         >
           <div className="container">

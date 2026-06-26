@@ -67,21 +67,21 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
 
   return (
     <div id="play" className="scroll-mt-24">
-      <div className="overflow-hidden rounded-lg border border-[#efc8d3] bg-gradient-to-br from-[#fff7c8] via-[#ffd2e1] to-[#cdefff] shadow-[0_18px_60px_rgba(134,103,124,0.18)]">
-        <div className="border-b border-white/70 px-4 py-3 text-[#2f2730]">
+      <div className="overflow-hidden rounded-lg border border-mortar/70 bg-paper/94 shadow-[0_18px_60px_rgba(42,19,10,0.22)]">
+        <div className="border-b border-mortar/70 px-4 py-3 text-ink-900">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <div className="text-sm font-semibold">
                 {zh ? 'Mecha Chameleon 在线游戏' : 'Mecha Chameleon Game'} · {activeDemo.label}
               </div>
-              <div className="mt-1 text-xs text-[#4C3B35]">
+              <div className="mt-1 text-xs text-ink-500">
                 {activeDemo.title} via {activeDemo.source}
               </div>
             </div>
             <button
               type="button"
               onClick={() => iframeRef.current?.focus()}
-              className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-[#ff6f9a] px-4 text-sm font-semibold text-white transition hover:bg-[#e95a88]"
+              className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-brick-500 px-4 text-sm font-semibold text-white transition hover:bg-brick-700"
             >
               <Gamepad2 className="h-4 w-4" />
               {zh ? '点击开始' : 'Click to Play'}
@@ -101,20 +101,20 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
                 }}
                 className={`min-h-9 rounded-md border px-4 text-sm font-semibold transition ${
                   activeDemo.id === demo.id
-                    ? 'border-[#29211D] bg-[#29211D] text-white'
-                    : 'border-[#efc8d3] bg-white text-[#29211D] hover:bg-[#fff7c8]'
+                    ? 'border-ink-900 bg-ink-900 text-white'
+                    : 'border-mortar bg-white text-ink-900 hover:bg-brick-50'
                 }`}
               >
                 {demo.label}
               </button>
             ))}
           </div>
-          <p className="mt-3 text-xs leading-5 text-[#4C3B35]">
+          <p className="mt-3 text-xs leading-5 text-ink-500">
             {zh ? zhNotes[activeDemo.id] : activeDemo.note}
           </p>
         </div>
 
-        <div className={`relative w-full overflow-hidden bg-[#eef8ff] ${activeDemo.ratio}`}>
+        <div className={`relative w-full overflow-hidden bg-brick-900 ${activeDemo.ratio}`}>
           <iframe
             key={activeDemo.id}
             ref={iframeRef}
@@ -157,13 +157,13 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
           ) : null}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/70 bg-white/80 px-4 py-3 text-xs text-[#4C3B35]">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-mortar/70 bg-paper/90 px-4 py-3 text-xs text-ink-500">
           <span>{zh ? '提示：第三方源不加载时，使用新标签获得完整体验。' : 'Tip: if a third-party source does not load, use the new-tab fallback.'}</span>
           <a
             href={activeDemo.openInNewTab}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-[#D8CFC6] bg-white px-3 py-1.5 font-semibold text-[#29211D] hover:bg-[#fff7c8]"
+            className="inline-flex items-center gap-1.5 rounded-md border border-mortar bg-white px-3 py-1.5 font-semibold text-ink-900 hover:bg-brick-50"
           >
             <ExternalLink className="h-3.5 w-3.5" />
             {zh ? `打开 ${activeDemo.label}` : `Open ${activeDemo.title}`}

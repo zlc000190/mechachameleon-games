@@ -1,6 +1,5 @@
 import '@/config/style/global.css';
 
-import Script from 'next/script';
 import { getLocale, setRequestLocale } from 'next-intl/server';
 import NextTopLoader from 'nextjs-toploader';
 
@@ -87,20 +86,19 @@ export default async function RootLayout({
         <link rel="alternate icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        {/* Google tag (gtag.js) — hard-coded for mechachameleon.games (G-1SX4C6C134) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-1SX4C6C134"
-          strategy="afterInteractive"
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SX4C6C134"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1SX4C6C134');
+`,
+          }}
         />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-1SX4C6C134');
-          `}
-        </Script>
 
         {/* inject locales */}
         {locales ? (

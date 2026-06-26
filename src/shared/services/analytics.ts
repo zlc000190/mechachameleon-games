@@ -14,13 +14,16 @@ import { Configs, getAllConfigs } from '@/shared/models/config';
 export function getAnalyticsManagerWithConfigs(configs: Configs) {
   const analytics = new AnalyticsManager();
 
-  // google analytics — env fallback wins so we never lose the tag
+  // google analytics from admin/env only.
+  // The public site-level G-1SX4C6C134 tag is injected as the raw Google snippet
+  // in src/app/layout.tsx so Google Tag Assistant can detect it reliably.
   const gaId =
     configs.google_analytics_id ||
     process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
-    process.env.GOOGLE_ANALYTICS_ID ||
-    'G-1SX4C6C134';
-  analytics.addProvider(new GoogleAnalyticsProvider({ gaId }));
+    process.env.GOOGLE_ANALYTICS_ID;
+  if (gaId) {
+    analytics.addProvider(new GoogleAnalyticsProvider({ gaId }));
+  }
 
   // clarity
   if (configs.clarity_id) {

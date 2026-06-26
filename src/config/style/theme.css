@@ -103,23 +103,13 @@
 .brick-wall {
   background-color: #5a2616;
   background-image:
-    radial-gradient(ellipse 70% 60% at 20% 20%, rgba(0, 0, 0, 0.45), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(0, 0, 0, 0.45), transparent 65%),
-    repeating-linear-gradient(
-      90deg,
-      #7a2f1c 0,
-      #7a2f1c 60px,
-      #efe3d1 60px,
-      #efe3d1 64px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 48px,
-      #efe3d1 48px,
-      #efe3d1 52px
-    );
-  background-size: 100% 100%, 100% 100%, 100% 124px, 100% 124px;
+    radial-gradient(ellipse 80% 55% at 16% 18%, rgba(0, 0, 0, 0.36), transparent 62%),
+    radial-gradient(ellipse 70% 55% at 86% 76%, rgba(0, 0, 0, 0.34), transparent 64%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.10)),
+    url('/brick-wall.svg');
+  background-size: 100% 100%, 100% 100%, 100% 100%, 320px 160px;
+  background-position: 0 0, 0 0, 0 0, center top;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
   color: var(--ink-900);
 }
 

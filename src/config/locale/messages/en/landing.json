@@ -13,15 +13,75 @@
     },
     "nav": {
       "items": [
-        { "title": "Play", "url": "/#play", "icon": "Gamepad2" },
-        { "title": "Connection Fix", "url": "/connection-fix", "icon": "WifiOff" },
-        { "title": "Friends", "url": "/play-with-friends", "icon": "UsersRound" },
-        { "title": "FPS Boost", "url": "/fps-boost", "icon": "Gauge" },
-        { "title": "Color Guide", "url": "/color-matching", "icon": "Palette" },
-        { "title": "Tools", "url": "/tools", "icon": "Wrench" },
-        { "title": "Public Lobbies", "url": "/public-lobby-guide", "icon": "ShieldAlert" },
-        { "title": "Camo Lab", "url": "/camo-lab", "icon": "Brush" },
-        { "title": "Maps", "url": "https://mecchachameleon.art/maps", "icon": "MapPinned" }
+        {
+          "title": "Play",
+          "url": "/#play",
+          "icon": "Gamepad2"
+        },
+        {
+          "title": "Fixes",
+          "icon": "Wrench",
+          "children": [
+            {
+              "title": "Connection Fix",
+              "url": "/connection-fix",
+              "target": "_self",
+              "icon": "WifiOff"
+            },
+            {
+              "title": "FPS Boost",
+              "url": "/fps-boost",
+              "target": "_self",
+              "icon": "Gauge"
+            },
+            {
+              "title": "Public Lobbies",
+              "url": "/public-lobby-guide",
+              "target": "_self",
+              "icon": "ShieldAlert"
+            }
+          ]
+        },
+        {
+          "title": "Guides",
+          "icon": "BookOpen",
+          "children": [
+            {
+              "title": "Play With Friends",
+              "url": "/play-with-friends",
+              "target": "_self",
+              "icon": "UsersRound"
+            },
+            {
+              "title": "Color Matching",
+              "url": "/color-matching",
+              "target": "_self",
+              "icon": "Palette"
+            },
+            {
+              "title": "Camo Lab",
+              "url": "/camo-lab",
+              "target": "_self",
+              "icon": "Brush"
+            },
+            {
+              "title": "Maps on .art",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank",
+              "icon": "MapPinned"
+            }
+          ]
+        },
+        {
+          "title": "Tools",
+          "url": "/tools",
+          "icon": "Wrench"
+        },
+        {
+          "title": "X Wall",
+          "url": "/#x-wall",
+          "icon": "MessageCircle"
+        }
       ]
     },
     "buttons": [],
@@ -56,36 +116,93 @@
         {
           "title": "Start Playing",
           "children": [
-            { "title": "Play Online", "url": "/#play", "target": "_self" },
-            { "title": "New Player Guide", "url": "/new-player", "target": "_self" },
-            { "title": "How to Play with Friends", "url": "/play-with-friends", "target": "_self" },
-            { "title": "Map Atlas on .art", "url": "https://mecchachameleon.art/maps", "target": "_blank" }
+            {
+              "title": "Play Online",
+              "url": "/#play",
+              "target": "_self"
+            },
+            {
+              "title": "New Player Guide",
+              "url": "/new-player",
+              "target": "_self"
+            },
+            {
+              "title": "How to Play with Friends",
+              "url": "/play-with-friends",
+              "target": "_self"
+            },
+            {
+              "title": "Map Atlas on .art",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank"
+            }
           ]
         },
         {
           "title": "Problem Solver",
           "children": [
-            { "title": "Connection Fix", "url": "/connection-fix", "target": "_self" },
-            { "title": "FPS Boost & Stutter Fix", "url": "/fps-boost", "target": "_self" },
-            { "title": "Color Matching Guide", "url": "/color-matching", "target": "_self" },
-            { "title": "Public Lobby Guide", "url": "/public-lobby-guide", "target": "_self" }
+            {
+              "title": "Connection Fix",
+              "url": "/connection-fix",
+              "target": "_self"
+            },
+            {
+              "title": "FPS Boost & Stutter Fix",
+              "url": "/fps-boost",
+              "target": "_self"
+            },
+            {
+              "title": "Color Matching Guide",
+              "url": "/color-matching",
+              "target": "_self"
+            },
+            {
+              "title": "Public Lobby Guide",
+              "url": "/public-lobby-guide",
+              "target": "_self"
+            }
           ]
         },
         {
           "title": "Tools",
           "children": [
-            { "title": "Tools Radar / ESP Safety", "url": "/tools", "target": "_self" },
-            { "title": "Camo Lab", "url": "/camo-lab", "target": "_self" },
-            { "title": "External ESP Trainer", "url": "/#assistant", "target": "_self" }
+            {
+              "title": "Tools Radar / ESP Safety",
+              "url": "/tools",
+              "target": "_self"
+            },
+            {
+              "title": "Camo Lab",
+              "url": "/camo-lab",
+              "target": "_self"
+            },
+            {
+              "title": "External ESP Trainer",
+              "url": "/#assistant",
+              "target": "_self"
+            },
+            {
+              "title": "X Wall",
+              "url": "/#x-wall",
+              "target": "_self"
+            }
           ]
         }
       ]
     },
-    "social": { "items": [] },
+    "social": {
+      "items": []
+    },
     "agreement": {
       "items": [
-        { "title": "Privacy Policy", "url": "/privacy-policy" },
-        { "title": "Terms of Service", "url": "/terms-of-service" }
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        }
       ]
     },
     "show_built_with": false,

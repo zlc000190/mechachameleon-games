@@ -14,7 +14,7 @@ export function Footer({ footer }: { footer: FooterType }) {
   return (
     <footer
       id={footer.id}
-      className={`py-8 sm:py-8 ${footer.className || ''} overflow-x-hidden`}
+      className={`border-t border-mortar/60 bg-paper/94 py-10 text-ink-900 shadow-[0_-20px_60px_rgba(0,0,0,0.18)] sm:py-10 ${footer.className || ''} overflow-x-hidden`}
       // overflow-x-hidden防止-footer-撑出水平滚动条
     >
       <div className="container space-y-8 overflow-x-hidden">
@@ -24,7 +24,7 @@ export function Footer({ footer }: { footer: FooterType }) {
 
             {footer.brand?.description ? (
               <p
-                className="text-muted-foreground text-sm text-balance break-words"
+                className="text-ink-500 text-sm text-balance break-words"
                 dangerouslySetInnerHTML={{ __html: footer.brand.description }}
               />
             ) : null}
@@ -43,7 +43,7 @@ export function Footer({ footer }: { footer: FooterType }) {
                       key={iidx}
                       href={subItem.url || ''}
                       target={subItem.target || ''}
-                      className="text-muted-foreground hover:text-primary block break-words duration-150"
+                      className="text-ink-500 hover:text-brick-600 block break-words duration-150"
                     >
                       <span className="break-words">{subItem.title || ''}</span>
                     </Link>
@@ -69,7 +69,7 @@ export function Footer({ footer }: { footer: FooterType }) {
         <div className="flex min-w-0 flex-wrap justify-between gap-8">
           {footer.copyright ? (
             <p
-              className="text-muted-foreground text-sm text-balance break-words"
+              className="text-ink-500 text-sm text-balance break-words"
               dangerouslySetInnerHTML={{ __html: footer.copyright }}
             />
           ) : footer.brand ? (
@@ -85,7 +85,7 @@ export function Footer({ footer }: { footer: FooterType }) {
                   key={index}
                   href={item.url || ''}
                   target={item.target || ''}
-                  className="text-muted-foreground hover:text-primary block text-xs break-words underline duration-150"
+                  className="text-ink-500 hover:text-brick-600 block text-xs break-words underline duration-150"
                 >
                   {item.title || ''}
                 </Link>
@@ -100,7 +100,7 @@ export function Footer({ footer }: { footer: FooterType }) {
                   key={index}
                   href={item.url || ''}
                   target={item.target || ''}
-                  className="text-muted-foreground hover:text-primary bg-background block cursor-pointer rounded-full p-2 duration-150"
+                  className="text-ink-500 hover:text-brick-600 bg-paper block cursor-pointer rounded-full p-2 duration-150"
                   aria-label={item.title || 'Social media link'}
                 >
                   {item.icon && (
