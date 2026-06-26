@@ -16,6 +16,11 @@ const DISMISSED_KEY = 'locale-suggestion-dismissed';
 const DISMISSED_EXPIRY_DAYS = 1; // Expiry in days
 const PREFERRED_LOCALE_KEY = 'locale';
 
+// String-typed view of locales — `locales` is a const tuple and TS rejects
+// `locales.includes(stringVar)` even when stringVar is a known locale string.
+const ALL_LOCALES: string[] = [...locales];
+const isSupportedLocale = (locale: string): boolean => ALL_LOCALES.includes(locale);
+
 export function LocaleDetector() {
   if (envConfigs.locale_detect_enabled !== 'true') {
     return null;
@@ -38,7 +43,7 @@ export function LocaleDetector() {
     const langCode = browserLang.split('-')[0].toLowerCase();
 
     // Check if the detected language is in our supported locales
-    if (locales.includes(langCode)) {
+    if (isSupportedLocale(langCode)) {
       return langCode;
     }
 
@@ -88,7 +93,7 @@ export function LocaleDetector() {
     if (
       preferredLocale &&
       preferredLocale !== currentLocale &&
-      locales.includes(preferredLocale)
+      isSupportedLocale(preferredLocale)
     ) {
       switchToLocale(preferredLocale);
       return;

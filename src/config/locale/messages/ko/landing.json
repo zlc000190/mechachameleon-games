@@ -1,0 +1,212 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Mecha Chameleon Game — 온라인 플레이",
+      "logo": {
+        "src": "/logo.svg",
+        "alt": "Mecha Chameleon Game",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "在线玩",
+          "url": "/#play",
+          "icon": "Gamepad2"
+        },
+        {
+          "title": "修复",
+          "icon": "Wrench",
+          "children": [
+            {
+              "title": "进房修复",
+              "url": "/connection-fix",
+              "target": "_self",
+              "icon": "WifiOff"
+            },
+            {
+              "title": "FPS优化",
+              "url": "/fps-boost",
+              "target": "_self",
+              "icon": "Gauge"
+            },
+            {
+              "title": "公房避坑",
+              "url": "/public-lobby-guide",
+              "target": "_self",
+              "icon": "ShieldAlert"
+            }
+          ]
+        },
+        {
+          "title": "指南",
+          "icon": "BookOpen",
+          "children": [
+            {
+              "title": "朋友组队",
+              "url": "/play-with-friends",
+              "target": "_self",
+              "icon": "UsersRound"
+            },
+            {
+              "title": "涂色指南",
+              "url": "/color-matching",
+              "target": "_self",
+              "icon": "Palette"
+            },
+            {
+              "title": "伪装实验室",
+              "url": "/camo-lab",
+              "target": "_self",
+              "icon": "Brush"
+            },
+            {
+              "title": ".art 地图图鉴",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank",
+              "icon": "MapPinned"
+            }
+          ]
+        },
+        {
+          "title": "工具",
+          "url": "/tools",
+          "icon": "Wrench"
+        },
+        {
+          "title": "X发言墙",
+          "url": "/#x-wall",
+          "icon": "MessageCircle"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": false,
+      "show_credits": false,
+      "show_sign_out": false,
+      "items": []
+    },
+    "show_sign": false,
+    "show_theme": false,
+    "show_locale": true,
+    "topbanner": {
+      "text": "先在线玩，再解决进房、FPS、朋友组队、涂色、工具和公房问题。"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Mecha Chameleon Game",
+      "description": "红砖墙风格的 Meccha Chameleon 实用开局中心：在线玩、进房修复、朋友组队、FPS 优化、涂色指南、工具风险、公房避坑和地图入口。",
+      "logo": {
+        "src": "/logo.svg",
+        "alt": "Mecha Chameleon Game",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "开始玩",
+          "children": [
+            {
+              "title": "在线玩",
+              "url": "/#play",
+              "target": "_self"
+            },
+            {
+              "title": "新手指南",
+              "url": "/new-player",
+              "target": "_self"
+            },
+            {
+              "title": "朋友组队指南",
+              "url": "/play-with-friends",
+              "target": "_self"
+            },
+            {
+              "title": ".art 地图图鉴",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "问题解决",
+          "children": [
+            {
+              "title": "进房 / Signing in 修复",
+              "url": "/connection-fix",
+              "target": "_self"
+            },
+            {
+              "title": "FPS 与卡顿修复",
+              "url": "/fps-boost",
+              "target": "_self"
+            },
+            {
+              "title": "取色 / 涂色指南",
+              "url": "/color-matching",
+              "target": "_self"
+            },
+            {
+              "title": "公房生存指南",
+              "url": "/public-lobby-guide",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "工具",
+          "children": [
+            {
+              "title": "Tools Radar / ESP 风险",
+              "url": "/tools",
+              "target": "_self"
+            },
+            {
+              "title": "伪装实验室",
+              "url": "/camo-lab",
+              "target": "_self"
+            },
+            {
+              "title": "External ESP Trainer",
+              "url": "/#assistant",
+              "target": "_self"
+            },
+            {
+              "title": "X发言墙",
+              "url": "/#x-wall",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": []
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_built_with": false,
+    "show_theme": false,
+    "show_locale": true
+  }
+}

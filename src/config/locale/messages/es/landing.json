@@ -1,0 +1,212 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "Mecha Chameleon Game — Jugar en línea",
+      "logo": {
+        "src": "/logo.svg",
+        "alt": "Mecha Chameleon Game",
+        "width": 100,
+        "height": 100
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Jugar",
+          "url": "/#play",
+          "icon": "Gamepad2"
+        },
+        {
+          "title": "Arreglos",
+          "icon": "Wrench",
+          "children": [
+            {
+              "title": "Arreglar conexión",
+              "url": "/connection-fix",
+              "target": "_self",
+              "icon": "WifiOff"
+            },
+            {
+              "title": "Aumentar FPS",
+              "url": "/fps-boost",
+              "target": "_self",
+              "icon": "Gauge"
+            },
+            {
+              "title": "Lobbies públicos",
+              "url": "/public-lobby-guide",
+              "target": "_self",
+              "icon": "ShieldAlert"
+            }
+          ]
+        },
+        {
+          "title": "Guías",
+          "icon": "BookOpen",
+          "children": [
+            {
+              "title": "Jugar con amigos",
+              "url": "/play-with-friends",
+              "target": "_self",
+              "icon": "UsersRound"
+            },
+            {
+              "title": "Coincidencia de color",
+              "url": "/color-matching",
+              "target": "_self",
+              "icon": "Palette"
+            },
+            {
+              "title": "Camo Lab",
+              "url": "/camo-lab",
+              "target": "_self",
+              "icon": "Brush"
+            },
+            {
+              "title": "Mapas en .art",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank",
+              "icon": "MapPinned"
+            }
+          ]
+        },
+        {
+          "title": "Herramientas",
+          "url": "/tools",
+          "icon": "Wrench"
+        },
+        {
+          "title": "Muro X",
+          "url": "/#x-wall",
+          "icon": "MessageCircle"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": false,
+      "show_credits": false,
+      "show_sign_out": false,
+      "items": []
+    },
+    "show_sign": false,
+    "show_theme": false,
+    "show_locale": true,
+    "topbanner": {
+      "text": "Juega primero. Luego arregla conexión, FPS, amigos, pintura, herramientas y lobbies públicos."
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "Mecha Chameleon Game",
+      "description": "Un hub de juego con muro de ladrillos rojos y un solucionador de problemas prácticos para jugadores de Meccha Chameleon: jugar en línea, arreglar conexiones, jugar con amigos, optimizar FPS, guía de colores, herramientas y supervivencia en lobbies públicos.",
+      "logo": {
+        "src": "/logo.svg",
+        "alt": "Mecha Chameleon Game",
+        "width": 1024,
+        "height": 1024
+      },
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Empezar a jugar",
+          "children": [
+            {
+              "title": "Jugar en línea",
+              "url": "/#play",
+              "target": "_self"
+            },
+            {
+              "title": "Guía del nuevo jugador",
+              "url": "/new-player",
+              "target": "_self"
+            },
+            {
+              "title": "Jugar con amigos",
+              "url": "/play-with-friends",
+              "target": "_self"
+            },
+            {
+              "title": "Atlas de mapas en .art",
+              "url": "https://mecchachameleon.art/maps",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "Solucionador de problemas",
+          "children": [
+            {
+              "title": "Arreglar conexión",
+              "url": "/connection-fix",
+              "target": "_self"
+            },
+            {
+              "title": "Aumentar FPS y arreglar tirones",
+              "url": "/fps-boost",
+              "target": "_self"
+            },
+            {
+              "title": "Guía de colores",
+              "url": "/color-matching",
+              "target": "_self"
+            },
+            {
+              "title": "Guía de lobbies públicos",
+              "url": "/public-lobby-guide",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "工具",
+          "children": [
+            {
+              "title": "Radar de herramientas / Riesgos ESP",
+              "url": "/tools",
+              "target": "_self"
+            },
+            {
+              "title": "Camo Lab",
+              "url": "/camo-lab",
+              "target": "_self"
+            },
+            {
+              "title": "External ESP Trainer",
+              "url": "/#assistant",
+              "target": "_self"
+            },
+            {
+              "title": "X发言墙",
+              "url": "/#x-wall",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": []
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Política de privacidad",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Términos del servicio",
+          "url": "/terms-of-service"
+        }
+      ]
+    },
+    "show_built_with": false,
+    "show_theme": false,
+    "show_locale": true
+  }
+}

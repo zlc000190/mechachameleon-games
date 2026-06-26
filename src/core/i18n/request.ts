@@ -33,12 +33,12 @@ export async function loadMessages(
 }
 
 export default getRequestConfig(async ({ requestLocale }) => {
-  let locale = await requestLocale;
-  if (!locale || !routing.locales.includes(locale as string)) {
-    locale = routing.defaultLocale;
+  let locale = (await requestLocale) as string | undefined;
+  const allLocales: string[] = (routing.locales as readonly string[]).slice();
+  if (!locale || !allLocales.includes(locale)) {
+    locale = routing.defaultLocale as string;
   }
-
-  if (['zh-CN'].includes(locale)) {
+  if (locale === 'zh-CN') {
     locale = 'zh';
   }
 
