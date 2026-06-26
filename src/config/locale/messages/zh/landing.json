@@ -4,7 +4,7 @@
     "brand": {
       "title": "Mecha Chameleon Game",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
         "width": 100,
         "height": 100
@@ -13,26 +13,15 @@
     },
     "nav": {
       "items": [
-        {
-          "title": "Play",
-          "url": "/#play",
-          "icon": "Gamepad2"
-        },
-        {
-          "title": "New Player",
-          "url": "/#new-player",
-          "icon": "BadgeInfo"
-        },
-        {
-          "title": "Camo Lab",
-          "url": "/#camo-lab",
-          "icon": "Brush"
-        },
-        {
-          "title": "Map Atlas",
-          "url": "/#atlas",
-          "icon": "MapPinned"
-        }
+        { "title": "在线玩", "url": "/#play", "icon": "Gamepad2" },
+        { "title": "进房修复", "url": "/connection-fix", "icon": "WifiOff" },
+        { "title": "朋友组队", "url": "/play-with-friends", "icon": "UsersRound" },
+        { "title": "FPS优化", "url": "/fps-boost", "icon": "Gauge" },
+        { "title": "涂色指南", "url": "/color-matching", "icon": "Palette" },
+        { "title": "工具", "url": "/tools", "icon": "Wrench" },
+        { "title": "公房避坑", "url": "/public-lobby-guide", "icon": "ShieldAlert" },
+        { "title": "伪装实验室", "url": "/camo-lab", "icon": "Brush" },
+        { "title": "地图图鉴", "url": "https://mecchachameleon.art/maps", "icon": "MapPinned" }
       ]
     },
     "buttons": [],
@@ -43,19 +32,19 @@
       "items": []
     },
     "show_sign": false,
-    "show_theme": true,
+    "show_theme": false,
     "show_locale": false,
     "topbanner": {
-      "text": "浏览器直接玩 hide-and-seek，无需下载。"
+      "text": "先在线玩，再解决进房、FPS、朋友组队、涂色、工具和公房问题。"
     }
   },
   "footer": {
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "面向 Mecha Chameleon 玩家的在线试玩入口和手机二屏伪装辅助工具。",
+      "description": "红砖墙风格的 Meccha Chameleon 实用开局中心：在线玩、进房修复、朋友组队、FPS 优化、涂色指南、工具风险、公房避坑和地图入口。",
       "logo": {
-        "src": "/logo.png",
+        "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
         "width": 1024,
         "height": 1024
@@ -65,59 +54,42 @@
     "nav": {
       "items": [
         {
-          "title": "Play",
+          "title": "开始玩",
           "children": [
-            {
-              "title": "Play Online",
-              "url": "/#play",
-              "target": "_self"
-            },
-            {
-              "title": "New Player Guide",
-              "url": "/new-player",
-              "target": "_self"
-            }
+            { "title": "在线玩", "url": "/#play", "target": "_self" },
+            { "title": "新手指南", "url": "/new-player", "target": "_self" },
+            { "title": "朋友组队指南", "url": "/play-with-friends", "target": "_self" },
+            { "title": ".art 地图图鉴", "url": "https://mecchachameleon.art/maps", "target": "_blank" }
           ]
         },
         {
-          "title": "Guide",
+          "title": "问题解决",
           "children": [
-            {
-              "title": "New Player",
-              "url": "/#new-player",
-              "target": "_self"
-            },
-            {
-              "title": "Camo Lab",
-              "url": "/#camo-lab",
-              "target": "_self"
-            },
-            {
-              "title": "Map Atlas",
-              "url": "/#atlas",
-              "target": "_self"
-            }
+            { "title": "进房 / Signing in 修复", "url": "/connection-fix", "target": "_self" },
+            { "title": "FPS 与卡顿修复", "url": "/fps-boost", "target": "_self" },
+            { "title": "取色 / 涂色指南", "url": "/color-matching", "target": "_self" },
+            { "title": "公房生存指南", "url": "/public-lobby-guide", "target": "_self" }
+          ]
+        },
+        {
+          "title": "工具",
+          "children": [
+            { "title": "Tools Radar / ESP 风险", "url": "/tools", "target": "_self" },
+            { "title": "伪装实验室", "url": "/camo-lab", "target": "_self" },
+            { "title": "External ESP Trainer", "url": "/#assistant", "target": "_self" }
           ]
         }
       ]
     },
-    "social": {
-      "items": []
-    },
+    "social": { "items": [] },
     "agreement": {
       "items": [
-        {
-          "title": "Privacy Policy",
-          "url": "/privacy-policy"
-        },
-        {
-          "title": "Terms of Service",
-          "url": "/terms-of-service"
-        }
+        { "title": "隐私政策", "url": "/privacy-policy" },
+        { "title": "服务条款", "url": "/terms-of-service" }
       ]
     },
     "show_built_with": false,
-    "show_theme": true,
+    "show_theme": false,
     "show_locale": false
   }
 }

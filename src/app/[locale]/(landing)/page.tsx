@@ -13,8 +13,15 @@ import { setRequestLocale } from 'next-intl/server';
 import { AtlasPreview } from '@/shared/blocks/meccha/atlas-preview';
 import { DemoFrame } from '@/shared/blocks/meccha/demo-frame';
 import { HowToPlaySection } from '@/shared/blocks/meccha/how-to-play-section';
+import { homeProblemCards, toolsRadarCards } from '@/shared/blocks/meccha/problem-guides';
 
 export const revalidate = 3600;
+
+function localHref(locale: string, href: string) {
+  if (href.startsWith('http') || href.startsWith('#')) return href;
+  if (locale === 'en') return href;
+  return `/${locale}${href}`;
+}
 
 const modes = [
   ['Classic Play', 'Jump in, learn the hide-and-seek loop, and test whether the paint-and-hide rhythm clicks for you.'],
@@ -45,20 +52,6 @@ const faqs = [
   ['Is this official?', 'No. This is an unofficial fan-made game hub and is not affiliated with LEMORION. It links to community play and guide resources.'],
 ];
 
-
-const assistantFeatures = [
-  ['Fully external ESP', 'Runs as a separate process: no DLL injection, no hooks, and no UE4SS dependency.'],
-  ['Pattern scanning', 'Automatically locates GUObjectArray and walks the Unreal Engine object array for MECCHA CHAMELEON UE5.6.'],
-  ['Box ESP overlay', 'Dynamic corner / 2D box ESP with distance scaling, snap lines, name labels, and distance labels.'],
-  ['Transparent overlay', 'Renders over the game window while keeping the game in windowed or borderless mode.'],
-];
-
-const zhAssistantFeatures = [
-  ['全外部 ESP', '独立进程运行：无 DLL 注入、无 hooks、无 UE4SS 依赖。'],
-  ['Pattern scanning', '自动定位 GUObjectArray，并遍历 MECCHA CHAMELEON UE5.6 的 Unreal Engine 对象数组。'],
-  ['方框透视叠加', '支持动态 corner / 2D box ESP、距离缩放、吸附线、名称和距离标签。'],
-  ['透明覆盖层', '游戏以窗口或无边框模式运行时，在游戏窗口上方渲染叠加层。'],
-];
 
 const assistantLinks = {
   repo: 'https://github.com/anfalalsarraf-cmyk/meccha-chameleon-project',
@@ -114,6 +107,40 @@ export default async function LandingPage({
         </div>
       </section>
 
+      <section id="problem-solver" className="border-b border-[#D8CFC6] bg-white">
+        <div className="container py-14">
+          <div className="mb-8 max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">{zh ? '实用开局中心' : 'Player problem solver'}</p>
+            <h2 className="mt-1 text-3xl font-bold tracking-normal md:text-4xl">
+              {zh ? '能不能玩、怎么玩、怎么不卡、怎么涂得像。' : 'Can I play, how do I start, why is it laggy, and how do I paint better?'}
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-[#4C3B35]">
+              {zh
+                ? '首屏仍然让玩家直接开玩；下面把 Steam 评论里最常见的问题变成一页一页的解决方案。地图深度图鉴继续去 mecchachameleon.art。'
+                : 'The first screen still lets players play immediately. Below are the common Steam-review pain points turned into practical guides. Deep map atlases stay on mecchachameleon.art.'}
+            </p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {homeProblemCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <a
+                  key={card.title}
+                  href={localHref(locale, card.href)}
+                  target={card.href.startsWith('http') ? '_blank' : undefined}
+                  rel={card.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="group rounded-lg border border-[#D8CFC6] bg-[#F6F0EA] p-5 transition hover:-translate-y-0.5 hover:bg-[#fff7c8] hover:shadow-md"
+                >
+                  <Icon className="mb-4 h-5 w-5 text-[#ff6f9a]" />
+                  <h3 className="font-semibold">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[#4C3B35]">{card.body}</p>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section id="controls" className="border-b border-[#D8CFC6] bg-white">
         <div className="container py-14">
           <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -147,36 +174,42 @@ export default async function LandingPage({
       <section id="assistant" className="border-b border-[#D8CFC6] bg-white">
         <div className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">{zh ? '辅助工具' : 'Assistant tool'}</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">{zh ? '工具雷达' : 'Tools Radar'}</p>
             <h2 className="mt-1 text-3xl font-bold tracking-normal md:text-4xl">
-              {zh ? 'Meccha Chameleon External ESP Trainer' : 'Meccha Chameleon External ESP Trainer'}
+              {zh ? 'External ESP Trainer + FPS / 伪装工具风险说明' : 'External ESP Trainer + FPS and camouflage tool radar'}
             </h2>
             <p className="mt-4 text-sm leading-6 text-[#4C3B35]">
               {zh
-                ? '辅助区域现在使用 anfalalsarraf-cmyk/meccha-chameleon-project：一个面向 MECCHA CHAMELEON（Steam / UE5.6）的全外部 Box ESP 工具。优先从 Cloudflare R2 下载 meccha-toolkit.zip，并保留 GitHub release 链接作为备用。'
-                : 'This assistant area uses anfalalsarraf-cmyk/meccha-chameleon-project: a fully external Box ESP trainer for MECCHA CHAMELEON (Steam / UE5.6). meccha-toolkit.zip is the primary download, mirrored on Cloudflare R2; the GitHub release is kept as a backup source.'}
+                ? '保留原来的 External ESP Trainer 入口，但不把它包装成“安全外挂”。这里用 GitHub topic 里最高频的工具类别做雷达：FPS optimizer、external overlay、camouflage helper 和 safety checker。'
+                : 'The original External ESP Trainer entry stays, but it is framed as a risk-aware tools radar, not a “safe cheat” claim. We track the GitHub-topic categories players actually see: FPS optimizer, external overlay, camouflage helper, and safety checker.'}
             </p>
             <div className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-xs leading-5 text-amber-950">
               <AlertTriangle className="mr-2 inline h-4 w-4" />
               {zh
-                ? 'Educational and research purposes only. Use at your own risk. 第三方工具可能违反游戏条款、触发反作弊或导致封号。本站不托管该项目文件，也不承担使用后果。'
-                : 'Educational and research purposes only. Use at your own risk. Third-party tools can violate game terms, trigger anti-cheat, or cause account bans. This site does not host the project files or accept liability for use.'}
+                ? 'Educational and research purposes only. Use at your own risk. 第三方 ESP / trainer / aimbot / FPS booster 可能违反游戏条款、触发反作弊、导致封号或包含恶意软件。'
+                : 'Educational and research purposes only. Use at your own risk. Third-party ESP / trainer / aimbot / FPS booster tools can violate game terms, trigger anti-cheat, cause bans, or contain malware.'}
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <a href={assistantLinks.zip} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#ff6f9a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#e95a88]"><Download className="h-4 w-4" />{zh ? '下载 meccha-toolkit.zip' : 'Download meccha-toolkit.zip'}</a>
-              <a href={assistantLinks.zipGithub} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#29211D] bg-white px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-[#fff7c8]"><Download className="h-4 w-4" />{zh ? 'GitHub zip 备用' : 'GitHub zip backup'}</a>
+              <a href={localHref(locale, '/tools')} className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#29211D] bg-white px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-[#fff7c8]"><ShieldCheck className="h-4 w-4" />{zh ? '先看风险标签' : 'Read risk labels first'}</a>
+              <a href={assistantLinks.zipGithub} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#D8CFC6] bg-[#F6F0EA] px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-white"><Download className="h-4 w-4" />{zh ? 'GitHub zip 备用' : 'GitHub zip backup'}</a>
               <a href={assistantLinks.repo} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#D8CFC6] bg-[#F6F0EA] px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-white"><ExternalLink className="h-4 w-4" />GitHub</a>
-              <a href={assistantLinks.release} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#D8CFC6] bg-[#F6F0EA] px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-white"><ExternalLink className="h-4 w-4" />{zh ? '发布页' : 'Release'}</a>
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {(zh ? zhAssistantFeatures : assistantFeatures).map(([title, body]) => (
-              <div key={title} className="rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-5">
-                <ShieldCheck className="mb-3 h-5 w-5 text-[#ff6f9a]" />
-                <div className="text-sm font-semibold">{title}</div>
-                <p className="mt-2 text-sm leading-6 text-[#4C3B35]">{body}</p>
-              </div>
-            ))}
+            {toolsRadarCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div key={card.title} className="rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-5">
+                  <Icon className="mb-3 h-5 w-5 text-[#ff6f9a]" />
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-sm font-semibold">{card.title}</div>
+                    <span className="rounded-full bg-white px-2 py-1 text-[11px] font-semibold text-[#7D6D69]">{card.risk}</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-6 text-[#4C3B35]">{card.body}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

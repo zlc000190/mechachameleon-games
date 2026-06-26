@@ -4,6 +4,10 @@ import {
   LocaleSelector,
 } from '@/shared/blocks/common';
 
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 export default function AuthLayout({
   children,
 }: {

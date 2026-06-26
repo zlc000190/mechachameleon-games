@@ -10,6 +10,10 @@ import { Sidebar as SidebarType } from '@/shared/types/blocks/dashboard';
 /**
  * Admin layout to manage datas
  */
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 export default async function AdminLayout({
   children,
   params,

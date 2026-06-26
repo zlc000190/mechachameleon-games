@@ -18,8 +18,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme={envConfigs.appearance}
-      enableSystem
+      defaultTheme="light"
+      forcedTheme="light"
+      enableSystem={false}
       disableTransitionOnChange
     >
       {children}

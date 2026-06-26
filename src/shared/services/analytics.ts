@@ -14,12 +14,13 @@ import { Configs, getAllConfigs } from '@/shared/models/config';
 export function getAnalyticsManagerWithConfigs(configs: Configs) {
   const analytics = new AnalyticsManager();
 
-  // google analytics
-  if (configs.google_analytics_id) {
-    analytics.addProvider(
-      new GoogleAnalyticsProvider({ gaId: configs.google_analytics_id })
-    );
-  }
+  // google analytics — env fallback wins so we never lose the tag
+  const gaId =
+    configs.google_analytics_id ||
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ||
+    process.env.GOOGLE_ANALYTICS_ID ||
+    'G-1SX4C6C134';
+  analytics.addProvider(new GoogleAnalyticsProvider({ gaId }));
 
   // clarity
   if (configs.clarity_id) {

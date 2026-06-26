@@ -1,119 +1,130 @@
+/*
+  mechachameleon.games theme — "Red brick wall + white chameleon mascot".
+
+  Brand reference: the fan-made logo with a real red brick wall background,
+  a white round-headed mascot, a red brick in the mascot's right hand, and a
+  brown "U" stamp on the upper arm.
+
+  IMPORTANT: The user has high contrast requirements and cannot read yellow,
+  gold, or white text. So we KEEP the brick-wall visual energy in the
+  background/decorative layers, but BODY text and primary CTAs are always
+  dark on light surfaces. Light mode only — no dark/light toggle.
+*/
+
 :root {
-  --background: oklch(0.9842 0.0034 247.8575);
-  --foreground: oklch(0.2795 0.0368 260.031);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2795 0.0368 260.031);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2795 0.0368 260.031);
-  --primary: oklch(0.55 0.21 277);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9276 0.0058 264.5313);
-  --secondary-foreground: oklch(0.3729 0.0306 259.7328);
-  --muted: oklch(0.967 0.0029 264.5419);
-  --muted-foreground: oklch(0.551 0.0234 264.3637);
-  --accent: oklch(0.9299 0.0334 272.7879);
-  --accent-foreground: oklch(0.3729 0.0306 259.7328);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.8717 0.0093 258.3382);
-  --input: oklch(0.8717 0.0093 258.3382);
-  --ring: oklch(0.5854 0.2041 277.1173);
-  --chart-1: oklch(0.5854 0.2041 277.1173);
-  --chart-2: oklch(0.5106 0.2301 276.9656);
-  --chart-3: oklch(0.4568 0.2146 277.0229);
-  --chart-4: oklch(0.3984 0.1773 277.3662);
-  --chart-5: oklch(0.3588 0.1354 278.6973);
-  --sidebar: oklch(0.967 0.0029 264.5419);
-  --sidebar-foreground: oklch(0.2795 0.0368 260.031);
-  --sidebar-primary: oklch(0.5854 0.2041 277.1173);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.9299 0.0334 272.7879);
-  --sidebar-accent-foreground: oklch(0.3729 0.0306 259.7328);
-  --sidebar-border: oklch(0.8717 0.0093 258.3382);
-  --sidebar-ring: oklch(0.5854 0.2041 277.1173);
-  --font-sans: Noto Sans Mono, ui-sans-serif, sans-serif, system-ui;
-  --font-serif: Merriweather, serif;
-  --font-mono: JetBrains Mono, monospace;
+  /* Brick palette — sampled from a real red brick wall */
+  --brick-50: #f6e3df;
+  --brick-100: #e3a48a;
+  --brick-200: #c87a5c;
+  --brick-300: #a85a3f;
+  --brick-400: #8a3a23;
+  --brick-500: #6e2c19;
+  --brick-600: #55210f;
+  --brick-700: #3b1d12;
+  --brick-800: #2a130a;
+  --brick-900: #1a0a05;
+
+  --mortar: #d8c9b3;
+  --mortar-soft: #efe3d1;
+  --mortar-ink: #4a3a2a;
+
+  /* High-contrast ink for body text */
+  --ink-900: #0f0805;
+  --ink-700: #1a0f0c;
+  --ink-500: #2c1c16;
+  --ink-300: #4a322a;
+
+  /* White used for the mascot and as a highlight on cards */
+  --paper: #ffffff;
+  --paper-soft: #faf3eb;
+
+  /* Tailwind semantic tokens */
+  --background: var(--paper-soft);
+  --foreground: var(--ink-900);
+  --card: #ffffff;
+  --card-foreground: var(--ink-900);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink-900);
+
+  --primary: var(--brick-500);
+  --primary-foreground: #ffffff;
+
+  --secondary: var(--mortar-soft);
+  --secondary-foreground: var(--ink-900);
+  --muted: var(--mortar-soft);
+  --muted-foreground: var(--mortar-ink);
+  --accent: var(--brick-100);
+  --accent-foreground: var(--ink-900);
+  --destructive: #8a1f12;
+  --destructive-foreground: #ffffff;
+  --border: #c9b59a;
+  --input: #c9b59a;
+  --ring: var(--brick-500);
+
+  --chart-1: var(--brick-400);
+  --chart-2: var(--brick-300);
+  --chart-3: var(--brick-600);
+  --chart-4: var(--brick-200);
+  --chart-5: var(--brick-700);
+
+  --sidebar: var(--paper-soft);
+  --sidebar-foreground: var(--ink-900);
+  --sidebar-primary: var(--brick-500);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--mortar-soft);
+  --sidebar-accent-foreground: var(--ink-900);
+  --sidebar-border: #c9b59a;
+  --sidebar-ring: var(--brick-500);
+
+  --font-sans:
+    'Inter', 'Noto Sans', 'PingFang SC', 'Helvetica Neue', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Merriweather', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --radius: 0.5rem;
   --shadow-x: 0px;
   --shadow-y: 4px;
   --shadow-blur: 8px;
   --shadow-spread: -1px;
-  --shadow-opacity: 0.1;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 1px 2px -2px hsl(0 0% 0% / 0.1);
-  --shadow:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 1px 2px -2px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 2px 4px -2px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 4px 6px -2px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 8px 10px -2px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+  --shadow-opacity: 0.15;
+  --shadow-color: hsl(8 60% 15%);
+  --shadow-2xs: 0px 2px 4px -1px hsl(8 60% 15% / 0.06);
+  --shadow-xs: 0px 2px 4px -1px hsl(8 60% 15% / 0.08);
+  --shadow-sm: 0px 2px 4px -1px hsl(8 60% 15% / 0.12), 0px 1px 2px -2px hsl(8 60% 15% / 0.1);
+  --shadow: 0px 2px 4px -1px hsl(8 60% 15% / 0.12), 0px 1px 2px -2px hsl(8 60% 15% / 0.1);
+  --shadow-md: 0px 4px 8px -1px hsl(8 60% 15% / 0.14), 0px 2px 4px -2px hsl(8 60% 15% / 0.12);
+  --shadow-lg: 0px 8px 16px -2px hsl(8 60% 15% / 0.18), 0px 4px 6px -2px hsl(8 60% 15% / 0.12);
+  --shadow-xl: 0px 12px 24px -4px hsl(8 60% 15% / 0.2), 0px 8px 10px -2px hsl(8 60% 15% / 0.14);
+  --shadow-2xl: 0px 16px 32px -8px hsl(8 60% 15% / 0.3);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
-.dark {
-  --background: oklch(0.2077 0.0398 265.7549);
-  --foreground: oklch(0.9288 0.0126 255.5078);
-  --card: oklch(0.2795 0.0368 260.031);
-  --card-foreground: oklch(0.9288 0.0126 255.5078);
-  --popover: oklch(0.2795 0.0368 260.031);
-  --popover-foreground: oklch(0.9288 0.0126 255.5078);
-  --primary: oklch(0.6801 0.1583 276.9349);
-  --primary-foreground: oklch(0.2077 0.0398 265.7549);
-  --secondary: oklch(0.3351 0.0331 260.912);
-  --secondary-foreground: oklch(0.8717 0.0093 258.3382);
-  --muted: oklch(0.2395 0.0368 260.031);
-  --muted-foreground: oklch(0.7137 0.0192 261.3246);
-  --accent: oklch(0.3729 0.0306 259.7328);
-  --accent-foreground: oklch(0.8717 0.0093 258.3382);
-  --destructive: oklch(0.6368 0.2078 25.3313);
-  --destructive-foreground: oklch(0.2077 0.0398 265.7549);
-  --border: oklch(0.4461 0.0263 256.8018);
-  --input: oklch(0.4461 0.0263 256.8018);
-  --ring: oklch(0.6801 0.1583 276.9349);
-  --chart-1: oklch(0.6801 0.1583 276.9349);
-  --chart-2: oklch(0.5854 0.2041 277.1173);
-  --chart-3: oklch(0.5106 0.2301 276.9656);
-  --chart-4: oklch(0.4568 0.2146 277.0229);
-  --chart-5: oklch(0.3984 0.1773 277.3662);
-  --sidebar: oklch(0.2795 0.0368 260.031);
-  --sidebar-foreground: oklch(0.9288 0.0126 255.5078);
-  --sidebar-primary: oklch(0.6801 0.1583 276.9349);
-  --sidebar-primary-foreground: oklch(0.2077 0.0398 265.7549);
-  --sidebar-accent: oklch(0.3729 0.0306 259.7328);
-  --sidebar-accent-foreground: oklch(0.8717 0.0093 258.3382);
-  --sidebar-border: oklch(0.4461 0.0263 256.8018);
-  --sidebar-ring: oklch(0.6801 0.1583 276.9349);
-  --font-sans: Noto Sans Mono, ui-sans-serif, sans-serif, system-ui;
-  --font-serif: Merriweather, serif;
-  --font-mono: JetBrains Mono, monospace;
-  --radius: 0.5rem;
-  --shadow-x: 0px;
-  --shadow-y: 4px;
-  --shadow-blur: 8px;
-  --shadow-spread: -1px;
-  --shadow-opacity: 0.1;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 4px 8px -1px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 1px 2px -2px hsl(0 0% 0% / 0.1);
-  --shadow:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 1px 2px -2px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 2px 4px -2px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 4px 6px -2px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0px 4px 8px -1px hsl(0 0% 0% / 0.1), 0px 8px 10px -2px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0px 4px 8px -1px hsl(0 0% 0% / 0.25);
+/* ---- Real brick wall backdrop (decorative only) ---- */
+.brick-wall {
+  background-color: #5a2616;
+  background-image:
+    radial-gradient(ellipse 70% 60% at 20% 20%, rgba(0, 0, 0, 0.45), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(0, 0, 0, 0.45), transparent 65%),
+    repeating-linear-gradient(
+      90deg,
+      #7a2f1c 0,
+      #7a2f1c 60px,
+      #efe3d1 60px,
+      #efe3d1 64px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 48px,
+      #efe3d1 48px,
+      #efe3d1 52px
+    );
+  background-size: 100% 100%, 100% 100%, 100% 124px, 100% 124px;
+  color: var(--ink-900);
+}
+
+.brick-wall .mascot-illu {
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45));
 }
 
 @theme inline {
@@ -149,6 +160,24 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Project-specific tokens for the brick-wall theme */
+  --color-brick-50: var(--brick-50);
+  --color-brick-100: var(--brick-100);
+  --color-brick-200: var(--brick-200);
+  --color-brick-300: var(--brick-300);
+  --color-brick-400: var(--brick-400);
+  --color-brick-500: var(--brick-500);
+  --color-brick-600: var(--brick-600);
+  --color-brick-700: var(--brick-700);
+  --color-brick-800: var(--brick-800);
+  --color-brick-900: var(--brick-900);
+  --color-mortar: var(--mortar);
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-300: var(--ink-300);
+  --color-paper: var(--paper);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

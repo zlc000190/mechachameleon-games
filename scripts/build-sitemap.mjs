@@ -37,18 +37,30 @@ for (const loc of locales) {
   });
 }
 
-// New player
-for (const loc of locales) {
-  entries.push({
-    loc: locUrl(loc, '/new-player'),
-    alternates: Object.fromEntries(
-      locales.map((l) => [l, locUrl(l, '/new-player')])
-    ),
-    'x-default': locUrl(defaultLocale, '/new-player'),
-    lastmod: now,
-    changefreq: 'monthly',
-    priority: '0.7',
-  });
+const marketingPages = [
+  { path: '/new-player', changefreq: 'monthly', priority: '0.7' },
+  { path: '/connection-fix', changefreq: 'weekly', priority: '0.9' },
+  { path: '/play-with-friends', changefreq: 'weekly', priority: '0.9' },
+  { path: '/fps-boost', changefreq: 'weekly', priority: '0.85' },
+  { path: '/color-matching', changefreq: 'weekly', priority: '0.85' },
+  { path: '/public-lobby-guide', changefreq: 'weekly', priority: '0.8' },
+  { path: '/tools', changefreq: 'weekly', priority: '0.8' },
+  { path: '/camo-lab', changefreq: 'weekly', priority: '0.75' },
+];
+
+for (const page of marketingPages) {
+  for (const loc of locales) {
+    entries.push({
+      loc: locUrl(loc, page.path),
+      alternates: Object.fromEntries(
+        locales.map((l) => [l, locUrl(l, page.path)])
+      ),
+      'x-default': locUrl(defaultLocale, page.path),
+      lastmod: now,
+      changefreq: page.changefreq,
+      priority: page.priority,
+    });
+  }
 }
 
 // Map detail pages intentionally stay out of the .games sitemap.

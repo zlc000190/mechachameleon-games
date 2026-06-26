@@ -9,6 +9,10 @@ import { baseOptions } from './layout.config';
 
 import '@/config/style/docs.css';
 
+export const metadata = {
+  robots: { index: false, follow: false },
+};
+
 const zh: Partial<Translations> = {
   search: '搜索内容',
 };

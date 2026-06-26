@@ -1,69 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Meccha Chameleon Play Online">
-  <title>Meccha Chameleon Play Online</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Meccha Chameleon mascot holding a brick">
+  <title>Meccha Chameleon mascot holding a brick</title>
   <defs>
-    <linearGradient id="macaronBg" x1="116" y1="124" x2="908" y2="900" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffe27a"/>
-      <stop offset="0.24" stop-color="#ff8fb3"/>
-      <stop offset="0.5" stop-color="#9de7dc"/>
-      <stop offset="0.76" stop-color="#9fb7ff"/>
-      <stop offset="1" stop-color="#d9b7ff"/>
+    <!-- Realistic red brick texture, painted straight in SVG.
+         The body intentionally uses the same brick pattern as the
+         background to mimic the "body merges into wall" effect of
+         the original Meccha Chameleon fan logo. -->
+    <linearGradient id="mascotWallShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2218"/>
+      <stop offset="0.18" stop-color="#5a3322"/>
+      <stop offset="0.55" stop-color="#7a3a23"/>
+      <stop offset="1" stop-color="#2b160e"/>
     </linearGradient>
-    <linearGradient id="chameleonBody" x1="286" y1="302" x2="764" y2="736" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8ff2b0"/>
-      <stop offset="0.34" stop-color="#4fd8bb"/>
-      <stop offset="0.66" stop-color="#61a8ff"/>
-      <stop offset="1" stop-color="#b88cff"/>
-    </linearGradient>
-    <linearGradient id="tailGrad" x1="170" y1="442" x2="570" y2="804" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff9ab7"/>
-      <stop offset="0.45" stop-color="#ffcf64"/>
-      <stop offset="1" stop-color="#64dfc5"/>
-    </linearGradient>
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#4b2f54" flood-opacity="0.22"/>
+    <pattern id="mascotBricks" x="0" y="0" width="220" height="96" patternUnits="userSpaceOnUse">
+      <rect width="220" height="96" fill="#8a3a23"/>
+      <path d="M0 0 H220 M0 48 H220" stroke="#3b1d12" stroke-width="6"/>
+      <path d="M0 0 V48 M55 0 V48 M55 48 V96 M110 0 V48 M165 0 V48 M165 48 V96" stroke="#3b1d12" stroke-width="4"/>
+      <path d="M5 6 H215 M5 54 H215" stroke="#f3e6d2" stroke-width="3" stroke-opacity="0.45"/>
+      <path d="M5 12 H215" stroke="#f3e6d2" stroke-width="2" stroke-opacity="0.25"/>
+    </pattern>
+    <radialGradient id="mascotHead" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.7" stop-color="#f3eee7"/>
+      <stop offset="1" stop-color="#d9cdbb"/>
+    </radialGradient>
+    <radialGradient id="mascotHighlight" cx="0.35" cy="0.3" r="0.45">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="mascotShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="6" dy="10" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
 
-  <rect x="44" y="44" width="936" height="936" rx="224" fill="url(#macaronBg)"/>
-  <circle cx="204" cy="202" r="92" fill="#fff4be" opacity="0.95"/>
-  <circle cx="814" cy="212" r="86" fill="#c8f7ef" opacity="0.92"/>
-  <circle cx="838" cy="812" r="106" fill="#ffd1dc" opacity="0.92"/>
-  <circle cx="188" cy="796" r="84" fill="#d8c7ff" opacity="0.92"/>
+  <!-- Background wall slab the mascot is standing in front of -->
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#mascotWallShade)"/>
+  <rect x="60" y="40" width="904" height="944" fill="url(#mascotBricks)" opacity="0.92"/>
 
-  <g filter="url(#softShadow)">
-    <path d="M530 752c-142 10-274-42-318-144-42-98 10-205 111-254 96-47 209-26 271 46 27 32 38 68 30 101-9 38-40 66-79 71-42 6-79-16-91-51-9-28 6-58 35-69 23-9 49-2 62 16 12 17 7 39-11 49-11 6-25 6-36-1 8 22 42 33 70 16 34-20 42-67 16-105-45-65-153-78-232-28-81 51-102 143-47 211 62 77 205 99 332 46 45-19 83-45 116-78 31-32 85 4 65 46-46 98-157 171-294 181z" fill="url(#tailGrad)"/>
+  <!-- Subtle vignette so the mascot stands out -->
+  <radialGradient id="mascotVignette" cx="0.5" cy="0.5" r="0.7">
+    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+  </radialGradient>
+  <rect x="0" y="0" width="1024" height="1024" fill="url(#mascotVignette)"/>
 
-    <path d="M288 642c0-134 107-244 255-244h96c101 0 183 82 183 183s-82 183-183 183H410c-67 0-122-55-122-122z" fill="url(#chameleonBody)"/>
-    <path d="M608 397h70c74 0 135 60 135 135 0 18-4 35-10 51-36-77-119-129-214-129H471c-52 0-101 14-143 39 45-59 115-96 215-96h65z" fill="#ffffff" opacity="0.22"/>
+  <!-- Mascot: body silhouette in white, then the brick-textured torso.
+       Pose: standing slightly to the right, right arm raised holding a brick,
+       left arm relaxed at the side, brick "U" mark on the right upper arm. -->
+  <g filter="url(#mascotShadow)">
+    <!-- Right arm (raised, holding brick) -->
+    <path d="M650 360 q80 -60 200 -90 q40 -10 70 14 q22 18 6 50 q-22 38 -84 64 q-100 42 -180 78 z"
+          fill="#ffffff" stroke="#1a0f0c" stroke-width="6" stroke-linejoin="round"/>
 
-    <circle cx="679" cy="520" r="76" fill="#fff7d6"/>
-    <circle cx="706" cy="511" r="35" fill="#302338"/>
-    <circle cx="718" cy="497" r="11" fill="#ffffff"/>
-
-    <path d="M752 594l102 58-102 58z" fill="#ffffff"/>
-    <path d="M752 594l102 58-102 58z" fill="#ff6f9a" opacity="0.82"/>
-
-    <rect x="389" y="572" width="206" height="92" rx="46" fill="#fff6de"/>
-    <circle cx="458" cy="618" r="18" fill="#68d8c2"/>
-    <circle cx="522" cy="618" r="18" fill="#ff8fab"/>
-    <path d="M593 606h44v24h-44z" fill="#776bff"/>
-    <path d="M603 596h24v44h-24z" fill="#776bff"/>
-
-    <g>
-      <circle cx="294" cy="294" r="42" fill="#ffffff"/>
-      <circle cx="294" cy="277" r="14" fill="#ff6f9a"/>
-      <path d="M264 322c7-23 52-23 60 0z" fill="#ff6f9a"/>
+    <!-- Brick the arm is holding (slightly above the hand) -->
+    <g transform="translate(900 270) rotate(-12)">
+      <rect x="0" y="0" width="220" height="96" rx="6" fill="#8a3a23" stroke="#1a0f0c" stroke-width="6"/>
+      <path d="M0 0 H220 M0 48 H220" stroke="#3b1d12" stroke-width="5"/>
+      <path d="M0 0 V48 M55 0 V48 M55 48 V96 M110 0 V48 M165 0 V48 M165 48 V96" stroke="#3b1d12" stroke-width="3"/>
+      <path d="M5 6 H215" stroke="#f3e6d2" stroke-width="3" stroke-opacity="0.45"/>
     </g>
-    <g>
-      <circle cx="744" cy="286" r="42" fill="#ffffff"/>
-      <circle cx="744" cy="269" r="14" fill="#61a8ff"/>
-      <path d="M714 314c7-23 52-23 60 0z" fill="#61a8ff"/>
+
+    <!-- Brown "U" stamp on the upper arm -->
+    <g transform="translate(720 410) rotate(-12)">
+      <text x="0" y="0" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700"
+            fill="#7a3a1a" stroke="#1a0f0c" stroke-width="3" paint-order="stroke fill">U</text>
     </g>
-    <g>
-      <circle cx="810" cy="742" r="42" fill="#ffffff"/>
-      <circle cx="810" cy="725" r="14" fill="#ffcf64"/>
-      <path d="M780 770c7-23 52-23 60 0z" fill="#ffcf64"/>
-    </g>
+
+    <!-- Left arm (relaxed, hanging down) -->
+    <path d="M520 540 q-40 90 -38 220 q1 50 30 64 q34 16 60 -10 q26 -28 6 -90 q-22 -68 -28 -160 z"
+          fill="#ffffff" stroke="#1a0f0c" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- Body: filled with the brick texture so it merges with the wall,
+         with a thick white outline so the silhouette still reads. -->
+    <path d="M430 360
+             q -20 60 -10 150
+             q 10 110 60 200
+             q 60 110 200 140
+             q 140 30 240 -20
+             q 90 -45 110 -130
+             q 18 -80 -10 -180
+             q -28 -100 -90 -160
+             q -90 -90 -250 -90
+             q -160 0 -250 90 z"
+          fill="url(#mascotBricks)" stroke="#ffffff" stroke-width="22" stroke-linejoin="round"/>
+    <path d="M430 360
+             q -20 60 -10 150
+             q 10 110 60 200
+             q 60 110 200 140
+             q 140 30 240 -20
+             q 90 -45 110 -130
+             q 18 -80 -10 -180
+             q -28 -100 -90 -160
+             q -90 -90 -250 -90
+             q -160 0 -250 90 z"
+          fill="none" stroke="#1a0f0c" stroke-width="6" stroke-linejoin="round"/>
+
+    <!-- Head: big white round head -->
+    <circle cx="600" cy="280" r="190" fill="url(#mascotHead)" stroke="#1a0f0c" stroke-width="8"/>
+    <ellipse cx="540" cy="240" rx="120" ry="80" fill="url(#mascotHighlight)"/>
+
+    <!-- Smiling face: two arc eyes + arc mouth -->
+    <path d="M500 240 q24 36 0 60 q-24 -24 0 -60 z" fill="#1a0f0c"/>
+    <path d="M580 240 q24 36 0 60 q-24 -24 0 -60 z" fill="#1a0f0c"/>
+    <path d="M510 340 q60 50 130 6" fill="none" stroke="#1a0f0c" stroke-width="10" stroke-linecap="round"/>
   </g>
 </svg>

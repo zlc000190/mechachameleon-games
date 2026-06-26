@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Meccha Chameleon">
+  <title>Meccha Chameleon</title>
+  <defs>
+    <pattern id="fbBricks" x="0" y="0" width="14" height="6" patternUnits="userSpaceOnUse">
+      <rect width="14" height="6" fill="#8a3a23"/>
+      <path d="M0 0 H14 M0 3 H14" stroke="#3b1d12" stroke-width="0.6"/>
+      <path d="M0 0 V3 M3.5 0 V3 M3.5 3 V6 M7 0 V3 M10.5 0 V3 M10.5 3 V6" stroke="#3b1d12" stroke-width="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="64" height="64" fill="url(#fbBricks)"/>
+  <!-- White round head with two dot eyes and a smile -->
+  <circle cx="40" cy="22" r="14" fill="#ffffff" stroke="#1a0f0c" stroke-width="2.5"/>
+  <circle cx="35" cy="20" r="2" fill="#1a0f0c"/>
+  <circle cx="44" cy="20" r="2" fill="#1a0f0c"/>
+  <path d="M34 26 q5 4 11 0" fill="none" stroke="#1a0f0c" stroke-width="2" stroke-linecap="round"/>
+</svg>
