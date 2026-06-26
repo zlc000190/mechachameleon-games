@@ -93,7 +93,7 @@
     },
     "show_sign": false,
     "show_theme": false,
-    "show_locale": false,
+    "show_locale": true,
     "topbanner": {
       "text": "先在线玩，再解决进房、FPS、朋友组队、涂色、工具和公房问题。"
     }
@@ -207,6 +207,6 @@
     },
     "show_built_with": false,
     "show_theme": false,
-    "show_locale": false
+    "show_locale": true
   }
 }

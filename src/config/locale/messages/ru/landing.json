@@ -44,7 +44,7 @@
     },
     "show_sign": false,
     "show_theme": true,
-    "show_locale": false,
+    "show_locale": true,
     "topbanner": {
       "text": "Играйте в прятки прямо в браузере. Скачивать ничего не нужно."
     }
@@ -125,6 +125,7 @@
       "items": []
     },
     "copyright": "© 2026 Meccha Chameleon Art. Фан-сайт, не аффилирован с LEMORION.",
-    "icp": ""
+    "icp": "",
+    "show_locale": true
   }
 }

@@ -312,10 +312,12 @@ export function Header({ header }: { header: HeaderType }) {
                       </Link>
                     ))}
 
-                  {header.show_locale ? <LocaleSelector /> : null}
-                  <div className="flex-1 md:hidden"></div>
                   {header.show_sign ? (
                     <SignUser userNav={header.user_nav} />
+                  ) : null}
+                  <div className="flex-1 md:hidden"></div>
+                  {header.show_locale ? (
+                    <LocaleSelector type="button" />
                   ) : null}
                 </div>
               </div>

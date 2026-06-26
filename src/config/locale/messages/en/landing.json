@@ -93,7 +93,7 @@
     },
     "show_sign": false,
     "show_theme": false,
-    "show_locale": false,
+    "show_locale": true,
     "topbanner": {
       "text": "Play first. Fix joining, FPS, friends, painting, tools, and public lobby problems after."
     }
@@ -207,6 +207,6 @@
     },
     "show_built_with": false,
     "show_theme": false,
-    "show_locale": false
+    "show_locale": true
   }
 }

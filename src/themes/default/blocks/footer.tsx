@@ -57,9 +57,6 @@ export function Footer({ footer }: { footer: FooterType }) {
         <div className="flex min-w-0 flex-wrap items-center gap-4 sm:gap-8">
           {footer.show_built_with !== false ? <BuiltWith /> : null}
           <div className="min-w-0 flex-1" />
-          {footer.show_locale !== false ? (
-            <LocaleSelector type="button" />
-          ) : null}
         </div>
 
         <div
@@ -109,6 +106,10 @@ export function Footer({ footer }: { footer: FooterType }) {
                 </Link>
               ))}
             </div>
+          ) : null}
+
+          {footer.show_locale !== false ? (
+            <LocaleSelector type="button" />
           ) : null}
         </div>
       </div>
