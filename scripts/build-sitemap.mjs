@@ -1,13 +1,10 @@
 // Build-time static sitemap generator.
 //
-// SEO rule for .games (2026-06-26):
-//   - Use B-scheme safely: only index locales that truly carry stable page
-//     content in <url> entries (currently en + zh).
-//   - Still emit the FULL hreflang alternate set for all supported locales so
-//     search engines understand they are alternate language versions of the
-//     same route, not unrelated pages.
-//   - x-default always points to the default-locale (en) URL.
-//   - Never list half-translated locales as first-class sitemap <url> entries.
+// SEO rule for .games (2026-06-27 stop):
+//   - New site stabilizes English first.
+//   - Do not expose translated/fallback locales in sitemap or hreflang until
+//     target-country keyword research + native rewrites justify promotion.
+//   - x-default points to the default-locale (en) URL.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -17,29 +14,11 @@ const root = path.resolve(__dirname, '..');
 const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
-// All supported locales for hreflang coverage.
-const allLocales = [
-  'en',
-  'zh',
-  'ru',
-  'it',
-  'fr',
-  'de',
-  'es',
-  'pt',
-  'ja',
-  'ko',
-  'ar',
-  'th',
-  'vi',
-  'zh-TW',
-  'nl',
-];
+// Only SEO-approved locale for now.
+const allLocales = ['en'];
 
-// Only locales with safely indexable .games content get their own <url> entry.
-// As of 2026-06-26 this is en/zh (always), plus fr/es/zh-TW whose landing + common
-// JSON now ship full translations and whose pages route without falling back.
-const indexableLocales = ['en', 'zh', 'fr', 'es', 'zh-TW'];
+// Only English gets <url> entries while the site is new.
+const indexableLocales = ['en'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 

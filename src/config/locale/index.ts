@@ -87,17 +87,22 @@ export const localeMessagesPaths = [
   'pages/updates',
 ];
 
-// Locales that have a full i18n JSON bundle under src/config/locale/messages/<locale>.
-// `ru` is included for legacy reasons (the brand is anchored in Russian search intent).
-export const fullyTranslatedLocales: Locale[] = ['en', 'zh', 'ru'];
+// New-site SEO stop: .games should stabilize English first.
+// Do not expose translated/fallback locales to Google until target-country
+// keyword research + native rewrites justify promotion.
+export const fullyTranslatedLocales: Locale[] = ['en'];
+export const seoLocales: Locale[] = ['en'];
 
-// 4 SEO key pages that get full 15-locale coverage (manual translation).
-// Everything outside this list falls back to English for the 12 new locales.
 export const keySeoPages = [
   '/',
   '/tools',
   '/new-player',
-  '/maps',
+  '/connection-fix',
+  '/play-with-friends',
+  '/fps-boost',
+  '/color-matching',
+  '/public-lobby-guide',
+  '/camo-lab',
 ] as const;
 
 // Locales that read right-to-left.

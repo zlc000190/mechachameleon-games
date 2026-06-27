@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSessionCookie } from 'better-auth/cookies';
 import createIntlMiddleware from 'next-intl/middleware';
 
+import { defaultLocale, locales } from '@/config/locale';
 import { routing } from '@/core/i18n/config';
 
 const intlMiddleware = createIntlMiddleware(routing);
@@ -14,10 +15,16 @@ export async function proxy(request: NextRequest) {
 
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
-  const isValidLocale = routing.locales.includes(locale as any);
+  const isValidLocale = (locales as readonly string[]).includes(locale);
   const pathWithoutLocale = isValidLocale
     ? pathname.slice(locale.length + 1)
     : pathname;
+
+  // Stop non-English locale exposure while the new .games site stabilizes.
+  // Every prefixed locale URL consolidates to the English homepage.
+  if (isValidLocale && locale !== defaultLocale) {
+    return NextResponse.redirect(new URL('/', request.url), 301);
+  }
 
   // Only check authentication for admin routes
   if (

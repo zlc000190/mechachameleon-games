@@ -5,7 +5,7 @@ import { headers } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 
 import { envConfigs } from '@/config';
-import { isRtl, locales } from '@/config/locale';
+import { isRtl, seoLocales } from '@/config/locale';
 import { UtmCapture } from '@/shared/blocks/common/utm-capture';
 import { getAllConfigs } from '@/shared/models/config';
 import { getAdsService } from '@/shared/services/ads';
@@ -122,10 +122,10 @@ export default async function RootLayout({
           }}
         />
 
-        {/* hreflang alternates for the SAME pathname across locales. */}
-        {locales ? (
+        {/* hreflang alternates — only SEO-approved locales are emitted while .games stabilizes. */}
+        {seoLocales ? (
           <>
-            {locales.map((loc) => (
+            {seoLocales.map((loc) => (
               <link
                 key={loc}
                 rel="alternate"
