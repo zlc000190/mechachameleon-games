@@ -14,11 +14,11 @@ const root = path.resolve(__dirname, '..');
 const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
-// Only SEO-approved locale for now.
-const allLocales = ['en'];
+// SEO-approved locales.
+const allLocales = ['en', 'vi'];
 
-// Only English gets <url> entries while the site is new.
-const indexableLocales = ['en'];
+// Only native, reviewed locales get <url> entries.
+const indexableLocales = ['en', 'vi'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 

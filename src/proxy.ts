@@ -20,9 +20,10 @@ export async function proxy(request: NextRequest) {
     ? pathname.slice(locale.length + 1)
     : pathname;
 
-  // Stop non-English locale exposure while the new .games site stabilizes.
-  // Every prefixed locale URL consolidates to the English homepage.
-  if (isValidLocale && locale !== defaultLocale) {
+  // Stop broad translated-locale exposure while the new .games site stabilizes.
+  // Vietnamese is currently promoted because traffic demand is active and the
+  // homepage has native copy.
+  if (isValidLocale && locale !== defaultLocale && locale !== 'vi') {
     return NextResponse.redirect(new URL('/', request.url), 301);
   }
 

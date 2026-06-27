@@ -90,8 +90,8 @@ export const localeMessagesPaths = [
 // New-site SEO stop: .games should stabilize English first.
 // Do not expose translated/fallback locales to Google until target-country
 // keyword research + native rewrites justify promotion.
-export const fullyTranslatedLocales: Locale[] = ['en'];
-export const seoLocales: Locale[] = ['en'];
+export const fullyTranslatedLocales: Locale[] = ['en', 'vi'];
+export const seoLocales: Locale[] = ['en', 'vi'];
 
 export const keySeoPages = [
   '/',
