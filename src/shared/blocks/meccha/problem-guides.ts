@@ -32,15 +32,47 @@ export type GuidePage = {
   eyebrow: string;
   title: string;
   zhTitle: string;
+  viTitle?: string;
   description: string;
   zhDescription: string;
+  viDescription?: string;
   primaryCta: GuideLink;
   secondaryCta?: GuideLink;
   quickAnswers: Array<[string, string]>;
   sections: GuideSection[];
   warnings?: string[];
   related: GuideLink[];
+  vi?: {
+    eyebrow?: string;
+    primaryCta?: GuideLink;
+    secondaryCta?: GuideLink;
+    quickAnswers?: Array<[string, string]>;
+    sections?: GuideSection[];
+    warnings?: string[];
+    related?: GuideLink[];
+  };
 };
+
+export function guideText(guide: GuidePage, locale: string) {
+  const vi = locale === 'vi';
+  const zh = locale === 'zh';
+
+  return {
+    eyebrow: vi ? (guide.vi?.eyebrow ?? guide.eyebrow) : guide.eyebrow,
+    title: vi ? (guide.viTitle ?? guide.title) : zh ? guide.zhTitle : guide.title,
+    description: vi
+      ? (guide.viDescription ?? guide.description)
+      : zh
+        ? guide.zhDescription
+        : guide.description,
+    primaryCta: vi ? (guide.vi?.primaryCta ?? guide.primaryCta) : guide.primaryCta,
+    secondaryCta: vi ? (guide.vi?.secondaryCta ?? guide.secondaryCta) : guide.secondaryCta,
+    quickAnswers: vi ? (guide.vi?.quickAnswers ?? guide.quickAnswers) : guide.quickAnswers,
+    sections: vi ? (guide.vi?.sections ?? guide.sections) : guide.sections,
+    warnings: vi ? (guide.vi?.warnings ?? guide.warnings) : guide.warnings,
+    related: vi ? (guide.vi?.related ?? guide.related) : guide.related,
+  };
+}
 
 export const problemGuides: Record<string, GuidePage> = {
   'connection-fix': {
@@ -49,10 +81,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Connection fix',
     title: 'Meccha Chameleon Connection Fix — Signing In, Lobby, Room Join, Disconnects',
     zhTitle: '超级变色龙进不去房间 / Signing in 卡住 / 掉线解决办法',
+    viTitle: 'Sửa lỗi kết nối Meccha Chameleon - kẹt Signing In, lỗi vào phòng, mất kết nối',
     description:
       'Fix Meccha Chameleon online problems: signing in stuck, cannot join room, kicked back to menu, private lobby disconnects, server region, relay, VPN, DNS, IPv6, firewall, and Steam file checks.',
     zhDescription:
       '解决超级变色龙常见在线问题：Signing in 卡住、进不去房、掉线、被踢回主菜单、私房进不去、服务器地区、VPN、DNS、IPv6、防火墙和 Steam 文件验证。',
+    viDescription:
+      'Sửa lỗi online trong Meccha Chameleon: kẹt Signing In, không vào được phòng, bị đá về menu, mất kết nối lobby riêng, vùng server, VPN, DNS, IPv6, tường lửa và kiểm tra file Steam.',
     primaryCta: { label: 'Start with quick checks', href: '#quick-checks' },
     secondaryCta: { label: 'Play browser version', href: '/#play' },
     quickAnswers: [
@@ -102,6 +137,58 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'FPS boost guide', href: '/fps-boost' },
       { label: 'Public lobby survival', href: '/public-lobby-guide' },
     ],
+    vi: {
+      eyebrow: 'Sửa kết nối',
+      primaryCta: { label: 'Kiểm tra nhanh trước', href: '#quick-checks' },
+      secondaryCta: { label: 'Chơi bản trình duyệt', href: '/#play' },
+      quickAnswers: [
+        ['Kẹt Signing In', 'Khởi động lại Steam trước, rồi mở lại game. Nếu vẫn kẹt, thử tắt VPN, flush DNS và kiểm tra xem Steam/community có đang lỗi khu vực không.'],
+        ['Không vào được phòng', 'Ưu tiên lobby mới, chưa bắt đầu. Nếu phòng dùng workshop map, hãy subscribe/tải map trước khi vào.'],
+        ['Phòng riêng bị lỗi', 'Dùng cùng server tag/khu vực, để host tạo lại phòng và tránh VPN làm bạn bè bị route sang relay khác.'],
+        ['Mất kết nối khi bắt đầu', 'Thường do tải server hoặc host không ổn định. Tạm dừng download nền, đổi relay region và verify files nếu chỉ bạn bị rớt.'],
+      ],
+      sections: [
+        {
+          title: 'Kiểm tra nhanh trước khi đổ lỗi cho máy',
+          body: 'Các lỗi online thường lặp lại cùng một kiểu: Signing In treo, vào lobby bị trả về menu, hoặc bắt đầu trận thì có người rớt. Hãy bắt đầu từ các bước ít rủi ro.',
+          bullets: [
+            'Thoát hẳn Steam rồi mở lại, không chỉ đóng cửa sổ game.',
+            'Tắt VPN/proxy để test một lần; nếu nhóm chơi khác khu vực, chọn region gần điểm giữa của nhóm.',
+            'Tạm dừng download, cloud sync và upload chia sẻ màn hình trước khi vào lobby.',
+            'Verify game files trong Steam nếu chỉ client của bạn bị đá còn bạn bè vẫn chơi được.',
+          ],
+        },
+        {
+          title: 'Checklist vào lobby và phòng',
+          body: 'UI lobby còn thô, nên cách an toàn là giảm biến số: phòng mới, region rõ, map rõ và một host chờ yên cho mọi người vào.',
+          bullets: [
+            'Ưu tiên phòng đang chờ, chưa bắt đầu.',
+            'Tránh lobby workshop map nếu bạn chưa tải map đó.',
+            'Nếu phòng không load, thoát ra một lần; retry liên tục thường vẫn fail cho tới khi host tạo lại.',
+            'Khi chơi với bạn bè, một người tạo private room mới và gửi ngay server tag/mã phòng chính xác.',
+          ],
+        },
+        {
+          title: 'Các sửa lỗi mạng đáng thử',
+          body: 'Đừng cài EXE “online fix” lạ. Chỉ dùng kiểm tra cấp hệ thống có thể hoàn tác.',
+          bullets: [
+            'Windows: flush DNS rồi khởi động lại Steam: ipconfig /flushdns.',
+            'Thử DNS khác như Cloudflare hoặc Google nếu Signing In chỉ lỗi trên một nhà mạng.',
+            'Nếu IPv6 trên router lỗi, thử tắt IPv6 tạm thời; nếu ISP cần IPv6 thì bật lại.',
+            'Chỉ allow game qua Windows Firewall từ đường dẫn cài Steam chính thức.',
+          ],
+        },
+      ],
+      warnings: [
+        'Không tải crack, DLL hoặc admin EXE “connection fix” từ bình luận.',
+        'Nếu cả lobby cùng lỗi thì thường là phía server; cài lại game nhiều lần sẽ không sửa được outage toàn cầu.',
+      ],
+      related: [
+        { label: 'Hướng dẫn chơi cùng bạn bè', href: '/play-with-friends' },
+        { label: 'Hướng dẫn tăng FPS', href: '/fps-boost' },
+        { label: 'Sinh tồn lobby công khai', href: '/public-lobby-guide' },
+      ],
+    },
   },
   'play-with-friends': {
     slug: 'play-with-friends',
@@ -109,10 +196,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Party start',
     title: 'How to Play Meccha Chameleon With Friends — Lobby, Room Codes, Server Tags',
     zhTitle: '如何和朋友一起玩超级变色龙 — 房间、房间码、服务器标签指南',
+    viTitle: 'Cách chơi Meccha Chameleon cùng bạn bè - lobby, mã phòng, server tag',
     description:
       'Set up Meccha Chameleon with friends: private rooms, lobby filters, room codes, server tags, public vs private rooms, voice chat, workshop maps, and what to do when friends cannot join.',
     zhDescription:
       '教你和朋友一起玩超级变色龙：私房、房间筛选、房间码、服务器标签、公房/私房区别、语音设置、创意工坊地图和朋友进不来时的处理办法。',
+    viDescription:
+      'Thiết lập Meccha Chameleon để chơi cùng bạn bè: phòng riêng, bộ lọc lobby, mã phòng, server tag, phòng công khai hay riêng tư, voice chat, workshop map và cách xử lý khi bạn bè không vào được.',
     primaryCta: { label: 'Use friend checklist', href: '#friend-checklist' },
     secondaryCta: { label: 'Fix join errors', href: '/connection-fix' },
     quickAnswers: [
@@ -158,6 +248,54 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'Public lobby guide', href: '/public-lobby-guide' },
       { label: 'Color matching guide', href: '/color-matching' },
     ],
+    vi: {
+      eyebrow: 'Vào party',
+      primaryCta: { label: 'Dùng checklist chơi cùng bạn', href: '#friend-checklist' },
+      secondaryCta: { label: 'Sửa lỗi vào phòng', href: '/connection-fix' },
+      quickAnswers: [
+        ['Cách setup tốt nhất', 'Private room, cùng server tag, một host, không dùng workshop map trong lần test đầu.'],
+        ['Public hay private?', 'Dùng private room khi chơi với bạn. Public room vui nhưng hay có kick, spectator báo vị trí, bắn bừa và voice chat lẫn ngôn ngữ.'],
+        ['Voice chat', 'Dùng push-to-talk hoặc Discord. Tắt mic trong game nếu spectator public hay leak vị trí.'],
+        ['Workshop map', 'Subscribe trước buổi chơi; thiếu asset map có thể làm lobby đen màn hoặc load fail.'],
+      ],
+      sections: [
+        {
+          title: 'Cách tạo phòng bạn bè ít lỗi nhất',
+          body: 'Nhiều người phàn nàn bạn bè không vào cùng trận. Cách xử lý là giữ phòng đầu tiên thật đơn giản, rồi mới thêm map và luật sau khi nhóm kết nối ổn.',
+          bullets: [
+            'Host tạo private Custom Room và chờ trong lobby tới khi mọi người vào đủ.',
+            'Tất cả dùng cùng region/server tag. Đừng trộn VPN và không VPN.',
+            'Bắt đầu bằng official map. Thêm workshop map sau vòng đầu thành công.',
+            'Nếu hai người vào fail, tạo lại phòng thay vì spam retry lobby lỗi.',
+          ],
+        },
+        {
+          title: 'Mẹo dùng lobby UI',
+          body: 'Tìm lobby trong game là điểm bị chê nhiều. Hãy dùng filter như checklist thay vì cuộn ngẫu nhiên.',
+          bullets: [
+            'Tìm phòng chưa bắt đầu trước; vào trận đang chạy rất mất thời gian.',
+            'Tránh phòng đầy và phòng có custom map lạ khi đang hỗ trợ người mới.',
+            'Nếu danh sách lobby không refresh, quay về main menu rồi mở multiplayer lại.',
+            'Host nên báo map, số người và luật voice trước khi start.',
+          ],
+        },
+        {
+          title: 'Voice, ngôn ngữ và chơi khác khu vực',
+          body: 'Voice chat làm private room vui hơn nhưng có thể làm public room tệ hơn. Hãy dùng nó như công cụ, không phải bắt buộc.',
+          bullets: [
+            'Dùng push-to-talk để tránh open mic và spectator lỡ báo vị trí.',
+            'Nhóm đa ngôn ngữ nên thống nhất callout đơn giản: trái/phải/trên/dưới hoặc màu.',
+            'Mute người toxic nhanh; đừng tốn cả round cãi nhau trong public voice.',
+            'Streamer nên che room code và mute spectator voice trước khi mở danh sách lobby.',
+          ],
+        },
+      ],
+      related: [
+        { label: 'Sửa kết nối', href: '/connection-fix' },
+        { label: 'Hướng dẫn lobby công khai', href: '/public-lobby-guide' },
+        { label: 'Hướng dẫn phối màu', href: '/color-matching' },
+      ],
+    },
   },
   'fps-boost': {
     slug: 'fps-boost',
@@ -165,10 +303,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Performance',
     title: 'Meccha Chameleon FPS Boost & Stutter Fix — Low-End PC Settings',
     zhTitle: '超级变色龙 FPS 提升与卡顿修复 — 低配电脑设置指南',
+    viTitle: 'Tăng FPS và sửa giật lag Meccha Chameleon - cài đặt cho máy yếu',
     description:
       'Improve Meccha Chameleon FPS and reduce stutter safely: graphics settings, windowed/borderless mode, Steam launch options, Windows Game Mode, GPU drivers, OBS settings, and risky FPS booster warnings.',
     zhDescription:
       '安全提升超级变色龙 FPS、减少卡顿：画质设置、窗口/无边框、Steam 启动参数、Windows 游戏模式、显卡驱动、OBS 录制设置，以及危险 FPS booster 提醒。',
+    viDescription:
+      'Tăng FPS và giảm giật lag Meccha Chameleon an toàn: thiết lập đồ họa, windowed/borderless, launch options Steam, Windows Game Mode, driver GPU, OBS và cảnh báo FPS booster rủi ro.',
     primaryCta: { label: 'Open safe settings', href: '#safe-settings' },
     secondaryCta: { label: 'Tool safety radar', href: '/tools' },
     quickAnswers: [
@@ -215,6 +356,55 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'Connection fix', href: '/connection-fix' },
       { label: 'Color matching guide', href: '/color-matching' },
     ],
+    vi: {
+      eyebrow: 'Hiệu năng',
+      primaryCta: { label: 'Mở cài đặt an toàn', href: '#safe-settings' },
+      secondaryCta: { label: 'Radar an toàn công cụ', href: '/tools' },
+      quickAnswers: [
+        ['Windowed hay borderless?', 'Borderless thường mượt hơn khi dùng overlay hoặc stream capture; chỉ dùng fullscreen riêng nếu độ trễ input là vấn đề lớn nhất.'],
+        ['Giật khi sơn màu', 'Giảm shadows/effects trước, sau đó khóa FPS ở mức ổn định thay vì chạy số FPS cao nhưng dao động.'],
+        ['Ghi hình OBS', 'Dùng game capture, hardware encoder và 1080p60 chỉ khi GPU còn dư. Nếu không, ghi 720p60.'],
+        ['FPS booster EXE?', 'Tránh EXE admin không rõ nguồn. Ưu tiên cài đặt Windows, Steam và driver có thể hoàn tác.'],
+      ],
+      sections: [
+        {
+          title: 'Cài đặt an toàn nên thử trước',
+          body: 'Nhiều người bị stutter dù FPS trung bình vẫn ổn. Mục tiêu là frame pacing ổn định, không chỉ một con số cao.',
+          bullets: [
+            'Giảm shadows, reflections, post-processing và effects trước texture quality.',
+            'Dùng borderless windowed nếu bạn alt-tab, stream hoặc dùng overlay.',
+            'Khóa FPS ở 60 hoặc 90 nếu uncapped FPS gây spike.',
+            'Đóng tab trình duyệt, launcher, download và tool record trong lần test đầu.',
+          ],
+        },
+        {
+          title: 'Checklist Windows, Steam và GPU',
+          body: 'Các thay đổi này có thể hoàn tác và không chỉnh sửa file game.',
+          bullets: [
+            'Cập nhật driver GPU từ NVIDIA/AMD/Intel, không dùng driver bundle lạ.',
+            'Bật Windows Game Mode, nhưng tắt Xbox Game Bar capture nếu nó gây stutter.',
+            'Trên laptop, đặt game dùng High Performance GPU trong Windows Graphics settings.',
+            'Verify game files trong Steam sau crash khi dùng eyedropper hoặc load map.',
+          ],
+        },
+        {
+          title: 'Không nên tải gì',
+          body: 'Có nhiều tool FPS optimizer và trainer. Một số có thể vô hại, nhưng người chơi cần hiểu rủi ro trước khi chạy quyền Administrator.',
+          bullets: [
+            'Tránh file .rar/.7z có mật khẩu với lời hứa “undetected FPS boost”.',
+            'Không chạy admin EXE nếu bạn không tin nguồn và không hiểu nó thay đổi gì.',
+            'Ưu tiên tool có source code, changelog và cài đặt có thể hoàn tác.',
+            'Nếu tool trộn FPS boost với ESP/aimbot, hãy xem nó là tool đọc bộ nhớ rủi ro cao.',
+          ],
+        },
+      ],
+      warnings: ['Tool hiệu năng có thể kích hoạt anti-cheat hoặc cảnh báo malware. Trang này giải thích rủi ro, không bảo đảm an toàn cho phần mềm bên thứ ba.'],
+      related: [
+        { label: 'Radar công cụ', href: '/tools' },
+        { label: 'Sửa kết nối', href: '/connection-fix' },
+        { label: 'Hướng dẫn phối màu', href: '/color-matching' },
+      ],
+    },
   },
   'color-matching': {
     slug: 'color-matching',
@@ -222,10 +412,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Paint help',
     title: 'Meccha Chameleon Color Matching Guide — Paint, Eyedropper, Shadows, Brush Tips',
     zhTitle: '超级变色龙取色与涂色指南 — 画笔、吸管、阴影和伪装技巧',
+    viTitle: 'Hướng dẫn phối màu Meccha Chameleon - sơn, eyedropper, bóng đổ, brush',
     description:
       'Improve Meccha Chameleon painting: eyedropper compensation, color mismatch, shadows, highlights, brush resolution limits, pose discipline, map color references, and camo lab practice.',
     zhDescription:
       '提升超级变色龙涂色能力：吸管取色补偿、颜色偏差、阴影高光、画笔分辨率限制、姿势控制、地图颜色参考和网页伪装训练。',
+    viDescription:
+      'Cải thiện kỹ năng sơn màu Meccha Chameleon: bù màu eyedropper, lệch màu, bóng đổ, highlight, giới hạn brush, giữ tư thế, màu map và luyện camo trên trình duyệt.',
     primaryCta: { label: 'Practice in Camo Lab', href: '/camo-lab' },
     secondaryCta: { label: 'Open map atlas', href: 'https://mecchachameleon.art/maps' },
     quickAnswers: [
@@ -270,6 +463,53 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'Map atlas on .art', href: 'https://mecchachameleon.art/maps' },
       { label: 'Public lobby guide', href: '/public-lobby-guide' },
     ],
+    vi: {
+      eyebrow: 'Hỗ trợ sơn màu',
+      primaryCta: { label: 'Luyện trong Camo Lab', href: '/camo-lab' },
+      secondaryCta: { label: 'Mở atlas bản đồ', href: 'https://mecchachameleon.art/maps' },
+      quickAnswers: [
+        ['Eyedropper nhìn sai màu', 'Lấy mẫu ba pixel gần nhau rồi ước lượng trung bình; một pixel đơn lẻ thường dính bóng hoặc highlight.'],
+        ['Sơn quá tối', 'Có thể bạn lấy mẫu vùng bóng. Thêm màu phụ sáng/ấm hơn và xoay mặt sơn tốt nhất về hướng seeker hay đi.'],
+        ['Brush quá pixel', 'Dùng mảng màu lớn kèm gợi ý texture. Đừng cố vẽ đường thẳng hoàn hảo trên model.'],
+        ['Bề mặt dễ trốn nhất', 'Wallpaper, gạch, tile, thảm và cụm đồ vật che mép brush lỗi tốt hơn tường trơn.'],
+      ],
+      sections: [
+        {
+          title: 'Vì sao màu sơn không khớp',
+          body: 'Ý tưởng sơn màu rất hay, nhưng eyedropper và độ phân giải brush khiến khớp màu tuyệt đối khó. Hãy xem sơn như ngụy trang, không phải vẽ minh họa.',
+          bullets: [
+            'Lấy mẫu từ đúng góc camera mà seeker sẽ đứng.',
+            'Lấy một màu nền, một màu bóng và một màu highlight từ cùng bề mặt.',
+            'Tránh đồ bóng/kim loại cho tới khi hiểu roughness và ánh sáng.',
+            'Không di chuyển sau khi lock-in; chuyển động phá hỏng cả màu sơn tốt.',
+          ],
+        },
+        {
+          title: 'Luật brush và tư thế',
+          body: 'Model và brush có giới hạn chi tiết. Ngụy trang mảng lớn dễ đọc sẽ tốt hơn tranh nhỏ quá chính xác.',
+          bullets: [
+            'Sơn mảng nền lớn trước, rồi thêm stroke nhỏ ở mép thấy rõ.',
+            'Khớp silhouette trước trang trí: crouch, xoay và ép sát bề mặt.',
+            'Đặt chi tiết tương phản ở phía quay xa đường camera phổ biến.',
+            'Nếu bề mặt nhiều noise, bắt nhịp pattern thay vì copy từng pixel.',
+          ],
+        },
+        {
+          title: 'Tham chiếu màu theo map',
+          body: 'Dùng .games để học kỹ thuật và .art để xem màu/ảnh map sâu hơn.',
+          bullets: [
+            'Mở mecchachameleon.art/maps để xem đủ atlas 50 điểm trốn và ảnh chụp.',
+            'Dùng Camo Lab để so màu đã lấy mẫu với biến thể sáng/tối.',
+            'Trong public lobby, chọn bề mặt đơn giản hơn; sơn vội thường làm thua nhiều hơn spot chưa hoàn hảo.',
+          ],
+        },
+      ],
+      related: [
+        { label: 'Camo Lab', href: '/camo-lab' },
+        { label: 'Atlas bản đồ trên .art', href: 'https://mecchachameleon.art/maps' },
+        { label: 'Hướng dẫn lobby công khai', href: '/public-lobby-guide' },
+      ],
+    },
   },
   'public-lobby-guide': {
     slug: 'public-lobby-guide',
@@ -277,10 +517,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Public lobby survival',
     title: 'Meccha Chameleon Public Lobby Guide — Kicks, Random Shooting, Cheaters, Spectators',
     zhTitle: '超级变色龙公房生存指南 — 被踢、乱扫、外挂、观战报点',
+    viTitle: 'Hướng dẫn lobby công khai Meccha Chameleon - bị kick, bắn bừa, cheat, spectator',
     description:
       'Survive Meccha Chameleon public lobbies: kicks after good hiding, random shooting hunters, spectator callouts, friend teaming, cheaters, voice chat issues, and private room rule suggestions.',
     zhDescription:
       '应对超级变色龙公房问题：藏得好被踢、猎人乱扫、观战报点、朋友互相包庇、外挂、语音问题和私房规则建议。',
+    viDescription:
+      'Cách sống sót trong lobby công khai Meccha Chameleon: bị kick vì trốn tốt, seeker bắn bừa, spectator báo vị trí, team bạn bè, cheat, voice chat và luật phòng riêng.',
     primaryCta: { label: 'Use private-room rules', href: '#private-rules' },
     secondaryCta: { label: 'Play with friends', href: '/play-with-friends' },
     quickAnswers: [
@@ -326,6 +569,54 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'Connection fix', href: '/connection-fix' },
       { label: 'Tools safety', href: '/tools' },
     ],
+    vi: {
+      eyebrow: 'Sinh tồn lobby công khai',
+      primaryCta: { label: 'Dùng luật phòng riêng', href: '#private-rules' },
+      secondaryCta: { label: 'Chơi cùng bạn bè', href: '/play-with-friends' },
+      quickAnswers: [
+        ['Bị kick vì trốn tốt', 'Chuyển sang private room hoặc host có luật rõ. Quyền kick của host là một điểm đau hiện tại.'],
+        ['Hunter bắn bừa', 'Chọn bề mặt phạt việc scan ngẫu nhiên: khu vực mở có pattern, không phải góc quá hiển nhiên.'],
+        ['Spectator báo vị trí', 'Đặt luật push-to-talk trong phòng riêng và mute voice public thật nhanh.'],
+        ['Cheater / ESP', 'Thoát và report. Đừng phản ứng bằng cách tải cùng loại tool.'],
+      ],
+      sections: [
+        {
+          title: 'Vấn đề public lobby là có thật',
+          body: 'Review Steam khen concept nhưng phàn nàn về kick, spectator callout, bắn bừa, voice toxic và cheat. Cách né là thiết kế xã hội: phòng tốt hơn, luật rõ hơn và thoát nhanh.',
+          bullets: [
+            'Nếu host kick người trốn giỏi, đừng tranh cãi ba round; rời đi và tìm phòng khác.',
+            'Tránh spot đã nổi trên clip; hunter sẽ spam những chỗ đó trước.',
+            'Mute open mic leak vị trí hoặc chửi nhau xuyên ngôn ngữ.',
+            'Tin nhắn “buy cheat?” là tín hiệu report-and-leave.',
+          ],
+        },
+        {
+          title: 'Luật phòng riêng nên dùng',
+          body: 'Phòng bạn bè có thể sửa hầu hết nỗi đau public lobby nếu host đặt luật trước vòng.',
+          bullets: [
+            'Không spectator callout; spectator mute tới khi round kết thúc.',
+            'Giới hạn bắn mù nếu nhóm muốn việc trốn sáng tạo có ý nghĩa.',
+            'Luân phiên host sau vài round để một người không kiểm soát mọi kick/map.',
+            'Dùng official map cho người mới, workshop map chỉ sau khi mọi người đã tải.',
+          ],
+        },
+        {
+          title: 'Voice và etiquette đa ngôn ngữ',
+          body: 'Voice chat vui trong private room nhưng dễ tệ trong public room. Giữ nó đơn giản.',
+          bullets: [
+            'Dùng push-to-talk, không open mic.',
+            'Thống nhất callout đơn giản: màu, tầng, trái/phải, tên đồ vật.',
+            'Nếu không muốn voice public, mute trước và dùng ping/scoreboard.',
+            'Streamer nên che lobby code và mute spectator audio khi tìm phòng.',
+          ],
+        },
+      ],
+      related: [
+        { label: 'Chơi cùng bạn bè', href: '/play-with-friends' },
+        { label: 'Sửa kết nối', href: '/connection-fix' },
+        { label: 'An toàn công cụ', href: '/tools' },
+      ],
+    },
   },
   tools: {
     slug: 'tools',
@@ -333,10 +624,13 @@ export const problemGuides: Record<string, GuidePage> = {
     eyebrow: 'Tools radar',
     title: 'Meccha Chameleon Tool Safety Guide — ESP, FPS Boosters, Password Archives, Admin EXE Risks',
     zhTitle: '超级变色龙工具安全指南 — ESP、FPS Booster、密码压缩包、管理员 EXE 风险',
+    viTitle: 'Hướng dẫn an toàn công cụ Meccha Chameleon - ESP, FPS booster, file nén mật khẩu, admin EXE',
     description:
       'A safety-first radar for Meccha Chameleon tools: external ESP trainer, FPS optimizer, camouflage helper, radar overlays, GitHub releases, password archives, admin EXEs, and safer alternatives.',
     zhDescription:
       '以安全为先的超级变色龙工具雷达：External ESP Trainer、FPS optimizer、伪装辅助、雷达叠加层、GitHub 发布、密码压缩包、管理员 EXE 和更安全的替代方案。',
+    viDescription:
+      'Radar an toàn cho công cụ Meccha Chameleon: external ESP trainer, FPS optimizer, hỗ trợ ngụy trang, radar overlay, GitHub release, file nén mật khẩu, admin EXE và lựa chọn an toàn hơn.',
     primaryCta: { label: 'Read risk labels', href: '#risk-labels' },
     secondaryCta: { label: 'FPS boost safely', href: '/fps-boost' },
     quickAnswers: [
@@ -386,6 +680,58 @@ export const problemGuides: Record<string, GuidePage> = {
       { label: 'Camo Lab', href: '/camo-lab' },
       { label: 'Download safety via Steam', href: '/#assistant' },
     ],
+    vi: {
+      eyebrow: 'Radar công cụ',
+      primaryCta: { label: 'Đọc nhãn rủi ro', href: '#risk-labels' },
+      secondaryCta: { label: 'Tăng FPS an toàn', href: '/fps-boost' },
+      quickAnswers: [
+        ['External ESP Trainer', 'Rủi ro cao. Nó có thể đọc bộ nhớ game, vi phạm điều khoản, kích hoạt anti-cheat hoặc chứa malware nếu tải từ nguồn lạ.'],
+        ['FPS optimizer', 'Rủi ro trung bình. Cài đặt hệ thống có thể hoàn tác; admin EXE không rõ nguồn thì không.'],
+        ['Camouflage helper', 'Rủi ro thấp nếu chỉ là tool màu trên trình duyệt; rủi ro cao nếu gắn vào tiến trình game.'],
+        ['File nén mật khẩu', 'Xem .rar/.7z có mật khẩu là cờ đỏ, nhất là khi đi kèm chữ “undetected”.'],
+      ],
+      sections: [
+        {
+          title: 'Nhóm công cụ trong GitHub topic',
+          body: 'Topic công khai quanh meccha-chameleon thường có ESP overlay, FPS optimizer, camouflage helper, radar, aimbot menu và release download. Trang này giải thích chúng tuyên bố làm gì và vì sao nên cẩn thận.',
+          bullets: [
+            'FPS optimizer: tweak hiệu năng, đổi priority, setting GPU, dọn bộ nhớ.',
+            'External overlay / ESP: box, tên, khoảng cách, snap line, radar, thanh máu.',
+            'Camouflage helper: lấy mẫu màu, workflow sơn, phím tắt kiểu F10/F11, thử texture paint.',
+            'Safety checker: source có công khai không, lịch sử release, link VirusTotal, quyền admin, mật khẩu archive.',
+          ],
+        },
+        {
+          title: 'Nhãn rủi ro',
+          body: 'Dùng bộ lọc đơn giản này trước khi tải bất cứ thứ gì.',
+          bullets: [
+            'Xanh: tool màu chạy trong trình duyệt, guide, checklist hoặc tham chiếu map.',
+            'Vàng: cài đặt FPS có thể hoàn tác hoặc utility mã nguồn mở không chạm bộ nhớ game.',
+            'Đỏ: ESP, aimbot, radar, injector, memory reader, trainer, archive mật khẩu hoặc EXE chỉ chạy admin.',
+            'Cờ đen: “undetected”, “crack”, “free key”, ép mật khẩu, không source, không changelog, không rõ chủ sở hữu.',
+          ],
+        },
+        {
+          title: 'Chính sách link tải trực tiếp trên trang này',
+          body: 'Trang có thể link tới GitHub nguồn gốc và mirror archive chỉ khi có hộp rủi ro rõ. Nội dung phải giáo dục, không giả vờ tool bên thứ ba là an toàn.',
+          bullets: [
+            'Luôn hiển thị “Chỉ phục vụ mục đích giáo dục/nghiên cứu. Tự chịu rủi ro.” gần link trainer.',
+            'Ưu tiên link source repo và release page trước link binary trực tiếp.',
+            'Nói rõ tool bên thứ ba có thể vi phạm điều khoản Steam/game và gây ban.',
+            'Đưa lựa chọn an toàn: hướng dẫn FPS, Camo Lab, hướng dẫn phối màu và atlas map .art.',
+          ],
+        },
+      ],
+      warnings: [
+        'Trang này do fan làm, không liên kết với LEMORION hoặc Steam.',
+        'ESP / trainer / aimbot bên thứ ba có thể vi phạm điều khoản game và không an toàn.',
+      ],
+      related: [
+        { label: 'Hướng dẫn tăng FPS', href: '/fps-boost' },
+        { label: 'Camo Lab', href: '/camo-lab' },
+        { label: 'An toàn tải file qua Steam', href: '/#assistant' },
+      ],
+    },
   },
 };
 
@@ -395,10 +741,13 @@ export const camoLabPage: GuidePage = {
   eyebrow: 'Camo Lab',
   title: 'Meccha Chameleon Camo Lab — Color Difference, Shadow Correction, Camouflage Score',
   zhTitle: '超级变色龙伪装实验室 — 色差、阴影修正、伪装评分',
+  viTitle: 'Meccha Chameleon Camo Lab - chênh màu, chỉnh bóng, điểm ngụy trang',
   description:
     'A legal browser-only Meccha Chameleon camo practice lab: compare colors, adjust shadows/highlights, estimate color difference, and practice camouflage without touching the game process.',
   zhDescription:
     '合法的浏览器端超级变色龙伪装训练：颜色对比、阴影/高光修正、估算色差、练习伪装，不读取或修改游戏进程。',
+  viDescription:
+    'Camo Lab hợp pháp chạy trên trình duyệt cho Meccha Chameleon: so màu, chỉnh bóng/highlight, ước lượng chênh màu và luyện ngụy trang mà không chạm tiến trình game.',
   primaryCta: { label: 'Try the color checker', href: '#camo-checker' },
   secondaryCta: { label: 'Read color guide', href: '/color-matching' },
   quickAnswers: [
@@ -424,6 +773,34 @@ export const camoLabPage: GuidePage = {
     { label: 'Map atlas on .art', href: 'https://mecchachameleon.art/maps' },
     { label: 'Tools safety guide', href: '/tools' },
   ],
+  vi: {
+    eyebrow: 'Camo Lab',
+    primaryCta: { label: 'Thử kiểm tra màu', href: '#camo-checker' },
+    secondaryCta: { label: 'Đọc hướng dẫn phối màu', href: '/color-matching' },
+    quickAnswers: [
+      ['Đây có phải cheat không?', 'Không. Lab này chạy trong trình duyệt và không gắn vào game. Nó là công cụ luyện tập.'],
+      ['Nó chấm điểm gì?', 'Nó ước lượng khoảng cách RGB giữa màu sơn và màu bề mặt mục tiêu, rồi gợi ý biến thể sáng/tối.'],
+      ['Có dùng ảnh map không?', 'Hiện tại hãy nhập hex/RGB thủ công. Ảnh map và điểm trốn sâu nằm trên mecchachameleon.art.'],
+      ['Dùng thế nào tốt nhất?', 'Luyện trước trận thật, rồi mở hướng dẫn phối màu như màn hình thứ hai.'],
+    ],
+    sections: [
+      {
+        title: 'Luyện trên trình duyệt, không đọc bộ nhớ game',
+        body: 'Camo Lab được giữ an toàn có chủ ý: nó dạy phán đoán màu mà không DLL injection, overlay, đọc bộ nhớ hay phần mềm admin.',
+        bullets: [
+          'So màu bề mặt mục tiêu với màu sơn bạn định dùng.',
+          'Tạo biến thể sáng hơn và tối hơn để bù ánh sáng.',
+          'Dùng điểm số như gợi ý, không phải bảo đảm; tư thế và silhouette vẫn quan trọng.',
+          'Mở atlas .art khi cần ảnh map và vị trí trốn chính xác.',
+        ],
+      },
+    ],
+    related: [
+      { label: 'Hướng dẫn phối màu', href: '/color-matching' },
+      { label: 'Atlas bản đồ trên .art', href: 'https://mecchachameleon.art/maps' },
+      { label: 'Hướng dẫn an toàn công cụ', href: '/tools' },
+    ],
+  },
 };
 
 export const homeProblemCards = [

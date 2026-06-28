@@ -154,3 +154,11 @@ export async function getCanonicalUrl(canonicalUrl: string, locale: string) {
 
   return canonicalUrl;
 }
+
+export function getSocialImageUrl(imageUrl = envConfigs.app_preview_image) {
+  if (imageUrl.startsWith('http')) {
+    return imageUrl;
+  }
+
+  return `${envConfigs.app_url}${imageUrl.startsWith('/') ? '' : '/'}${imageUrl}`;
+}

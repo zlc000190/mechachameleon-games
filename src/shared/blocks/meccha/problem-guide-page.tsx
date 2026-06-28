@@ -1,6 +1,6 @@
 import { ArrowLeft, ExternalLink, ShieldAlert } from 'lucide-react';
 
-import type { GuidePage } from './problem-guides';
+import { guideText, type GuidePage } from './problem-guides';
 
 function localHref(locale: string, href: string) {
   if (href.startsWith('http') || href.startsWith('#')) return href;
@@ -11,8 +11,7 @@ function localHref(locale: string, href: string) {
 export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: string }) {
   const zh = locale === 'zh';
   const Icon = guide.icon;
-  const title = zh ? guide.zhTitle : guide.title;
-  const description = zh ? guide.zhDescription : guide.description;
+  const copy = guideText(guide, locale);
 
   return (
     <main className="min-h-screen bg-[#fff7f1] text-[#29211D]">
@@ -23,33 +22,33 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
             className="mb-6 inline-flex min-h-10 items-center gap-2 rounded-md border border-[#29211D]/20 bg-white/75 px-3 py-2 text-sm font-semibold text-[#29211D] hover:bg-white"
           >
             <ArrowLeft className="h-4 w-4" />
-            {zh ? '返回游戏入口' : 'Back to play hub'}
+            {locale === 'vi' ? 'Quay lại trang chơi' : zh ? '返回游戏入口' : 'Back to play hub'}
           </a>
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
             <div>
               <p className="mb-3 inline-flex rounded-full border border-[#29211D]/20 bg-white/75 px-3 py-1 text-sm font-semibold text-[#29211D]">
-                {guide.eyebrow}
+                {copy.eyebrow}
               </p>
               <h1 className="max-w-5xl text-4xl font-bold leading-tight tracking-normal md:text-6xl">
-                {title}
+                {copy.title}
               </h1>
               <p className="mt-5 max-w-3xl text-base leading-7 text-[#4C3B35] md:text-lg">
-                {description}
+                {copy.description}
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href={localHref(locale, guide.primaryCta.href)}
+                  href={localHref(locale, copy.primaryCta.href)}
                   className="inline-flex min-h-11 items-center gap-2 rounded-md bg-[#ff6f9a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#e95a88]"
                 >
                   <Icon className="h-4 w-4" />
-                  {guide.primaryCta.label}
+                  {copy.primaryCta.label}
                 </a>
-                {guide.secondaryCta ? (
+                {copy.secondaryCta ? (
                   <a
-                    href={localHref(locale, guide.secondaryCta.href)}
+                    href={localHref(locale, copy.secondaryCta.href)}
                     className="inline-flex min-h-11 items-center gap-2 rounded-md border border-[#29211D]/20 bg-white px-5 py-3 text-sm font-semibold text-[#29211D] transition hover:bg-[#fff7c8]"
                   >
-                    {guide.secondaryCta.label}
+                    {copy.secondaryCta.label}
                   </a>
                 ) : null}
               </div>
@@ -60,12 +59,12 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
                   <Icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-sm font-semibold">{zh ? '快速解答' : 'Quick answers'}</div>
-                  <div className="text-xs text-[#7D6D69]">{zh ? '先解决最常见的问题' : 'Solve the common case first'}</div>
+                  <div className="text-sm font-semibold">{locale === 'vi' ? 'Trả lời nhanh' : zh ? '快速解答' : 'Quick answers'}</div>
+                  <div className="text-xs text-[#7D6D69]">{locale === 'vi' ? 'Xử lý trường hợp phổ biến trước' : zh ? '先解决最常见的问题' : 'Solve the common case first'}</div>
                 </div>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
-                {guide.quickAnswers.map(([q, a]) => (
+                {copy.quickAnswers.map(([q, a]) => (
                   <div key={q} className="rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-4">
                     <h2 className="text-sm font-semibold">{q}</h2>
                     <p className="mt-2 text-sm leading-6 text-[#4C3B35]">{a}</p>
@@ -80,7 +79,7 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
       <section id="quick-checks" className="border-b border-[#D8CFC6] bg-white">
         <div className="container py-14">
           <div className="grid gap-5 lg:grid-cols-3">
-            {guide.sections.map((section, index) => (
+            {copy.sections.map((section, index) => (
               <article key={section.title} className="rounded-lg border border-[#D8CFC6] bg-[#F6F0EA] p-6">
                 <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#ff8fb3] text-sm font-bold text-white">
                   {index + 1}
@@ -101,16 +100,16 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
         </div>
       </section>
 
-      {guide.warnings?.length ? (
+      {copy.warnings?.length ? (
         <section className="border-b border-[#D8CFC6] bg-amber-50">
           <div className="container py-10">
             <div className="rounded-lg border border-amber-300 bg-white p-5 text-amber-950">
               <div className="mb-3 flex items-center gap-2 font-semibold">
                 <ShieldAlert className="h-5 w-5" />
-                {zh ? '安全提醒' : 'Safety notes'}
+                {locale === 'vi' ? 'Lưu ý an toàn' : zh ? '安全提醒' : 'Safety notes'}
               </div>
               <ul className="space-y-2 text-sm leading-6">
-                {guide.warnings.map((warning) => (
+                {copy.warnings.map((warning) => (
                   <li key={warning}>• {warning}</li>
                 ))}
               </ul>
@@ -121,9 +120,9 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
 
       <section className="bg-[#F6F0EA]">
         <div className="container py-12">
-          <h2 className="text-2xl font-bold">{zh ? '下一步' : 'Next steps'}</h2>
+          <h2 className="text-2xl font-bold">{locale === 'vi' ? 'Bước tiếp theo' : zh ? '下一步' : 'Next steps'}</h2>
           <div className="mt-5 flex flex-wrap gap-3">
-            {guide.related.map((link) => (
+            {copy.related.map((link) => (
               <a
                 key={link.href}
                 href={localHref(locale, link.href)}

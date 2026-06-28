@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
-import { problemGuides } from '@/shared/blocks/meccha/problem-guides';
+import { guideText, problemGuides } from '@/shared/blocks/meccha/problem-guides';
 import { ProblemGuidePage } from '@/shared/blocks/meccha/problem-guide-page';
-import { getCanonicalUrl } from '@/shared/lib/seo';
+import { getCanonicalUrl, getSocialImageUrl } from '@/shared/lib/seo';
 
 export const revalidate = 3600;
 
@@ -12,12 +12,13 @@ const guide = problemGuides['fps-boost'];
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const canonicalUrl = await getCanonicalUrl('/fps-boost', locale);
+  const imageUrl = getSocialImageUrl();
   return {
-    title: locale === 'zh' ? guide.zhTitle : guide.title,
-    description: locale === 'zh' ? guide.zhDescription : guide.description,
+    title: guideText(guide, locale).title,
+    description: guideText(guide, locale).description,
     alternates: { canonical: canonicalUrl },
-    openGraph: { title: locale === 'zh' ? guide.zhTitle : guide.title, description: locale === 'zh' ? guide.zhDescription : guide.description, url: canonicalUrl },
-    twitter: { card: 'summary_large_image', title: locale === 'zh' ? guide.zhTitle : guide.title, description: locale === 'zh' ? guide.zhDescription : guide.description },
+    openGraph: { title: guideText(guide, locale).title, description: guideText(guide, locale).description, url: canonicalUrl, images: [imageUrl] },
+    twitter: { card: 'summary_large_image', title: guideText(guide, locale).title, description: guideText(guide, locale).description, images: [imageUrl] },
   };
 }
 

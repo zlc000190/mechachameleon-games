@@ -10,6 +10,15 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname === '/en' || pathname.startsWith('/en/')) {
+    const targetPath = pathname.replace(/^\/en(?=\/|$)/, '') || '/';
+    return NextResponse.redirect(new URL(targetPath, request.url), 301);
+  }
+
+  if (pathname === '/vi') {
+    return NextResponse.redirect(new URL('/vi/', request.url), 301);
+  }
+
   // Handle internationalization first
   const intlResponse = intlMiddleware(request);
 

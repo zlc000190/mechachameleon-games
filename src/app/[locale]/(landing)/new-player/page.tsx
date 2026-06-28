@@ -2,7 +2,7 @@ import { ArrowLeft, CheckCircle2, Clock, Compass, Cpu, Gamepad2, Lightbulb, Pale
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 
-import { getCanonicalUrl } from '@/shared/lib/seo';
+import { getCanonicalUrl, getSocialImageUrl } from '@/shared/lib/seo';
 
 export const revalidate = 3600;
 
@@ -12,10 +12,15 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const title = 'Meccha Chameleon New Player Guide — 10-min Walkthrough';
-  const description =
-    'Meccha Chameleon beginner walkthrough in 10 minutes: controls, paint tool, role guide, first-match checklist, and 8 rookie mistakes to avoid in round one.';
+  const vi = locale === 'vi';
+  const title = vi
+    ? 'Hướng dẫn Meccha Chameleon cho người mới - chơi trận đầu trong 10 phút'
+    : 'Meccha Chameleon New Player Guide — 10-min Walkthrough';
+  const description = vi
+    ? 'Hướng dẫn Meccha Chameleon cho người mới: cách vào game, phím điều khiển, sơn màu, vai hider/seeker, checklist trận đầu và lỗi dễ mắc.'
+    : 'Meccha Chameleon beginner walkthrough in 10 minutes: controls, paint tool, role guide, first-match checklist, and 8 rookie mistakes to avoid in round one.';
   const canonicalUrl = await getCanonicalUrl('/new-player', locale);
+  const imageUrl = getSocialImageUrl();
   return {
     title,
     description,
@@ -26,11 +31,13 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalUrl,
+      images: [imageUrl],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      images: [imageUrl],
     },
   };
 }
@@ -212,6 +219,103 @@ const faqs = [
   },
 ];
 
+const viQuickStart = [
+  {
+    step: '01',
+    icon: Cpu,
+    title: 'Bắt đầu bằng bản trình duyệt',
+    body: 'Mở khung chơi trên trang này trước. Nó vào nhanh, giữ toàn bộ luồng chơi trên một trang và giúp bạn hiểu vòng lặp trốn tìm trước khi đọc hướng dẫn dài.',
+    detail: 'Nếu sau đó chuyển sang bản PC, cấu hình yêu cầu không quá cao: CPU 4 nhân sau 2015 và GPU 2 GB VRAM là điểm khởi đầu hợp lý.',
+  },
+  {
+    step: '02',
+    icon: Gamepad2,
+    title: 'Học phím điều khiển và thử sơn',
+    body: 'Tập di chuyển, lấy mẫu màu, sơn lên nhân vật và đứng yên đúng lúc. Đây là vòng lặp quan trọng nhất của Meccha Chameleon.',
+    detail: 'Đừng chỉ nhìn màu. Tư thế, góc camera và việc đứng yên sau khi sơn thường quyết định bạn có bị phát hiện hay không.',
+  },
+  {
+    step: '03',
+    icon: Users,
+    title: 'Vào public lobby hoặc phòng bạn bè',
+    body: 'Người mới nên thử một lobby nhanh trước, sau đó dùng private room nếu chơi cùng bạn. Phòng riêng giúp tránh kick, spectator báo vị trí và voice chat lộn xộn.',
+    detail: 'Nếu phòng không vào được, quay sang hướng dẫn sửa kết nối trước khi cài lại game hoặc tải tool lạ.',
+  },
+];
+
+const viControls = [
+  { key: 'WASD', action: 'Di chuyển' },
+  { key: 'Mouse', action: 'Ngắm / xoay camera' },
+  { key: 'LMB', action: 'Sơn màu, giữ để stroke dày hơn' },
+  { key: 'RMB', action: 'Eyedropper - lấy màu từ môi trường' },
+  { key: 'Shift', action: 'Crouch / hạ silhouette' },
+  { key: 'Ctrl', action: 'Pose lock - đứng yên tại chỗ' },
+  { key: 'R', action: 'Reset sơn' },
+  { key: 'F', action: 'Bật/tắt đèn pin khi là seeker' },
+  { key: 'Tab', action: 'Bảng điểm' },
+  { key: 'F8', action: 'Mute / unmute mic' },
+];
+
+const viRoles = [
+  {
+    title: 'Hider',
+    icon: Palette,
+    color: 'bg-[#7D6D69] text-white',
+    body: 'Bạn có một khoảng thời gian ngắn để chọn bề mặt, lấy màu và sơn nhân vật sao cho hòa vào môi trường. Khi phase kết thúc, hãy đứng yên tuyệt đối.',
+    tips: [
+      'Chọn chỗ trốn trước khi sơn, đừng vừa chạy vừa lấy mẫu màu.',
+      'Dùng ít nhất 3 màu: màu nền, bóng và highlight.',
+      'Pose lock ngay khi sơn xong. Một chuyển động nhỏ cũng đủ lộ.',
+    ],
+  },
+  {
+    title: 'Seeker',
+    icon: Search,
+    color: 'bg-[#AA776E] text-white',
+    body: 'Bạn quét bề mặt, dùng đèn pin và đổi góc nhìn để tìm hider. Hider khớp màu từ một góc có thể lộ ra khi bạn bước sang ngang.',
+    tips: [
+      'Đi chậm khi quét; chạy nhanh làm cone đèn pin khó kiểm soát.',
+      'Side-step vài mét rồi scan lại để bắt parallax.',
+      'Đừng chỉ kiểm góc tối. Người chơi giỏi thường trốn ngay trên bề mặt mở có pattern.',
+    ],
+  },
+];
+
+const viFirstMatch = [
+  { time: '00:00', label: 'Bắt đầu round', body: 'Lobby gán vai trò. Bạn sẽ là Hider hoặc Seeker.' },
+  { time: '00:30', label: 'Hiding phase', body: 'Hider đi tìm vị trí, lấy màu và sơn. Seeker chờ tới khi phase kết thúc.' },
+  { time: '02:00', label: 'Lock in', body: 'Hider đứng yên. Nếu bạn còn di chuyển sau lúc này, rất dễ bị phát hiện.' },
+  { time: '02:10', label: 'Seeking phase', body: 'Seeker vào map, bật đèn pin và quét từng bề mặt.' },
+  { time: '04:40', label: 'Kết thúc round', body: 'Hider còn sống được tính điểm; round mới bắt đầu hoặc lobby đổi vai.' },
+];
+
+const viTips = [
+  { icon: Palette, title: 'Lấy nhiều mẫu màu từ cùng bề mặt', body: 'Một bức tường không chỉ có một màu. Lấy nền, bóng và highlight rồi pha bằng mảng lớn.' },
+  { icon: Target, title: 'Trốn nơi nhìn có vẻ lộ', body: 'Seeker thường kiểm góc, sau đồ vật và chỗ tối trước. Bề mặt mở có pattern đôi khi an toàn hơn.' },
+  { icon: Zap, title: 'Chú ý parallax', body: 'Hider nên xoay mặt sơn đẹp nhất về hướng seeker hay đi. Seeker nên đổi góc nhìn trước khi bỏ qua một bức tường.' },
+  { icon: Timer, title: 'Đứng yên sau khi sơn', body: 'Chuyển động là tín hiệu lộ rõ nhất. Màu đẹp vẫn thua nếu bạn nhúc nhích.' },
+  { icon: Compass, title: 'Ưu tiên ngang tầm mắt hoặc cao hơn', body: 'Nhiều người scan ngang mắt. Kệ, ledge và object trên tường thường tốt hơn floor-level crouch.' },
+  { icon: Lightbulb, title: 'Đừng quên độ bóng bề mặt', body: 'Tường matte khác đồ kim loại bóng. Nếu có slider roughness/metallic, hãy dùng nó đúng bề mặt.' },
+];
+
+const viMistakes = [
+  { bad: 'Một màu phẳng là đủ.', good: 'Lấy 3+ màu từ bề mặt và blend chúng.' },
+  { bad: 'Góc tường là an toàn nhất.', good: 'Góc là nơi seeker kiểm đầu tiên; hãy thử bề mặt mở có pattern.' },
+  { bad: 'Sơn xong vẫn chỉnh vị trí.', good: 'Lock tư thế ngay khi hoàn tất.' },
+  { bad: 'Chỗ tối là vô hình.', good: 'Chỗ tối bị kiểm rất sớm; ánh sáng vừa phải thường an toàn hơn.' },
+  { bad: 'Bỏ qua bóng/highlight.', good: 'Bù sáng/tối theo nguồn sáng trong map.' },
+  { bad: 'Góc nào cũng giống nhau.', good: 'Xoay mặt sơn tốt nhất về đường camera phổ biến.' },
+  { bad: 'Seeker chỉ cần quét nhanh.', good: 'Đổi góc 1-2 mét rồi quét lại để thấy hider.' },
+  { bad: 'Chỉ học khi đã vào trận.', good: 'Xem phím và vòng round trước, rồi hãy queue.' },
+];
+
+const viFaqs = [
+  { q: 'Có thể chơi Meccha Chameleon online miễn phí không?', a: 'Có. Bạn có thể bắt đầu bằng khung game trình duyệt trên trang này, không cần tải, rồi chuyển sang hướng dẫn PC nếu muốn chơi sâu hơn.' },
+  { q: 'Nên chơi public hay private room?', a: 'Người mới có thể thử public nhanh, nhưng nếu chơi cùng bạn thì private room tốt hơn vì kiểm soát voice, map và luật spectator.' },
+  { q: 'Máy yếu có chơi được không?', a: 'Có thể. Hãy giảm shadow/effects, dùng borderless, khóa FPS ổn định và tránh FPS booster EXE không rõ nguồn.' },
+  { q: 'Tại sao màu lấy bằng eyedropper vẫn sai?', a: 'Vì pixel có bóng/highlight. Hãy lấy nhiều mẫu gần nhau và bù sáng/tối thay vì tin một pixel đơn lẻ.' },
+];
+
 export default async function NewPlayerPage({
   params,
 }: {
@@ -221,6 +325,165 @@ export default async function NewPlayerPage({
   setRequestLocale(locale);
   const backHref = locale === 'en' ? '/#new-player' : `/${locale}/#new-player`;
   const atHowToPlay = locale === 'en' ? '/#how-to-play' : `/${locale}/#how-to-play`;
+
+  if (locale === 'vi') {
+    return (
+      <main className="min-h-screen bg-white text-[#29211D]">
+        <section className="border-b border-[#D8CFC6] bg-[#F6F0EA]">
+          <div className="container py-14">
+            <a href={backHref} className="mb-6 inline-flex min-h-10 items-center gap-1.5 rounded-md border border-[#D8CFC6] bg-white px-3 text-sm font-semibold text-[#29211D] transition hover:border-[#7D6D69]">
+              <ArrowLeft className="h-4 w-4" />
+              Quay lại trang chơi
+            </a>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">Hướng dẫn người mới</p>
+            <h1 className="mt-1 text-3xl font-bold leading-tight md:text-4xl">Mới chơi Meccha Chameleon? Đọc trang này trong 10 phút.</h1>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-[#4C3B35]">
+              Hướng dẫn trận đầu cho người chơi Việt Nam: vào game, phím điều khiển, cách sơn màu, vai trò Hider/Seeker và các lỗi khiến bạn bị bắt rất nhanh.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3 text-xs text-[#4C3B35]">
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#D8CFC6] bg-white px-3 py-1.5"><Clock className="h-3.5 w-3.5 text-[#7D6D69]" /> Đọc 10 phút</span>
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-[#D8CFC6] bg-white px-3 py-1.5"><Gamepad2 className="h-3.5 w-3.5 text-[#7D6D69]" /> Người mới</span>
+              <a href={backHref} className="inline-flex items-center gap-1.5 rounded-md border border-[#ff6f9a] bg-[#ff6f9a] px-3 py-1.5 text-white transition hover:bg-[#e95a88]">Chơi online</a>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-white">
+          <div className="container py-14">
+            <h2 className="text-2xl font-bold leading-tight md:text-3xl">Bắt đầu nhanh: từ mở game tới trận đầu</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4C3B35]">Ba bước thực dụng để bạn hiểu vòng chơi trước khi vào lobby thật.</p>
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {viQuickStart.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <div key={s.step} className="flex flex-col rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-6">
+                    <div className="mb-3 flex items-center gap-3"><span className="text-2xl font-bold text-[#7D6D69]">{s.step}</span><Icon className="h-5 w-5 text-[#4C3B35]" /></div>
+                    <h3 className="text-base font-semibold text-[#29211D]">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-[#4C3B35]">{s.body}</p>
+                    <p className="mt-3 text-xs leading-5 text-[#4C3B35] opacity-80">{s.detail}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-[#F6F0EA]">
+          <div className="container py-14">
+            <h2 className="text-2xl font-bold leading-tight md:text-3xl">Bảng phím điều khiển</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4C3B35]">Giữ bảng này bên cạnh trong vài trận đầu. Sau đó bạn sẽ nhớ tự nhiên.</p>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {viControls.map((c) => (
+                <div key={c.key} className="rounded-md border border-[#D8CFC6] bg-white p-4">
+                  <kbd className="rounded-sm bg-[#ff8fb3] px-2 py-1 font-mono text-xs font-bold text-white">{c.key}</kbd>
+                  <p className="mt-2 text-xs leading-5 text-[#4C3B35]">{c.action}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-white">
+          <div className="container py-14">
+            <h2 className="text-2xl font-bold leading-tight md:text-3xl">Vai trò: Hider và Seeker làm gì?</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4C3B35]">Mỗi round xoay quanh hai vai: Hider sơn và đứng yên; Seeker đổi góc nhìn, quét và tìm.</p>
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              {viRoles.map((r) => {
+                const Icon = r.icon;
+                return (
+                  <div key={r.title} className="rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-6">
+                    <div className="flex items-center gap-3"><span className={`inline-flex h-10 w-10 items-center justify-center rounded-md ${r.color}`}><Icon className="h-5 w-5" /></span><h3 className="text-xl font-bold">{r.title}</h3></div>
+                    <p className="mt-4 text-sm leading-6 text-[#4C3B35]">{r.body}</p>
+                    <ul className="mt-4 space-y-2 text-sm leading-6 text-[#4C3B35]">
+                      {r.tips.map((t) => <li key={t} className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#7D6D69]" />{t}</li>)}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-gradient-to-br from-[#9de7dc] via-[#cdefff] to-[#d9b7ff] text-[#29211D]">
+          <div className="container py-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#ff6f9a]">Trận đầu</p>
+            <h2 className="mt-1 text-2xl font-bold leading-tight md:text-3xl">Một round thường diễn ra như thế nào?</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#4C3B35]">Dùng timeline này để biết mình cần làm gì trước khi vào public matchmaking.</p>
+            <ol className="mt-8 space-y-4">
+              {viFirstMatch.map((m, i) => (
+                <li key={m.label} className="flex gap-4 rounded-md border border-white/70 bg-white/70 p-4">
+                  <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#ff8fb3] text-sm font-bold text-white">{i + 1}</span>
+                  <div className="flex-1"><div className="flex items-center gap-3 text-xs"><span className="rounded-sm bg-white/20 px-2 py-0.5 font-mono font-semibold">{m.time}</span><span className="font-semibold">{m.label}</span></div><p className="mt-1.5 text-sm leading-6 text-[#4C3B35]">{m.body}</p></div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-white">
+          <div className="container py-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">Mẹo nhanh</p>
+            <h2 className="mt-1 text-2xl font-bold leading-tight md:text-3xl">Sáu mẹo giúp bạn chơi tốt hơn ngay</h2>
+            <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {viTips.map((t) => {
+                const Icon = t.icon;
+                return <div key={t.title} className="rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-5"><Icon className="h-5 w-5 text-[#7D6D69]" /><h3 className="mt-3 text-base font-semibold text-[#29211D]">{t.title}</h3><p className="mt-2 text-sm leading-6 text-[#4C3B35]">{t.body}</p></div>;
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-[#F6F0EA]">
+          <div className="container py-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#AA776E]">Lỗi người mới</p>
+            <h2 className="mt-1 text-2xl font-bold leading-tight md:text-3xl">Đừng mắc 8 lỗi này</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {viMistakes.map((m) => (
+                <div key={m.bad} className="rounded-md border border-[#D8CFC6] bg-white p-5">
+                  <div className="mb-3 flex items-center gap-2 text-xs font-semibold text-[#AA776E]"><XCircle className="h-4 w-4" /> Sai lầm</div>
+                  <p className="text-sm leading-6 text-[#4C3B35] line-through opacity-70">{m.bad}</p>
+                  <div className="my-3 border-t border-dashed border-[#D8CFC6]" />
+                  <div className="mb-2 flex items-center gap-2 text-xs font-semibold text-[#7D6D69]"><CheckCircle2 className="h-4 w-4" /> Nên làm</div>
+                  <p className="text-sm leading-6 text-[#29211D]">{m.good}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-[#D8CFC6] bg-white">
+          <div className="container py-14">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#7D6D69]">FAQ</p>
+            <h2 className="mt-1 text-2xl font-bold leading-tight md:text-3xl">Câu hỏi của người mới</h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {viFaqs.map((f) => (
+                <details key={f.q} className="group rounded-md border border-[#D8CFC6] bg-[#F6F0EA] p-5 [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-center justify-between gap-3 text-sm font-semibold text-[#29211D]">{f.q}<span className="ml-auto text-[#7D6D69] transition group-open:rotate-45">+</span></summary>
+                  <p className="mt-3 text-sm leading-6 text-[#4C3B35]">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-[#F6F0EA]">
+          <div className="container flex flex-col items-start gap-6 py-14 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#ff8fb3] text-white"><PartyPopper className="h-5 w-5" /></span>
+              <div>
+                <h3 className="text-lg font-semibold text-[#29211D]">Sẵn sàng vào lobby?</h3>
+                <p className="mt-1 max-w-xl text-sm leading-6 text-[#4C3B35]">Sau khi nắm phím và cấu trúc round, đọc tiếp hướng dẫn chơi cùng bạn bè để tránh lỗi phòng, voice và server tag.</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <a href={atHowToPlay} className="inline-flex min-h-10 items-center gap-1.5 rounded-md bg-[#ff6f9a] px-4 text-sm font-semibold text-white transition hover:bg-[#e95a88]"><Sparkles className="h-4 w-4" /> Hướng dẫn chơi cùng bạn</a>
+              <a href={backHref} className="inline-flex min-h-10 items-center gap-1.5 rounded-md border border-[#29211D] bg-white px-4 text-sm font-semibold text-[#29211D] transition hover:border-[#7D6D69] hover:text-[#7D6D69]">Chơi online</a>
+            </div>
+          </div>
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-white text-[#29211D]">

@@ -1,4 +1,8 @@
-import { AdsenseProvider, AdsManager } from '@/extensions/ads';
+import {
+  AdsenseProvider,
+  AdsManager,
+  AdsterraProvider,
+} from '@/extensions/ads';
 import { Configs, getAllConfigs } from '@/shared/models/config';
 
 /**
@@ -11,6 +15,13 @@ export function getAdsManagerWithConfigs(configs: Configs) {
   if (configs.adsense_code) {
     ads.addProvider(new AdsenseProvider({ adId: configs.adsense_code }));
   }
+
+  ads.addProvider(
+    new AdsterraProvider({
+      popunderSrc:
+        'https://pl30105397.effectivecpmnetwork.com/ce/84/f8/ce84f82fd29fa3d46d2d761c2b206312.js',
+    })
+  );
 
   return ads;
 }
