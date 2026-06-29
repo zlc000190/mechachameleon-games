@@ -1,13 +1,12 @@
 import {
-  AlertTriangle,
   BookOpen,
   Download,
-  ExternalLink,
   Joystick,
   PlayCircle,
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
+import Image from 'next/image';
 import { setRequestLocale } from 'next-intl/server';
 
 import { AdsterraNativeBanner } from '@/extensions/ads';
@@ -121,15 +120,6 @@ const faqs = [
   ],
 ];
 
-const assistantLinks = {
-  repo: 'https://github.com/anfalalsarraf-cmyk/meccha-chameleon-project',
-  release:
-    'https://github.com/anfalalsarraf-cmyk/meccha-chameleon-project/releases/tag/mecha-esp',
-  zip: 'https://pub-4f8b0335d26b4eee9268da23e6b5531c.r2.dev/mecchachameleon.games-ass/meccha-toolkit.zip',
-  zipGithub:
-    'https://github.com/anfalalsarraf-cmyk/meccha-chameleon-project/releases/download/mecha-esp/meccha-toolkit.zip',
-};
-
 const zhFaqs = [
   [
     '这个站和 mecchachameleon.art 一样吗？',
@@ -190,9 +180,9 @@ const viHomeProblemCards = homeProblemCards.map((card) => {
       title: 'Sơn màu chưa khớp?',
       body: 'Bù màu eyedropper, giới hạn brush, bóng đổ, highlight và kỷ luật tư thế.',
     },
-    'External ESP Trainer': {
-      title: 'External ESP Trainer',
-      body: 'Radar công cụ với nhãn rủi ro cho ESP, radar, FPS booster và file admin EXE.',
+    'Download Play Kit': {
+      title: 'Tải Play Kit',
+      body: 'Bộ công cụ trả phí thử nghiệm: vào nhanh, sửa lobby, FPS settings, luyện camo và route card.',
     },
     'Public lobby problems?': {
       title: 'Lobby công khai rắc rối?',
@@ -208,35 +198,25 @@ const viHomeProblemCards = homeProblemCards.map((card) => {
 
 const viToolsRadarCards = toolsRadarCards.map((card) => {
   const copy: Record<string, { title: string; risk: string; body: string }> = {
-    'FPS optimizer': {
-      title: 'Tối ưu FPS',
-      risk: 'Trung bình',
-      body: 'Ưu tiên thiết lập có thể hoàn tác; tránh EXE admin không rõ nguồn.',
+    '10-min start': {
+      title: 'Bắt đầu 10 phút',
+      risk: 'Chơi nhanh hơn',
+      body: 'Điều khiển, vòng lặp sơn màu, hider/seeker basics và lỗi vòng đầu trong một checklist.',
     },
-    'External overlay / ESP': {
-      title: 'Overlay ngoài / ESP',
-      risk: 'Cao',
-      body: 'Công cụ đụng bộ nhớ có thể vi phạm điều khoản, kích hoạt anti-cheat hoặc chứa malware.',
+    'Lobby fix': {
+      title: 'Sửa lobby',
+      risk: 'Ít chờ hơn',
+      body: 'Private room, server tag, room code và kiểm tra workshop map trước khi bạn bè vào.',
     },
-    'Camouflage helper': {
-      title: 'Hỗ trợ ngụy trang',
-      risk: 'Thấp-Cao',
-      body: 'Luyện màu trên trình duyệt thì an toàn; công cụ gắn vào tiến trình game thì không.',
+    'FPS boost': {
+      title: 'Tăng FPS',
+      risk: 'Mượt hơn',
+      body: 'Thiết lập có thể hoàn tác cho máy yếu, stream, record và frame pacing ổn định.',
     },
-    'Safety checker': {
-      title: 'Kiểm tra an toàn',
-      risk: 'Bắt buộc',
-      body: 'Kiểm tra source, release, file nén có mật khẩu, VirusTotal và quyền truy cập.',
-    },
-    'Direct downloads': {
-      title: 'Tải trực tiếp',
-      risk: 'Rủi ro rõ ràng',
-      body: 'Ưu tiên source/release; archive tải thẳng cần cảnh báo dễ thấy.',
-    },
-    'Crack / key claims': {
-      title: 'Crack / key miễn phí',
-      risk: 'Tránh',
-      body: 'Các từ free key, crack, undetected là tín hiệu đỏ.',
+    'Camo practice': {
+      title: 'Luyện camo',
+      risk: 'Trốn tốt hơn',
+      body: 'Bài luyện khớp màu, chỉnh bóng và chuẩn bị route card trước khi vào round.',
     },
   };
   return { ...card, ...(copy[card.title] ?? {}) };
@@ -457,46 +437,50 @@ export default async function LandingPage({
         id="assistant"
         className="border-mortar/70 bg-paper/94 border-b backdrop-blur-sm"
       >
-        <div className="container grid gap-8 py-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="container grid gap-8 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
             <p className="text-brick-600 text-xs font-semibold tracking-widest uppercase">
-              {vi ? 'Radar công cụ' : zh ? '工具雷达' : 'Tools Radar'}
+              {vi ? 'Play Kit trả phí' : zh ? '付费 Play Kit' : 'Paid Play Kit'}
             </p>
             <h2 className="mt-1 text-3xl font-bold tracking-normal md:text-4xl">
               {vi
-                ? 'External ESP Trainer + radar rủi ro FPS / ngụy trang'
+                ? 'Download Tools để vào Meccha Chameleon nhanh hơn.'
                 : zh
-                  ? 'External ESP Trainer + FPS / 伪装工具风险说明'
-                  : 'External ESP Trainer + FPS and camouflage tool radar'}
+                  ? '把工具下载改成低价付费，先测有没有人愿意点。'
+                  : 'Download Tools for faster Meccha Chameleon sessions.'}
             </h2>
             <p className="text-ink-500 mt-4 text-sm leading-6">
               {vi
-                ? 'Giữ lối vào External ESP Trainer cũ, nhưng trình bày như radar công cụ có nhãn rủi ro, không quảng cáo là “cheat an toàn”. Các nhóm người chơi thường gặp gồm FPS optimizer, external overlay, camouflage helper và safety checker.'
+                ? 'Bỏ lối đi sang repo và archive dự phòng. Offer này tập trung vào một bản tải $7: checklist vào nhanh, sửa lobby, FPS settings, luyện camo và route card.'
                 : zh
-                  ? '保留原来的 External ESP Trainer 入口，但不把它包装成“安全外挂”。这里用 GitHub topic 里最高频的工具类别做雷达：FPS optimizer、external overlay、camouflage helper 和 safety checker。'
-                  : 'The original External ESP Trainer entry stays, but it is framed as a risk-aware tools radar, not a “safe cheat” claim. We track the GitHub-topic categories players actually see: FPS optimizer, external overlay, camouflage helper, and safety checker.'}
+                  ? '不再把用户送到仓库、备用 zip 或外部下载。这里改成 $7 一次性下载意向测试：快速开局、进房修复、FPS 设置、伪装练习和地图路线卡。'
+                  : 'The old repo and backup archive exits are gone. This offer focuses attention on a $7 one-time download: fast-start checklist, lobby fixes, FPS settings, camo practice, and route cards.'}
             </p>
-            <div className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-xs leading-5 text-amber-950">
-              <AlertTriangle className="mr-2 inline h-4 w-4" />
-              {vi
-                ? 'Chỉ dành cho mục đích giáo dục và nghiên cứu. Tự chịu rủi ro khi sử dụng. ESP / trainer / aimbot / FPS booster của bên thứ ba có thể vi phạm điều khoản game, kích hoạt anti-cheat, bị khóa tài khoản hoặc chứa phần mềm độc hại.'
-                : zh
-                  ? 'Educational and research purposes only. Use at your own risk. 第三方 ESP / trainer / aimbot / FPS booster 可能违反游戏条款、触发反作弊、导致封号或包含恶意软件。'
-                  : 'Educational and research purposes only. Use at your own risk. Third-party ESP / trainer / aimbot / FPS booster tools can violate game terms, trigger anti-cheat, cause bans, or contain malware.'}
+            <div className="mt-5 rounded-md border border-brick-200 bg-white p-4">
+              <div className="text-xs font-semibold uppercase tracking-widest text-brick-600">
+                {vi ? 'Giá thử nghiệm' : zh ? '测试价' : 'Test price'}
+              </div>
+              <div className="mt-1 flex items-end gap-3">
+                <span className="text-4xl font-bold text-ink-900">$7</span>
+                <span className="pb-1 text-sm text-ink-500">
+                  {vi ? 'mua một lần' : zh ? '一次性' : 'one-time'}
+                </span>
+              </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href={assistantLinks.zip}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={localHref(locale, '/tools?download=play-kit-7#download-tools')}
                 className="bg-brick-500 hover:bg-brick-700 inline-flex min-h-11 items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white transition"
+                data-analytics="home-download-tools-intent"
+                data-product="meccha-play-kit"
+                data-price="7"
               >
                 <Download className="h-4 w-4" />
                 {vi
-                  ? 'Tải meccha-toolkit.zip'
+                  ? 'Download Tools - $7'
                   : zh
-                    ? '下载 meccha-toolkit.zip'
-                    : 'Download meccha-toolkit.zip'}
+                    ? '付费 Download Tools - $7'
+                    : 'Download Tools - $7'}
               </a>
               <a
                 href={localHref(locale, '/tools')}
@@ -504,56 +488,45 @@ export default async function LandingPage({
               >
                 <ShieldCheck className="h-4 w-4" />
                 {vi
-                  ? 'Đọc nhãn rủi ro trước'
+                  ? 'Xem bên trong có gì'
                   : zh
-                    ? '先看风险标签'
-                    : 'Read risk labels first'}
-              </a>
-              <a
-                href={assistantLinks.zipGithub}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-mortar/70 bg-paper/88 text-ink-900 inline-flex min-h-11 items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold transition hover:bg-white"
-              >
-                <Download className="h-4 w-4" />
-                {vi
-                  ? 'Zip dự phòng GitHub'
-                  : zh
-                    ? 'GitHub zip 备用'
-                    : 'GitHub zip backup'}
-              </a>
-              <a
-                href={assistantLinks.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-mortar/70 bg-paper/88 text-ink-900 inline-flex min-h-11 items-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold transition hover:bg-white"
-              >
-                <ExternalLink className="h-4 w-4" />
-                GitHub
+                    ? '看看工具包内容'
+                    : 'See what is inside'}
               </a>
             </div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {activeToolsRadarCards.map((card) => {
-              const Icon = card.icon;
-              return (
-                <div
-                  key={card.title}
-                  className="border-mortar/70 bg-paper/88 rounded-md border p-5"
-                >
-                  <Icon className="text-brick-500 mb-3 h-5 w-5" />
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="text-sm font-semibold">{card.title}</div>
-                    <span className="text-brick-600 rounded-full bg-white px-2 py-1 text-[11px] font-semibold">
-                      {card.risk}
-                    </span>
+          <div>
+            <div className="overflow-hidden rounded-lg border border-mortar/70 bg-ink-900 shadow-sm">
+              <Image
+                src="/imgs/meccha/play-kit-promo.png"
+                alt="Meccha Chameleon Play Kit paid download preview"
+                width={1672}
+                height={941}
+                className="h-auto w-full"
+              />
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {activeToolsRadarCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <div
+                    key={card.title}
+                    className="border-mortar/70 bg-paper/88 rounded-md border p-5"
+                  >
+                    <Icon className="text-brick-500 mb-3 h-5 w-5" />
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="text-sm font-semibold">{card.title}</div>
+                      <span className="text-brick-600 rounded-full bg-white px-2 py-1 text-[11px] font-semibold">
+                        {card.risk}
+                      </span>
+                    </div>
+                    <p className="text-ink-500 mt-2 text-sm leading-6">
+                      {card.body}
+                    </p>
                   </div>
-                  <p className="text-ink-500 mt-2 text-sm leading-6">
-                    {card.body}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

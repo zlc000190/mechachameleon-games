@@ -10,18 +10,6 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname === '/en' || pathname.startsWith('/en/')) {
-    const targetPath = pathname.replace(/^\/en(?=\/|$)/, '') || '/';
-    return NextResponse.redirect(new URL(targetPath, request.url), 301);
-  }
-
-  if (pathname === '/vi') {
-    return NextResponse.redirect(new URL('/vi/', request.url), 301);
-  }
-
-  // Handle internationalization first
-  const intlResponse = intlMiddleware(request);
-
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
   const isValidLocale = (locales as readonly string[]).includes(locale);
@@ -35,6 +23,39 @@ export async function proxy(request: NextRequest) {
   if (isValidLocale && locale !== defaultLocale && locale !== 'vi') {
     return NextResponse.redirect(new URL('/', request.url), 301);
   }
+
+  const isPublicPage =
+    !pathWithoutLocale.startsWith('/admin') &&
+    !pathWithoutLocale.startsWith('/settings') &&
+    !pathWithoutLocale.startsWith('/activity') &&
+    !pathWithoutLocale.startsWith('/sign-') &&
+    !pathWithoutLocale.startsWith('/auth');
+
+  if (isPublicPage) {
+    const publicUrl = new URL(request.url);
+    const publicResponse = isValidLocale
+      ? NextResponse.next()
+      : NextResponse.rewrite(
+          new URL(
+            `/${defaultLocale}${pathname === '/' ? '' : pathname}`,
+            request.url
+          )
+        );
+
+    publicResponse.headers.set('x-pathname', request.nextUrl.pathname);
+    publicResponse.headers.set('x-url', publicUrl.toString());
+    publicResponse.headers.delete('Set-Cookie');
+
+    const cacheControl = 'public, s-maxage=3600, stale-while-revalidate=14400';
+    publicResponse.headers.set('Cache-Control', cacheControl);
+    publicResponse.headers.set('CDN-Cache-Control', cacheControl);
+    publicResponse.headers.set('Cloudflare-CDN-Cache-Control', cacheControl);
+
+    return publicResponse;
+  }
+
+  // Handle internationalization for auth and private app routes.
+  const intlResponse = intlMiddleware(request);
 
   // Only check authentication for admin routes
   if (
@@ -69,13 +90,7 @@ export async function proxy(request: NextRequest) {
 
   // Remove Set-Cookie from public pages to allow caching
   // We exclude admin, settings, activity, and auth pages from this behavior
-  if (
-    !pathWithoutLocale.startsWith('/admin') &&
-    !pathWithoutLocale.startsWith('/settings') &&
-    !pathWithoutLocale.startsWith('/activity') &&
-    !pathWithoutLocale.startsWith('/sign-') &&
-    !pathWithoutLocale.startsWith('/auth')
-  ) {
+  if (isPublicPage) {
     intlResponse.headers.delete('Set-Cookie');
 
     // Cache-Control header for public pages

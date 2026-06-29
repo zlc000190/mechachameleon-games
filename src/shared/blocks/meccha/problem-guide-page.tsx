@@ -1,4 +1,5 @@
-import { ArrowLeft, ExternalLink, ShieldAlert } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowLeft, Download, ExternalLink, ShieldAlert, Sparkles } from 'lucide-react';
 
 import { guideText, type GuidePage } from './problem-guides';
 
@@ -12,6 +13,8 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
   const zh = locale === 'zh';
   const Icon = guide.icon;
   const copy = guideText(guide, locale);
+  const isToolsPage = guide.slug === 'tools';
+  const paidDownloadHref = localHref(locale, '/tools?download=play-kit-7#download-tools');
 
   return (
     <main className="min-h-screen bg-[#fff7f1] text-[#29211D]">
@@ -75,6 +78,70 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
           </div>
         </div>
       </section>
+
+      {isToolsPage ? (
+        <section id="download-tools" className="border-b border-[#D8CFC6] bg-[#07131f] text-white">
+          <div className="container grid gap-8 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+            <div className="overflow-hidden rounded-lg border border-[#39ff88]/40 bg-[#081b18] shadow-[0_24px_80px_rgba(57,255,136,0.18)]">
+              <Image
+                src="/imgs/meccha/play-kit-promo.png"
+                alt="Meccha Chameleon Play Kit paid download preview"
+                width={1672}
+                height={941}
+                priority
+                className="h-auto w-full"
+              />
+            </div>
+            <div>
+              <p className="inline-flex rounded-full border border-[#39ff88]/40 bg-[#39ff88]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#39ff88]">
+                {locale === 'vi' ? 'Một lần mua' : zh ? '一次性付费' : 'One-time purchase'}
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-normal md:text-4xl">
+                {locale === 'vi'
+                  ? 'Test nhu cầu tải Play Kit với giá thấp.'
+                  : zh
+                    ? '先用低价测试：用户愿不愿意为工具包点下载。'
+                    : 'Test paid intent with a low-price Play Kit.'}
+              </h2>
+              <p className="mt-4 text-sm leading-6 text-white/75">
+                {locale === 'vi'
+                  ? 'Không đưa người chơi sang link miễn phí nữa. CTA này tập trung vào bản tải $7 để xem người dùng có thật sự muốn trả tiền trước khi nối Stripe.'
+                  : zh
+                    ? '不再把用户送去外部仓库或备用包。这个按钮专门测试 $7 下载意向；如果点击和回访有量，再接 Stripe 付款和真实下载。'
+                    : 'No external repo detour or backup archive. This CTA measures whether players will click a $7 download before Stripe checkout and the real file delivery are connected.'}
+              </p>
+              <div className="mt-6 rounded-lg border border-[#39ff88]/30 bg-white/8 p-5">
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <div className="text-sm text-white/60">
+                      {locale === 'vi' ? 'Giá thử nghiệm' : zh ? '测试价' : 'Test price'}
+                    </div>
+                    <div className="mt-1 text-5xl font-bold">$7</div>
+                  </div>
+                  <Sparkles className="h-8 w-8 text-[#39ff88]" />
+                </div>
+                <a
+                  href={paidDownloadHref}
+                  className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#39ff88] px-5 py-3 text-sm font-bold text-[#07131f] transition hover:bg-[#72ffad]"
+                  data-analytics="download-tools-intent"
+                  data-product="meccha-play-kit"
+                  data-price="7"
+                >
+                  <Download className="h-4 w-4" />
+                  {locale === 'vi' ? 'Download Tools - $7' : zh ? '付费 Download Tools - $7' : 'Download Tools - $7'}
+                </a>
+                <p className="mt-3 text-xs leading-5 text-white/55">
+                  {locale === 'vi'
+                    ? 'Khi có đủ click, bước tiếp theo là nối Stripe checkout và giao file tải thật.'
+                    : zh
+                      ? '有足够点击后，下一步接 Stripe checkout，再交付真实下载包。'
+                      : 'Once clicks prove intent, the next step is Stripe checkout plus real file delivery.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="quick-checks" className="border-b border-[#D8CFC6] bg-white">
         <div className="container py-14">

@@ -167,7 +167,7 @@
           "title": "工具",
           "children": [
             {
-              "title": "Tools Radar / ESP 風險",
+              "title": "Download Play Kit",
               "url": "/tools",
               "target": "_self"
             },
@@ -177,7 +177,7 @@
               "target": "_self"
             },
             {
-              "title": "External ESP Trainer",
+              "title": "Download Tools - $7",
               "url": "/#assistant",
               "target": "_self"
             },
