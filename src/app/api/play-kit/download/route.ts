@@ -1,9 +1,6 @@
-import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-
 import { NextRequest, NextResponse } from 'next/server';
 
-import { getStripeClient } from '@/shared/lib/play-kit';
+import { getPlayKitDownloadUrl, getStripeClient } from '@/shared/lib/play-kit';
 
 export async function GET(req: NextRequest) {
   try {
@@ -19,16 +16,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'payment not completed' }, { status: 402 });
     }
 
-    const filePath = path.join(process.cwd(), 'public', 'downloads', 'play-kit.zip');
-    const file = await readFile(filePath);
-
-    return new NextResponse(new Uint8Array(file), {
-      headers: {
-        'Content-Type': 'application/zip',
-        'Content-Disposition': 'attachment; filename="play-kit.zip"',
-        'Cache-Control': 'no-store',
-      },
-    });
+    return NextResponse.redirect(getPlayKitDownloadUrl(), { status: 302 });
   } catch (error: any) {
     console.error('Play Kit download failed:', error);
     return NextResponse.json(

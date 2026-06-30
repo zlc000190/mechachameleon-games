@@ -80,6 +80,20 @@ Minimum required (set in Dokploy "Environment"):
 | `NODE_ENV` | `production` | Already set in Dockerfile, but harmless to repeat. |
 | `PORT` | `3000` | Already set in Dockerfile. |
 
+If you are turning on Stripe checkout for the Play Kit flow, also set:
+
+| Key | Value | Notes |
+| --- | --- | --- |
+| `STRIPE_SECRET_KEY` | `sk_live_...` | Required for creating checkout sessions and verifying paid downloads. |
+
+If you use the site's shared payment system, add:
+
+| Key | Value | Notes |
+| --- | --- | --- |
+| `STRIPE_SIGNING_SECRET` | `whsec_...` | Required for Stripe webhook verification. |
+| `STRIPE_ENABLED` | `true` | Turns Stripe on in the shared payment UI. |
+| `DEFAULT_PAYMENT_PROVIDER` | `stripe` | Makes Stripe the default provider. |
+
 Recommended (for SEO and self-description):
 
 | Key | Value |
@@ -109,6 +123,22 @@ Encrypt certificate (or wire up Cloudflare proxy in front).
 curl -sI https://mechachameleon.games/ | head -3
 curl -s  https://mechachameleon.games/maps/vintage-room | grep -c 'Hiding Spots'
 ```
+
+### 5. Stripe webhook setup
+
+Use this webhook endpoint in Stripe Dashboard:
+
+`https://mechachameleon.games/api/payment/notify/stripe`
+
+Enable these events:
+
+- `checkout.session.completed`
+- `invoice.payment_succeeded`
+- `invoice.payment_failed`
+- `customer.subscription.updated`
+- `customer.subscription.deleted`
+
+For the one-time Play Kit checkout, `checkout.session.completed` is the key event. The invoice and subscription events are kept for the site's broader payment flow and future reuse.
 
 The second command should print `1` or higher — it confirms a per-map
 page is being SSG-rendered with the right H1.

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { CheckCircle2, Download, ShieldCheck } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 
-import { getAppUrl } from '@/shared/lib/play-kit';
+import { getPlayKitDownloadUrl } from '@/shared/lib/play-kit';
 import { getCanonicalUrl, getSocialImageUrl } from '@/shared/lib/seo';
 
 export async function generateMetadata({
@@ -46,7 +46,7 @@ export default async function ToolsSuccessPage({
 
   const downloadHref = sessionId
     ? `/api/play-kit/download?session_id=${encodeURIComponent(sessionId)}`
-    : '/tools';
+    : getPlayKitDownloadUrl();
 
   return (
     <main className="min-h-screen bg-[#06121b] text-white">
@@ -79,7 +79,7 @@ export default async function ToolsSuccessPage({
             </Link>
           </div>
           <p className="mt-6 text-sm text-white/55">
-            Download link is checked server-side before the zip is returned.
+            Download link is checked server-side before the file is redirected.
           </p>
         </div>
       </section>

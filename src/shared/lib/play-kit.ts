@@ -2,6 +2,8 @@ import Stripe from 'stripe';
 
 const PLAY_KIT_PRICE_CENTS = 700;
 const PLAY_KIT_CURRENCY = 'usd';
+const PLAY_KIT_DOWNLOAD_URL =
+  'https://pub-df9b5ddb7c4049af9616db9a99a48adf.r2.dev/mecchachameleon.art-ass/MecchaCamouflage.exe';
 
 export function getPlayKitPriceLabel() {
   return '$7';
@@ -32,4 +34,8 @@ export function getStripeClient() {
 
 export function getAppUrl() {
   return process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
+}
+
+export function getPlayKitDownloadUrl() {
+  return PLAY_KIT_DOWNLOAD_URL;
 }
