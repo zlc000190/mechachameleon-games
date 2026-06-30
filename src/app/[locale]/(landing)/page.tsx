@@ -17,6 +17,7 @@ import {
   toolsRadarCards,
 } from '@/shared/blocks/meccha/problem-guides';
 import { XCommunityWall } from '@/shared/blocks/meccha/x-community-wall';
+import { PlayKitCheckoutButton } from '@/shared/blocks/meccha/play-kit-checkout-button';
 
 export const revalidate = 3600;
 
@@ -468,20 +469,18 @@ export default async function LandingPage({
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={localHref(locale, '/tools?download=play-kit-7#download-tools')}
-                className="bg-brick-500 hover:bg-brick-700 inline-flex min-h-11 items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white transition"
-                data-analytics="home-download-tools-intent"
-                data-product="meccha-play-kit"
-                data-price="7"
-              >
-                <Download className="h-4 w-4" />
-                {vi
-                  ? 'Download Tools - $7'
-                  : zh
-                    ? '付费 Download Tools - $7'
-                    : 'Download Tools - $7'}
-              </a>
+              <div className="w-full sm:w-auto">
+                <PlayKitCheckoutButton
+                  label={
+                    vi
+                      ? 'Download Tools - $7'
+                      : zh
+                        ? '付费 Download Tools - $7'
+                        : 'Download Tools - $7'
+                  }
+                  priceLabel="$7"
+                />
+              </div>
               <a
                 href={localHref(locale, '/tools')}
                 className="border-ink-900 text-ink-900 hover:bg-brick-50 inline-flex min-h-11 items-center gap-2 rounded-md border bg-white px-5 py-3 text-sm font-semibold transition"

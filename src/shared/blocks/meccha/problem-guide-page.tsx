@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { ArrowLeft, Download, ExternalLink, ShieldAlert, Sparkles } from 'lucide-react';
+import { ArrowLeft, ExternalLink, ShieldAlert, Sparkles } from 'lucide-react';
 
 import { guideText, type GuidePage } from './problem-guides';
+import { PlayKitCheckoutButton } from './play-kit-checkout-button';
 
 function localHref(locale: string, href: string) {
   if (href.startsWith('http') || href.startsWith('#')) return href;
@@ -14,7 +15,6 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
   const Icon = guide.icon;
   const copy = guideText(guide, locale);
   const isToolsPage = guide.slug === 'tools';
-  const paidDownloadHref = localHref(locale, '/tools?download=play-kit-7#download-tools');
 
   return (
     <main className="min-h-screen bg-[#fff7f1] text-[#29211D]">
@@ -120,16 +120,12 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
                   </div>
                   <Sparkles className="h-8 w-8 text-[#39ff88]" />
                 </div>
-                <a
-                  href={paidDownloadHref}
-                  className="mt-5 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-[#39ff88] px-5 py-3 text-sm font-bold text-[#07131f] transition hover:bg-[#72ffad]"
-                  data-analytics="download-tools-intent"
-                  data-product="meccha-play-kit"
-                  data-price="7"
-                >
-                  <Download className="h-4 w-4" />
-                  {locale === 'vi' ? 'Download Tools - $7' : zh ? '付费 Download Tools - $7' : 'Download Tools - $7'}
-                </a>
+                <div className="mt-5">
+                  <PlayKitCheckoutButton
+                    label={locale === 'vi' ? 'Download Tools - $7' : zh ? '付费 Download Tools - $7' : 'Download Tools - $7'}
+                    priceLabel="$7"
+                  />
+                </div>
                 <p className="mt-3 text-xs leading-5 text-white/55">
                   {locale === 'vi'
                     ? 'Khi có đủ click, bước tiếp theo là nối Stripe checkout và giao file tải thật.'
