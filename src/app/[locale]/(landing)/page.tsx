@@ -181,9 +181,9 @@ const viHomeProblemCards = homeProblemCards.map((card) => {
       title: 'Sơn màu chưa khớp?',
       body: 'Bù màu eyedropper, giới hạn brush, bóng đổ, highlight và kỷ luật tư thế.',
     },
-    'Download Play Kit': {
-      title: 'Tải Play Kit',
-      body: 'Bộ công cụ trả phí thử nghiệm: vào nhanh, sửa lobby, FPS settings, luyện camo và route card.',
+    'Get Play Kit': {
+      title: 'Nhận Play Kit',
+      body: 'Bộ gọn một lần mua cho người muốn vào trận nhanh hơn, sửa lobby mượt hơn, và có sẵn route card trước khi bắt đầu.',
     },
     'Public lobby problems?': {
       title: 'Lobby công khai rắc rối?',
@@ -441,25 +441,25 @@ export default async function LandingPage({
         <div className="container grid gap-8 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
           <div>
             <p className="text-brick-600 text-xs font-semibold tracking-widest uppercase">
-              {vi ? 'Play Kit trả phí' : zh ? '付费 Play Kit' : 'Paid Play Kit'}
+              {vi ? 'Play Kit cho người chơi' : zh ? '玩家 Play Kit' : 'Play Kit for players'}
             </p>
             <h2 className="mt-1 text-3xl font-bold tracking-normal md:text-4xl">
               {vi
-                ? 'Download Tools để vào Meccha Chameleon nhanh hơn.'
+                ? 'Vào trận nhanh hơn, trốn tốt hơn, chơi cùng bạn bè mượt hơn.'
                 : zh
-                  ? '把工具下载改成低价付费，先测有没有人愿意点。'
-                  : 'Download Tools for faster Meccha Chameleon sessions.'}
+                  ? '更快开局、更稳隐藏、更顺畅联机。'
+                  : 'Start faster, hide better, and keep friend rooms moving.'}
             </h2>
             <p className="text-ink-500 mt-4 text-sm leading-6">
               {vi
-                ? 'Bỏ lối đi sang repo và archive dự phòng. Offer này tập trung vào một bản tải $7: checklist vào nhanh, sửa lobby, FPS settings, luyện camo và route card.'
+                ? 'Giữ checklist vào nhanh, sửa lobby, FPS settings, luyện camo và route card trong một gói gọn để trước khi chơi chỉ cần mở lên là dùng.'
                 : zh
-                  ? '不再把用户送到仓库、备用 zip 或外部下载。这里改成 $7 一次性下载意向测试：快速开局、进房修复、FPS 设置、伪装练习和地图路线卡。'
-                  : 'The old repo and backup archive exits are gone. This offer focuses attention on a $7 one-time download: fast-start checklist, lobby fixes, FPS settings, camo practice, and route cards.'}
+                  ? '把开局清单、联机修复、FPS 设置、伪装练习和路线卡放在一个包里，减少找资料的时间。'
+                  : 'Keep the useful parts together: fast-start checklist, lobby fixes, FPS settings, camo practice, and route cards.'}
             </p>
             <div className="mt-5 rounded-md border border-brick-200 bg-white p-4">
               <div className="text-xs font-semibold uppercase tracking-widest text-brick-600">
-                {vi ? 'Giá thử nghiệm' : zh ? '测试价' : 'Test price'}
+                {vi ? 'Giá một lần' : zh ? '一次性价格' : 'One-time price'}
               </div>
               <div className="mt-1 flex items-end gap-3">
                 <span className="text-4xl font-bold text-ink-900">$7</span>
@@ -473,10 +473,10 @@ export default async function LandingPage({
                 <PlayKitCheckoutButton
                   label={
                     vi
-                      ? 'Download Tools - $7'
+                      ? 'Nhận Play Kit - $7'
                       : zh
-                        ? '付费 Download Tools - $7'
-                        : 'Download Tools - $7'
+                        ? '获取 Play Kit - $7'
+                        : 'Get Play Kit - $7'
                   }
                   priceLabel="$7"
                 />
@@ -489,7 +489,7 @@ export default async function LandingPage({
                 {vi
                   ? 'Xem bên trong có gì'
                   : zh
-                    ? '看看工具包内容'
+                    ? '看看里面有什么'
                     : 'See what is inside'}
               </a>
             </div>
