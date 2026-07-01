@@ -618,37 +618,37 @@ export const problemGuides: Record<string, GuidePage> = {
     slug: 'tools',
     icon: Wrench,
     eyebrow: 'Play Kit',
-    title: 'Meccha Chameleon Play Kit — Download Tools for Faster Starts, Better Hides, and Cleaner Lobbies',
-    zhTitle: '超级变色龙 Play Kit — 更快开局、更会隐藏、更顺畅进房的付费工具包',
-    viTitle: 'Meccha Chameleon Play Kit - tải công cụ vào chơi nhanh, trốn hay hơn, lobby mượt hơn',
+    title: 'Meccha Chameleon Play Kit — faster starts, steadier hiding, smoother friend rooms',
+    zhTitle: '超级变色龙 Play Kit — 更快开局、更稳隐藏、更顺畅联机',
+    viTitle: 'Meccha Chameleon Play Kit - vào trận nhanh hơn, trốn tốt hơn, vào phòng cùng bạn bè mượt hơn',
     description:
-      'A low-cost Meccha Chameleon player toolkit for people who want to start fast: 10-minute first match plan, lobby fix checklist, FPS settings, camouflage practice, and map route cards in one download.',
+      'A player-first pack that keeps the helpful bits together: fast-start checklist, lobby fixes, FPS notes, camo practice, and route cards for better sessions.',
     zhDescription:
-      '面向想马上玩起来的超级变色龙玩家：10 分钟开局计划、进房修复清单、FPS 设置、伪装练习和地图路线卡，一次性低价下载。',
+      '把开局清单、联机修复、FPS 建议、伪装练习和路线卡放在一个包里，减少找资料的时间，让你更快进入对局。',
     viDescription:
-      'Bộ công cụ giá thấp cho người muốn vào Meccha Chameleon nhanh: kế hoạch trận đầu 10 phút, checklist sửa lobby, FPS settings, luyện ngụy trang và thẻ route map trong một bản tải.',
-    primaryCta: { label: 'Download Tools - $7', href: '/tools?download=play-kit-7#download-tools' },
+      'Một bộ gọn cho người muốn vào Meccha Chameleon nhanh hơn: checklist vào nhanh, sửa lobby, FPS notes, luyện ngụy trang và route card để mở trước mỗi trận.',
+    primaryCta: { label: 'Get Play Kit - $7', href: '/tools?download=play-kit-7#download-tools' },
     secondaryCta: { label: 'See what is inside', href: '#quick-checks' },
     quickAnswers: [
-      ['What do I get?', 'A compact play kit: fast-start checklist, lobby recovery steps, FPS settings, camouflage drills, and route cards for quick second-screen use.'],
-      ['Why pay $7?', 'It saves the messy search time. Open one pack before a session, fix the common blockers, and get to the fun part faster.'],
+      ['What do I get?', 'A compact play kit: fast-start checklist, lobby fixes, FPS notes, camouflage drills, and route cards you can open before a match.'],
+      ['Why pay $7?', 'It saves the time you would spend hunting fixes across tabs and gives you one pack to keep nearby every session.'],
       ['Is this a cheat?', 'No. It is a player convenience kit with guides, checklists, and practice helpers. It does not attach to the game process.'],
-      ['Who is it for?', 'New players, friend groups, streamers, and returning players who want fewer failed lobbies and better first rounds.'],
+      ['Who is it for?', 'New players, returning players, friend groups, and streamers who want smoother starts and fewer failed lobbies.'],
     ],
     sections: [
       {
-        title: 'Start playing without the research spiral',
-        body: 'The kit is built for the moment when someone wants to play now, not read ten tabs. It turns the scattered setup pain into one short flow.',
+        title: 'Start matches without the setup drag',
+        body: 'The pack is built for the moment when you want to play now, not read ten tabs. It keeps the useful notes in one place so the first match feels easier to launch.',
         bullets: [
           '10-minute first-match plan for controls, painting, hiding, and seeker basics.',
-          'Lobby setup checklist for private rooms, room codes, server tags, and workshop map mistakes.',
+          'Lobby setup checklist for private rooms, room codes, server tags, and workshop-map mistakes.',
           'Connection recovery steps for signing-in hangs, failed joins, and disconnect loops.',
           'Session checklist you can keep open while friends are joining.',
         ],
       },
       {
-        title: 'Turn better hiding into a repeatable habit',
-        body: 'Meccha Chameleon is most fun when hiding feels clever instead of random. The kit pushes players toward repeatable practice, not guesswork.',
+        title: 'Hide better with repeatable practice',
+        body: 'Meccha Chameleon is most fun when hiding feels clever instead of random. The pack gives you a repeatable routine so you can spend more time playing and less time guessing.',
         bullets: [
           'Camouflage practice prompts for color sampling, shadow matching, and pose timing.',
           'Map route cards that help you pick one plan before the round starts.',
@@ -657,13 +657,13 @@ export const problemGuides: Record<string, GuidePage> = {
         ],
       },
       {
-        title: 'A small purchase that tests real demand',
-        body: 'The first offer is intentionally simple: a one-time low-price download. If players keep clicking and returning, a full Stripe checkout and updated pack can follow.',
+        title: 'A small pack with clear day-to-day value',
+        body: 'The one-time price is low because the pack is meant to save setup time every session. If you keep using it, it keeps paying back in less friction and fewer failed starts.',
         bullets: [
-          'One-time $7 pricing keeps the barrier low enough to measure purchase intent.',
-          'The CTA is focused on a paid download instead of sending visitors away to free links.',
-          'Return clicks can show whether the kit has repeat-use potential.',
-          'If users download and never return, the next step should be lighter content, not more unpaid build time.',
+          'One-time $7 pricing keeps the barrier low while covering a useful session pack.',
+          'The CTA points to a single download instead of sending visitors away to scattered links.',
+          'Return visits mean the pack is helping in real sessions, not just sounding nice in theory.',
+          'The pack is meant to become a quick pre-match habit, not a one-off read.',
         ],
       },
     ],
@@ -678,18 +678,18 @@ export const problemGuides: Record<string, GuidePage> = {
     ],
     vi: {
       eyebrow: 'Play Kit',
-      primaryCta: { label: 'Download Tools - $7', href: '/tools?download=play-kit-7#download-tools' },
+      primaryCta: { label: 'Nhận Play Kit - $7', href: '/tools?download=play-kit-7#download-tools' },
       secondaryCta: { label: 'Xem bên trong có gì', href: '#quick-checks' },
       quickAnswers: [
-        ['Nhận được gì?', 'Một play kit gọn: checklist vào nhanh, sửa lobby, FPS settings, bài luyện ngụy trang và route card để mở ở màn hình phụ.'],
-        ['Vì sao $7?', 'Nó tiết kiệm thời gian tìm lung tung. Mở một pack trước buổi chơi, sửa lỗi thường gặp và vào phần vui nhanh hơn.'],
+        ['Nhận được gì?', 'Một play kit gọn: checklist vào nhanh, sửa lobby, FPS notes, bài luyện ngụy trang và route card để mở trước mỗi trận.'],
+        ['Vì sao $7?', 'Nó tiết kiệm thời gian tìm lung tung và cho bạn một pack để mở trước mỗi buổi chơi.'],
         ['Có phải cheat không?', 'Không. Đây là bộ tiện ích cho người chơi với guide, checklist và luyện tập. Nó không gắn vào tiến trình game.'],
-        ['Dành cho ai?', 'Người mới, nhóm bạn, streamer và người chơi quay lại muốn ít lỗi lobby hơn và vòng đầu tốt hơn.'],
+        ['Dành cho ai?', 'Người mới, người chơi quay lại, nhóm bạn và streamer muốn khởi đầu mượt hơn và ít lỗi lobby hơn.'],
       ],
       sections: [
         {
-          title: 'Vào chơi nhanh, không phải mở mười tab',
-          body: 'Kit này dành cho lúc người chơi muốn chơi ngay. Nó biến các lỗi setup rải rác thành một flow ngắn.',
+          title: 'Vào trận nhanh, không phải mở mười tab',
+          body: 'Pack này dành cho lúc bạn muốn chơi ngay. Nó gom các ghi chú setup quan trọng vào một flow ngắn và dễ mở lại.',
           bullets: [
             'Kế hoạch trận đầu 10 phút cho điều khiển, sơn màu, trốn và seeker basics.',
             'Checklist lobby riêng, room code, server tag và lỗi workshop map.',
@@ -698,8 +698,8 @@ export const problemGuides: Record<string, GuidePage> = {
           ],
         },
         {
-          title: 'Biến việc trốn hay thành thói quen',
-          body: 'Meccha Chameleon vui nhất khi trốn có chiến thuật. Kit giúp luyện theo bước thay vì đoán mò.',
+          title: 'Trốn tốt hơn với thói quen có thể lặp lại',
+          body: 'Meccha Chameleon vui nhất khi trốn có chiến thuật. Pack này giúp bạn luyện theo bước thay vì đoán mò.',
           bullets: [
             'Prompt luyện camouflage cho lấy màu, khớp bóng và timing đứng yên.',
             'Route card giúp chọn một kế hoạch trước khi round bắt đầu.',
@@ -708,13 +708,13 @@ export const problemGuides: Record<string, GuidePage> = {
           ],
         },
         {
-          title: 'Mức giá nhỏ để đo nhu cầu thật',
-          body: 'Offer đầu tiên cố ý đơn giản: một lần trả tiền, giá thấp. Nếu người chơi click và quay lại, có thể nối Stripe và cập nhật pack.',
+          title: 'Một mức giá nhỏ cho thứ bạn sẽ mở lại nhiều lần',
+          body: 'Giá một lần được giữ thấp để bạn dễ thử. Nếu pack hữu ích, nó sẽ giúp bạn tiết kiệm thời gian setup ở nhiều buổi chơi chứ không chỉ một lần.',
           bullets: [
-            'Giá một lần $7 đủ thấp để đo purchase intent.',
-            'CTA tập trung vào paid download thay vì đưa người dùng sang link miễn phí.',
-            'Click quay lại cho biết kit có thể có giá trị lặp lại.',
-            'Nếu người dùng下载后不回来，下一步应做更轻内容，而不是继续无回报投入.',
+            'Giá một lần $7 đủ thấp để dễ thử mà vẫn có giá trị thực.',
+            'CTA tập trung vào một bản tải duy nhất thay vì đẩy người dùng đi vòng.',
+            'Pack này hữu ích nhất khi bạn mở lại trước mỗi buổi chơi.',
+            'Nó được làm để giảm ma sát, không phải để bạn đọc xong rồi cất đi.',
           ],
         },
       ],
@@ -805,7 +805,7 @@ export const homeProblemCards = [
   { icon: UsersRound, title: 'Playing with friends?', body: 'Private rooms, room codes, server tags, voice setup, workshop map prep.', href: '/play-with-friends' },
   { icon: Gauge, title: 'Low FPS?', body: 'Safe performance settings, stutter fixes, OBS tips, and risky booster warnings.', href: '/fps-boost' },
   { icon: Palette, title: 'Bad at painting?', body: 'Eyedropper compensation, brush limits, shadows, highlights, and pose discipline.', href: '/color-matching' },
-  { icon: Wrench, title: 'Download Play Kit', body: 'Paid toolkit test for fast starts, lobby fixes, FPS settings, camo practice, and route cards.', href: '/tools' },
+  { icon: Wrench, title: 'Get Play Kit', body: 'One pack for faster starts, smoother friend rooms, FPS notes, camo practice, and route cards.', href: '/tools' },
   { icon: ShieldAlert, title: 'Public lobby problems?', body: 'Kicks, random shooting, spectator callouts, cheaters, and private-room rules.', href: '/public-lobby-guide' },
   { icon: Globe2, title: 'Need maps?', body: 'Full hiding spot atlas and 50 map screenshots live on mecchachameleon.art.', href: 'https://mecchachameleon.art/maps' },
 ] as const;

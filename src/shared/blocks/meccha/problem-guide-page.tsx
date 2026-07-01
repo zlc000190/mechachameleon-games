@@ -94,27 +94,27 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
             </div>
             <div>
               <p className="inline-flex rounded-full border border-[#39ff88]/40 bg-[#39ff88]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#39ff88]">
-                {locale === 'vi' ? 'Một lần mua' : zh ? '一次性付费' : 'One-time purchase'}
+                {locale === 'vi' ? 'Bộ gọn một lần mua' : zh ? '一次性 Play Kit' : 'One-time Play Kit'}
               </p>
               <h2 className="mt-4 text-3xl font-bold tracking-normal md:text-4xl">
                 {locale === 'vi'
-                  ? 'Test nhu cầu tải Play Kit với giá thấp.'
+                  ? 'Vào trận nhanh hơn, trốn tốt hơn, vào phòng với bạn bè mượt hơn.'
                   : zh
-                    ? '先用低价测试：用户愿不愿意为工具包点下载。'
-                    : 'Test paid intent with a low-price Play Kit.'}
+                    ? '更快开局、更稳隐藏、更顺畅联机。'
+                    : 'Start faster, hide better, and keep friend rooms moving.'}
               </h2>
               <p className="mt-4 text-sm leading-6 text-white/75">
                 {locale === 'vi'
-                  ? 'Không đưa người chơi sang link miễn phí nữa. CTA này tập trung vào bản tải $7 để xem người dùng có thật sự muốn trả tiền trước khi nối Stripe.'
+                  ? 'Gom checklist vào nhanh, sửa lobby, FPS notes, luyện camo và route card vào một pack để bạn mở trước khi vào trận.'
                   : zh
-                    ? '不再把用户送去外部仓库或备用包。这个按钮专门测试 $7 下载意向；如果点击和回访有量，再接 Stripe 付款和真实下载。'
-                    : 'No external repo detour or backup archive. This CTA measures whether players will click a $7 download before Stripe checkout and the real file delivery are connected.'}
+                    ? '把开局清单、联机修复、FPS 建议、伪装练习和路线卡放在一个包里，少找资料，多进游戏。'
+                    : 'Keep the useful bits in one place so you can spend less time setting up and more time playing.'}
               </p>
               <div className="mt-6 rounded-lg border border-[#39ff88]/30 bg-white/8 p-5">
                 <div className="flex items-end justify-between gap-4">
                   <div>
                     <div className="text-sm text-white/60">
-                      {locale === 'vi' ? 'Giá thử nghiệm' : zh ? '测试价' : 'Test price'}
+                      {locale === 'vi' ? 'Giá một lần' : zh ? '一次性价格' : 'One-time price'}
                     </div>
                     <div className="mt-1 text-5xl font-bold">$7</div>
                   </div>
@@ -122,16 +122,16 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
                 </div>
                 <div className="mt-5">
                   <PlayKitCheckoutButton
-                    label={locale === 'vi' ? 'Download Tools - $7' : zh ? '付费 Download Tools - $7' : 'Download Tools - $7'}
+                    label={locale === 'vi' ? 'Nhận Play Kit - $7' : zh ? '获取 Play Kit - $7' : 'Get Play Kit - $7'}
                     priceLabel="$7"
                   />
                 </div>
                 <p className="mt-3 text-xs leading-5 text-white/55">
                   {locale === 'vi'
-                    ? 'Khi có đủ click, bước tiếp theo là nối Stripe checkout và giao file tải thật.'
+                    ? 'Mở pack này trước mỗi buổi chơi để đỡ phải tìm lại checklist và các ghi chú quan trọng.'
                     : zh
-                      ? '有足够点击后，下一步接 Stripe checkout，再交付真实下载包。'
-                      : 'Once clicks prove intent, the next step is Stripe checkout plus real file delivery.'}
+                      ? '开局前打开它，少翻网页、多进游戏。'
+                      : 'Open it before a session so you can spend less time digging for notes and more time playing.'}
                 </p>
               </div>
             </div>
