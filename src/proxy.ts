@@ -10,6 +10,12 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.pathname = pathname.replace(/\/+$/, '');
+    return NextResponse.redirect(canonicalUrl, 301);
+  }
+
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
   const isValidLocale = (locales as readonly string[]).includes(locale);

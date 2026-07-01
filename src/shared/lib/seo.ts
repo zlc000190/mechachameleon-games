@@ -3,6 +3,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { envConfigs } from '@/config';
 import { defaultLocale } from '@/config/locale';
 
+type MetadataText = {
+  title: string;
+  description: string;
+  keywords: string;
+};
+
 // get metadata for page component
 export function getMetadata(
   options: {
@@ -38,7 +44,7 @@ export function getMetadata(
     );
 
     // translated metadata
-    let translatedMetadata: any = {};
+    let translatedMetadata: Partial<MetadataText> = {};
     if (options.metadataKey) {
       translatedMetadata = await getTranslatedMetadata(
         options.metadataKey,
@@ -134,22 +140,23 @@ export async function getCanonicalUrl(canonicalUrl: string, locale: string) {
     canonicalUrl = '/';
   }
 
+  const appUrl = envConfigs.app_url.replace(/\/$/, '');
+
   if (canonicalUrl.startsWith('http')) {
     // full url
-    canonicalUrl = canonicalUrl;
+    canonicalUrl = canonicalUrl.replace(/\/$/, '');
   } else {
     // relative path
     if (!canonicalUrl.startsWith('/')) {
       canonicalUrl = `/${canonicalUrl}`;
     }
 
-    canonicalUrl = `${envConfigs.app_url}${
-      !locale || locale === defaultLocale ? '' : `/${locale}`
-    }${canonicalUrl}`;
-  }
+    const pathPart =
+      canonicalUrl === '/' ? '' : canonicalUrl.replace(/\/+$/, '');
 
-  if (!canonicalUrl.endsWith('/')) {
-    canonicalUrl = `${canonicalUrl}/`;
+    canonicalUrl = `${appUrl}${
+      !locale || locale === defaultLocale ? '' : `/${locale}`
+    }${pathPart}`;
   }
 
   return canonicalUrl;

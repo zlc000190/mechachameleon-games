@@ -23,7 +23,8 @@ const defaultLocale = 'en';
 const now = new Date().toISOString();
 
 const locUrl = (locale, routePath) => {
-  const normalizedPath = routePath.endsWith('/') ? routePath : `${routePath}/`;
+  const normalizedPath =
+    routePath === '/' ? '' : routePath.replace(/\/+$/, '');
   if (locale === defaultLocale) return `${base}${normalizedPath}`;
   return `${base}/${locale}${normalizedPath}`;
 };
