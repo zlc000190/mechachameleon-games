@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Check, Globe, Languages } from 'lucide-react';
 import { useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import { normalizeLocalePathname } from '@/core/i18n/pathname';
 import { usePathname, useRouter } from '@/core/i18n/navigation';
 import { localeNames } from '@/config/locale';
 import { Button } from '@/shared/components/ui/button';
@@ -25,46 +25,19 @@ export function LocaleSelector({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleSwitchLanguage = (value: string) => {
     if (value !== currentLocale) {
       // Update localStorage to sync with locale detector
       cacheSet('locale', value);
       const query = searchParams?.toString?.() ?? '';
-      const href = query ? `${pathname}?${query}` : pathname;
+      const targetPath = normalizeLocalePathname(pathname);
+      const href = query ? `${targetPath}?${query}` : targetPath;
       router.push(href, {
         locale: value,
       });
     }
   };
-
-  // Return a placeholder during SSR to avoid hydration mismatch
-  if (!mounted) {
-    return (
-      <Button
-        variant={type === 'icon' ? 'ghost' : 'outline'}
-        size={type === 'icon' ? 'icon' : 'sm'}
-        className={
-          type === 'icon' ? 'h-auto w-auto p-0' : 'hover:bg-primary/10'
-        }
-        disabled
-      >
-        {type === 'icon' ? (
-          <Languages size={18} />
-        ) : (
-          <>
-            <Globe size={16} />
-            {localeNames[currentLocale]}
-          </>
-        )}
-      </Button>
-    );
-  }
 
   return (
     <DropdownMenu>

@@ -23,19 +23,19 @@
           "icon": "Wrench",
           "children": [
             {
-              "title": "進房修復",
+              "title": "連線修復",
               "url": "/connection-fix",
               "target": "_self",
               "icon": "WifiOff"
             },
             {
-              "title": "FPS 優化",
+              "title": "提升 FPS 和修復卡頓",
               "url": "/fps-boost",
               "target": "_self",
               "icon": "Gauge"
             },
             {
-              "title": "公房避坑",
+              "title": "公房指南",
               "url": "/public-lobby-guide",
               "target": "_self",
               "icon": "ShieldAlert"
@@ -47,13 +47,13 @@
           "icon": "BookOpen",
           "children": [
             {
-              "title": "好友組隊",
+              "title": "和朋友一起玩",
               "url": "/play-with-friends",
               "target": "_self",
               "icon": "UsersRound"
             },
             {
-              "title": "配色指南",
+              "title": "顏色匹配指南",
               "url": "/color-matching",
               "target": "_self",
               "icon": "Palette"
@@ -65,7 +65,7 @@
               "icon": "Brush"
             },
             {
-              "title": ".art 地圖圖鑑",
+              "title": ".art 地圖",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -102,7 +102,7 @@
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "紅磚牆風格的 Meccha Chameleon 實用開局中心：線上玩、進房修復、好友組隊、FPS 優化、配色指南、工具風險、公房避坑與地圖入口。",
+      "description": "Mecha Chameleon 實用開局中心：線上玩、連線修復、朋友組隊、FPS 優化、顏色練習、工具和地圖入口。",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -114,7 +114,7 @@
     "nav": {
       "items": [
         {
-          "title": "開始玩",
+          "title": "開始遊戲",
           "children": [
             {
               "title": "線上玩",
@@ -122,17 +122,17 @@
               "target": "_self"
             },
             {
-              "title": "新手教學",
+              "title": "新手指南",
               "url": "/new-player",
               "target": "_self"
             },
             {
-              "title": "好友組隊指南",
+              "title": "和朋友一起玩",
               "url": "/play-with-friends",
               "target": "_self"
             },
             {
-              "title": ".art 地圖圖鑑",
+              "title": ".art 地圖",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank"
             }
@@ -142,22 +142,22 @@
           "title": "問題排除",
           "children": [
             {
-              "title": "進房 / Signing in 修復",
+              "title": "連線修復",
               "url": "/connection-fix",
               "target": "_self"
             },
             {
-              "title": "FPS 與卡頓優化",
+              "title": "提升 FPS 和修復卡頓",
               "url": "/fps-boost",
               "target": "_self"
             },
             {
-              "title": "取色 / 上色指南",
+              "title": "顏色匹配指南",
               "url": "/color-matching",
               "target": "_self"
             },
             {
-              "title": "公房生存指南",
+              "title": "公房指南",
               "url": "/public-lobby-guide",
               "target": "_self"
             }
@@ -167,7 +167,7 @@
           "title": "工具",
           "children": [
             {
-              "title": "Download Play Kit",
+              "title": "下載 Play Kit",
               "url": "/tools",
               "target": "_self"
             },
@@ -177,7 +177,7 @@
               "target": "_self"
             },
             {
-              "title": "Download Tools - $7",
+              "title": "下載工具 - $7",
               "url": "/#assistant",
               "target": "_self"
             },

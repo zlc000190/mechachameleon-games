@@ -10,19 +10,18 @@ const intlMiddleware = createIntlMiddleware(routing);
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.pathname = pathname.replace(/\/+$/, '');
+    return NextResponse.redirect(canonicalUrl, 301);
+  }
+
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
   const isValidLocale = (locales as readonly string[]).includes(locale);
   const pathWithoutLocale = isValidLocale
     ? pathname.slice(locale.length + 1)
     : pathname;
-
-  // Stop broad translated-locale exposure while the new .games site stabilizes.
-  // Vietnamese is currently promoted because traffic demand is active and the
-  // homepage has native copy.
-  if (isValidLocale && locale !== defaultLocale && locale !== 'vi') {
-    return NextResponse.redirect(new URL('/', request.url), 301);
-  }
 
   const isPublicPage =
     !pathWithoutLocale.startsWith('/admin') &&

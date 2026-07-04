@@ -14,28 +14,28 @@
     "nav": {
       "items": [
         {
-          "title": "在线玩",
+          "title": "เล่น",
           "url": "/#play",
           "icon": "Gamepad2"
         },
         {
-          "title": "修复",
+          "title": "แก้ปัญหา",
           "icon": "Wrench",
           "children": [
             {
-              "title": "进房修复",
+              "title": "แก้การเชื่อมต่อ",
               "url": "/connection-fix",
               "target": "_self",
               "icon": "WifiOff"
             },
             {
-              "title": "FPS优化",
+              "title": "เพิ่ม FPS และแก้กระตุก",
               "url": "/fps-boost",
               "target": "_self",
               "icon": "Gauge"
             },
             {
-              "title": "公房避坑",
+              "title": "ล็อบบี้สาธารณะ",
               "url": "/public-lobby-guide",
               "target": "_self",
               "icon": "ShieldAlert"
@@ -43,29 +43,29 @@
           ]
         },
         {
-          "title": "指南",
+          "title": "คู่มือ",
           "icon": "BookOpen",
           "children": [
             {
-              "title": "朋友组队",
+              "title": "เล่นกับเพื่อน",
               "url": "/play-with-friends",
               "target": "_self",
               "icon": "UsersRound"
             },
             {
-              "title": "涂色指南",
+              "title": "คู่มือจับคู่สี",
               "url": "/color-matching",
               "target": "_self",
               "icon": "Palette"
             },
             {
-              "title": "伪装实验室",
+              "title": "แล็บพรางตัว",
               "url": "/camo-lab",
               "target": "_self",
               "icon": "Brush"
             },
             {
-              "title": ".art 地图图鉴",
+              "title": "แผนที่บน .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -73,12 +73,12 @@
           ]
         },
         {
-          "title": "工具",
+          "title": "เครื่องมือ",
           "url": "/tools",
           "icon": "Wrench"
         },
         {
-          "title": "X发言墙",
+          "title": "กำแพง X",
           "url": "/#x-wall",
           "icon": "MessageCircle"
         }
@@ -95,14 +95,14 @@
     "show_theme": false,
     "show_locale": true,
     "topbanner": {
-      "text": "先在线玩，再解决进房、FPS、朋友组队、涂色、工具和公房问题。"
+      "text": "เล่นก่อน แล้วค่อยแก้การเชื่อมต่อ FPS เพื่อน สี เครื่องมือ และล็อบบี้สาธารณะ"
     }
   },
   "footer": {
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "红砖墙风格的 Meccha Chameleon 实用开局中心：在线玩、进房修复、朋友组队、FPS 优化、涂色指南、工具风险、公房避坑和地图入口。",
+      "description": "ศูนย์เริ่มต้น Mecha Chameleon: เล่นออนไลน์ แก้การเชื่อมต่อ เล่นกับเพื่อน เพิ่ม FPS ฝึกสี ใช้เครื่องมือ และเปิดแผนที่",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -114,75 +114,75 @@
     "nav": {
       "items": [
         {
-          "title": "开始玩",
+          "title": "เริ่มเล่น",
           "children": [
             {
-              "title": "在线玩",
+              "title": "เล่น",
               "url": "/#play",
               "target": "_self"
             },
             {
-              "title": "新手指南",
+              "title": "คู่มือผู้เล่นใหม่",
               "url": "/new-player",
               "target": "_self"
             },
             {
-              "title": "朋友组队指南",
+              "title": "เล่นกับเพื่อน",
               "url": "/play-with-friends",
               "target": "_self"
             },
             {
-              "title": ".art 地图图鉴",
+              "title": "แผนที่บน .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank"
             }
           ]
         },
         {
-          "title": "问题解决",
+          "title": "แก้ปัญหา",
           "children": [
             {
-              "title": "进房 / Signing in 修复",
+              "title": "แก้การเชื่อมต่อ",
               "url": "/connection-fix",
               "target": "_self"
             },
             {
-              "title": "FPS 与卡顿修复",
+              "title": "เพิ่ม FPS และแก้กระตุก",
               "url": "/fps-boost",
               "target": "_self"
             },
             {
-              "title": "取色 / 涂色指南",
+              "title": "คู่มือจับคู่สี",
               "url": "/color-matching",
               "target": "_self"
             },
             {
-              "title": "公房生存指南",
+              "title": "ล็อบบี้สาธารณะ",
               "url": "/public-lobby-guide",
               "target": "_self"
             }
           ]
         },
         {
-          "title": "工具",
+          "title": "เครื่องมือ",
           "children": [
             {
-              "title": "Download Play Kit",
+              "title": "ดาวน์โหลด Play Kit",
               "url": "/tools",
               "target": "_self"
             },
             {
-              "title": "伪装实验室",
+              "title": "แล็บพรางตัว",
               "url": "/camo-lab",
               "target": "_self"
             },
             {
-              "title": "Download Tools - $7",
+              "title": "ดาวน์โหลดเครื่องมือ - $7",
               "url": "/#assistant",
               "target": "_self"
             },
             {
-              "title": "X发言墙",
+              "title": "กำแพง X",
               "url": "/#x-wall",
               "target": "_self"
             }
@@ -196,11 +196,11 @@
     "agreement": {
       "items": [
         {
-          "title": "隐私政策",
+          "title": "นโยบายความเป็นส่วนตัว",
           "url": "/privacy-policy"
         },
         {
-          "title": "服务条款",
+          "title": "ข้อกำหนดการใช้บริการ",
           "url": "/terms-of-service"
         }
       ]
