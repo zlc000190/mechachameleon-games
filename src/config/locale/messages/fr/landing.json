@@ -14,7 +14,7 @@
     "nav": {
       "items": [
         {
-          "title": "Play",
+          "title": "Jouer",
           "url": "/#play",
           "icon": "Gamepad2"
         },
@@ -23,19 +23,19 @@
           "icon": "Wrench",
           "children": [
             {
-              "title": "Correctif de connexion",
+              "title": "Corriger la connexion",
               "url": "/connection-fix",
               "target": "_self",
               "icon": "WifiOff"
             },
             {
-              "title": "Boost FPS",
+              "title": "Améliorer les FPS",
               "url": "/fps-boost",
               "target": "_self",
               "icon": "Gauge"
             },
             {
-              "title": "Public Lobbies",
+              "title": "Lobbies publics",
               "url": "/public-lobby-guide",
               "target": "_self",
               "icon": "ShieldAlert"
@@ -47,25 +47,25 @@
           "icon": "BookOpen",
           "children": [
             {
-              "title": "Play With Friends",
+              "title": "Jouer avec des amis",
               "url": "/play-with-friends",
               "target": "_self",
               "icon": "UsersRound"
             },
             {
-              "title": "Correspondance des couleurs",
+              "title": "Guide couleur",
               "url": "/color-matching",
               "target": "_self",
               "icon": "Palette"
             },
             {
-              "title": "Camo Lab",
+              "title": "Labo camo",
               "url": "/camo-lab",
               "target": "_self",
               "icon": "Brush"
             },
             {
-              "title": "Maps on .art",
+              "title": "Cartes sur .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -95,14 +95,14 @@
     "show_theme": false,
     "show_locale": true,
     "topbanner": {
-      "text": "Jouez d'abord. Résolvez ensuite la connexion, le FPS, les amis, les couleurs, les outils et les lobbies publics."
+      "text": "Joue d’abord. Ensuite corrige connexion, FPS, amis, peinture, outils et lobbies publics."
     }
   },
   "footer": {
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "Un hub de jeu en briques rouges et un solutionneur pratique pour les joueurs Meccha Chameleon : jouer en ligne, correctifs de connexion, jouer entre amis, booster le FPS, guide des couleurs, outils, survie en lobby public, et liens vers les cartes.",
+      "description": "Centre pratique Mecha Chameleon : jouer en ligne, corriger la connexion, jouer entre amis, améliorer les FPS, pratiquer les couleurs, utiliser les outils et ouvrir les cartes.",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -122,37 +122,37 @@
               "target": "_self"
             },
             {
-              "title": "New Player Guide",
+              "title": "Guide nouveau joueur",
               "url": "/new-player",
               "target": "_self"
             },
             {
-              "title": "How to Play with Friends",
+              "title": "Jouer avec des amis",
               "url": "/play-with-friends",
               "target": "_self"
             },
             {
-              "title": "Atlas des cartes sur .art",
+              "title": "Cartes sur .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank"
             }
           ]
         },
         {
-          "title": "Résolution de problèmes",
+          "title": "Dépannage",
           "children": [
             {
-              "title": "Correctif de connexion",
+              "title": "Corriger la connexion",
               "url": "/connection-fix",
               "target": "_self"
             },
             {
-              "title": "FPS Boost & Stutter Fix",
+              "title": "Améliorer les FPS",
               "url": "/fps-boost",
               "target": "_self"
             },
             {
-              "title": "Color Matching Guide",
+              "title": "Guide couleur",
               "url": "/color-matching",
               "target": "_self"
             },
@@ -167,17 +167,17 @@
           "title": "Outils",
           "children": [
             {
-              "title": "Download Play Kit",
+              "title": "Télécharger Play Kit",
               "url": "/tools",
               "target": "_self"
             },
             {
-              "title": "Camo Lab",
+              "title": "Labo camo",
               "url": "/camo-lab",
               "target": "_self"
             },
             {
-              "title": "Download Tools - $7",
+              "title": "Télécharger les outils - $7",
               "url": "/#assistant",
               "target": "_self"
             },
@@ -196,11 +196,11 @@
     "agreement": {
       "items": [
         {
-          "title": "Politique de confidentialité",
+          "title": "Confidentialité",
           "url": "/privacy-policy"
         },
         {
-          "title": "Conditions d'utilisation",
+          "title": "Conditions",
           "url": "/terms-of-service"
         }
       ]

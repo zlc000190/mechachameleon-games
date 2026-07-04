@@ -14,7 +14,7 @@
     "nav": {
       "items": [
         {
-          "title": "Play",
+          "title": "Jugar",
           "url": "/#play",
           "icon": "Gamepad2"
         },
@@ -29,13 +29,13 @@
               "icon": "WifiOff"
             },
             {
-              "title": "Aumentar FPS",
+              "title": "Aumentar FPS y quitar tirones",
               "url": "/fps-boost",
               "target": "_self",
               "icon": "Gauge"
             },
             {
-              "title": "Public Lobbies",
+              "title": "Lobbies públicos",
               "url": "/public-lobby-guide",
               "target": "_self",
               "icon": "ShieldAlert"
@@ -47,25 +47,25 @@
           "icon": "BookOpen",
           "children": [
             {
-              "title": "Play With Friends",
+              "title": "Jugar con amigos",
               "url": "/play-with-friends",
               "target": "_self",
               "icon": "UsersRound"
             },
             {
-              "title": "Coincidencia de color",
+              "title": "Guía de color",
               "url": "/color-matching",
               "target": "_self",
               "icon": "Palette"
             },
             {
-              "title": "Camo Lab",
+              "title": "Laboratorio camo",
               "url": "/camo-lab",
               "target": "_self",
               "icon": "Brush"
             },
             {
-              "title": "Maps on .art",
+              "title": "Mapas en .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank",
               "icon": "MapPinned"
@@ -102,7 +102,7 @@
     "id": "footer",
     "brand": {
       "title": "Mecha Chameleon Game",
-      "description": "Un centro de juego con muro de ladrillos rojos y solucionador de problemas prácticos para jugadores de Meccha Chameleon: jugar en línea, arreglar conexiones, jugar con amigos, optimizar FPS, guía de colores, herramientas, sobrevivir lobbies públicos y enlaces de mapas.",
+      "description": "Centro práctico de Mecha Chameleon: jugar online, arreglar conexión, jugar con amigos, mejorar FPS, practicar color, usar herramientas y abrir mapas.",
       "logo": {
         "src": "/logo.svg",
         "alt": "Mecha Chameleon Game",
@@ -122,17 +122,17 @@
               "target": "_self"
             },
             {
-              "title": "New Player Guide",
+              "title": "Guía para nuevos jugadores",
               "url": "/new-player",
               "target": "_self"
             },
             {
-              "title": "How to Play with Friends",
+              "title": "Jugar con amigos",
               "url": "/play-with-friends",
               "target": "_self"
             },
             {
-              "title": "Mapa atlas en .art",
+              "title": "Mapas en .art",
               "url": "https://mecchachameleon.art/maps",
               "target": "_blank"
             }
@@ -147,12 +147,12 @@
               "target": "_self"
             },
             {
-              "title": "FPS Boost & Stutter Fix",
+              "title": "Aumentar FPS y quitar tirones",
               "url": "/fps-boost",
               "target": "_self"
             },
             {
-              "title": "Color Matching Guide",
+              "title": "Guía de color",
               "url": "/color-matching",
               "target": "_self"
             },
@@ -167,17 +167,17 @@
           "title": "Herramientas",
           "children": [
             {
-              "title": "Download Play Kit",
+              "title": "Descargar Play Kit",
               "url": "/tools",
               "target": "_self"
             },
             {
-              "title": "Camo Lab",
+              "title": "Laboratorio camo",
               "url": "/camo-lab",
               "target": "_self"
             },
             {
-              "title": "Download Tools - $7",
+              "title": "Descargar herramientas - $7",
               "url": "/#assistant",
               "target": "_self"
             },

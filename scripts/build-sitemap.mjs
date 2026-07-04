@@ -20,6 +20,7 @@ const homepageLocales = [
   'es',
   'pt',
   'zh',
+  'zh-TW',
   'fr',
   'de',
   'nl',

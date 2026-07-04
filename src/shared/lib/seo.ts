@@ -80,6 +80,7 @@ export function getMetadata(
     }
 
     return {
+      metadataBase: new URL(envConfigs.app_url),
       title:
         passedMetadata.title ||
         translatedMetadata.title ||
@@ -125,8 +126,7 @@ export function getMetadata(
 const defaultMetadataKey = 'common.metadata';
 
 async function getTranslatedMetadata(metadataKey: string, locale: string) {
-  setRequestLocale(locale);
-  const t = await getTranslations(metadataKey);
+  const t = await getTranslations({ locale, namespace: metadataKey });
 
   return {
     title: t.has('title') ? t('title') : '',

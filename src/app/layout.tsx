@@ -5,7 +5,13 @@ import { headers } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 
 import { envConfigs } from '@/config';
-import { homepageSeoLocales, isRtl, seoLocales } from '@/config/locale';
+import {
+  defaultLocale,
+  homepageSeoLocales,
+  isRtl,
+  locales,
+  seoLocales,
+} from '@/config/locale';
 import { UtmCapture } from '@/shared/blocks/common/utm-capture';
 import { getAllConfigs } from '@/shared/models/config';
 import { getAdsService } from '@/shared/services/ads';
@@ -18,9 +24,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const locale = await getLocale();
-  setRequestLocale(locale);
-
   const isProduction = process.env.NODE_ENV === 'production';
   const isDebug = process.env.NEXT_PUBLIC_DEBUG === 'true';
 
@@ -39,6 +42,12 @@ export default async function RootLayout({
   } catch {
     currentPath = '/';
   }
+  const pathLocale = currentPath.split('/')[1];
+  const locale = (locales as readonly string[]).includes(pathLocale)
+    ? pathLocale
+    : await getLocale();
+  setRequestLocale(locale || defaultLocale);
+
   const strippedPath = currentPath.replace(
     /^\/(en|zh|ru|it|fr|de|es|pt|ja|ko|ar|th|vi|zh-TW|nl)(?=\/|$)/,
     ''

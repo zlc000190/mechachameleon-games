@@ -275,6 +275,77 @@ const vi: HomeCopy = {
   },
 };
 
+const zhTW: HomeCopy = {
+  ...zh,
+  eyebrow: '免費瀏覽器遊戲 · 無需下載',
+  title: 'Mecha Chameleon Game 免費線上玩',
+  description:
+    '面向 Mecha Chameleon / Meccha Chameleon 遊戲搜尋意圖的入口。打開頁面就能先玩，再看操作、模式、連線、FPS 和地圖路線。',
+  startPlaying: '開始遊戲',
+  controlsCta: '查看操作',
+  problemEyebrow: '實用開局中心',
+  problemTitle: '能不能玩、怎麼玩、怎麼不卡、怎麼塗得像。',
+  problemBody:
+    '首屏讓玩家直接開玩；下面把常見問題整理成實用解法。深度地圖圖鑑繼續放在 mecchachameleon.art。',
+  controlsEyebrow: '快速操作',
+  controlsTitle: '先會動，再開始藏。',
+  controlsBody: '把操作放在遊戲下方，玩家不用跳到攻略站也能立刻開局。',
+  mapsCta: '需要完整地圖？去 .art',
+  modesEyebrow: '遊戲模式',
+  modesTitle: '讓 .games 成為真正的遊戲入口。',
+  assistantEyebrow: '玩家 Play Kit',
+  assistantTitle: '更快開局、更穩隱藏、更順暢連線。',
+  assistantBody:
+    '把開局清單、連線修復、FPS 設定、偽裝練習和路線卡放在一個包裡，減少找資料的時間。',
+  priceEyebrow: '一次性價格',
+  priceNote: '一次性',
+  checkoutLabel: '取得 Play Kit - $7',
+  seeInside: '看看裡面有什麼',
+  routesEyebrow: '快速路線',
+  routesTitle: '不用讀完整攻略，也能先選一張圖。',
+  routesBody:
+    '這裡保留少量地圖預覽服務遊戲體驗；完整 50 個隱藏點圖鑑放在 mecchachameleon.art。',
+  faqTitle: '常見問題',
+  disclaimer:
+    '免責聲明：本站為粉絲製作的非官方網站，不隸屬於 LEMORION，也不代表任何官方合作。',
+  modes: [
+    ['經典試玩', '直接進入躲貓貓循環，先感受塗色、隱藏和搜尋的核心節奏。'],
+    ['練習路線', '一邊玩上方視窗，一邊看下方地圖預覽，提前練習真實對局的隱藏路線。'],
+    ['速通熱身', '快速開始，選一張圖，只練一條穩定隱藏路線，不先讀長攻略。'],
+    ['朋友組隊', '把頁面發給朋友，開自訂房間，大家加入時也能看到操作說明。'],
+  ],
+  controls: [
+    ['移動', 'WASD / 搖桿'],
+    ['瞄準', '滑鼠 / 觸控拖曳'],
+    ['塗裝', '長按主要動作'],
+    ['取色', '吸管 / 右鍵動作'],
+    ['定格', '姿勢鎖定'],
+    ['搜尋', '手電筒掃描'],
+  ],
+  faqs: [
+    ['這個站和 mecchachameleon.art 一樣嗎？', '不一樣。mechachameleon.games 是純遊戲入口：線上玩、操作、模式和快速路線；mecchachameleon.art 更偏地圖攻略和完整資料。'],
+    ['可以免費線上玩 Mecha Chameleon 嗎？', '可以。用上方瀏覽器視窗快速試玩，無需下載；之後再看操作說明和地圖路線，為完整版 PC 對局做準備。'],
+    ['為什麼頁面裡有 Mecha、Mech、Meccha 幾種寫法？', '玩家會用多種拼法搜尋。原遊戲名是 Meccha Chameleon，這個 .games 站同時覆蓋 Mecha Chameleon 和 Mech Chameleon 的遊戲搜尋意圖。'],
+    ['這是官網嗎？', '不是。本站是粉絲製作的遊戲入口，不隸屬於 LEMORION，也不代表官方合作關係。'],
+  ],
+  problemCards: {
+    'Play online': { title: '線上玩', body: '把瀏覽器遊戲放在第一位。先進入遊戲，再看攻略。' },
+    'Can’t join?': { title: '進不去房間？', body: 'Signing in 卡住、進 lobby 失敗、斷線，先檢查 DNS、VPN、IPv6 和防火牆。' },
+    'Playing with friends?': { title: '和朋友一起玩？', body: '私房、房間碼、伺服器標籤、語音和創意工坊地圖準備。' },
+    'Low FPS?': { title: 'FPS 低？', body: '安全的畫面設定、卡頓修復、錄製設定和風險提醒。' },
+    'Bad at painting?': { title: '塗色不準？', body: '練習取色、刷子限制、陰影、高光和姿勢紀律。' },
+    'Get Play Kit': { title: '取得 Play Kit', body: '一次性購買的小工具包，幫你更快開局、修復連線、提前準備路線卡。' },
+    'Public lobby problems?': { title: '公房問題？', body: '被踢、亂射、旁觀者報點、作弊和私房規則建議。' },
+    'Need maps?': { title: '需要地圖？', body: '完整隱藏點圖鑑和 50 張地圖截圖在 mecchachameleon.art。' },
+  },
+  toolCards: {
+    '10-min start': { title: '10 分鐘開局', risk: '更快開始', body: '操作、塗色循環、隱藏者/搜尋者基礎和首局錯誤清單。' },
+    'Lobby fix': { title: '連線修復', risk: '少等一點', body: '私房、伺服器標籤、房間碼和朋友加入前的地圖檢查。' },
+    'FPS boost': { title: '提升 FPS', risk: '更流暢', body: '低配、直播、錄製和穩定幀率的可回退設定。' },
+    'Camo practice': { title: '偽裝練習', risk: '藏得更好', body: '顏色匹配、陰影調整和開局前路線卡準備。' },
+  },
+};
+
 const localized: Record<string, Partial<HomeCopy>> = {
   es: {
     eyebrow: 'Juego gratis en navegador · sin descarga',
@@ -474,6 +545,31 @@ const sharedFaqs: Partial<Record<string, Pair[]>> = {
   ar: [['هل هذا نفس موقع mecchachameleon.art؟', 'لا. .games هو مدخل اللعب، أما .art فهو دليل وخرائط أعمق.'], ['هل يمكن لعب Mecha Chameleon مجانًا على الإنترنت؟', 'نعم. استخدم نافذة اللعبة في المتصفح بدون تحميل ثم راجع التحكم والمسارات.'], ['لماذا تظهر Mecha وMech وMeccha؟', 'اللاعبون يبحثون بكل هذه الصيغ. الاسم الأصلي هو Meccha Chameleon.'], ['هل هذا رسمي؟', 'لا. هذا مركز غير رسمي من صنع المعجبين وغير تابع لـ LEMORION.']],
 };
 
+const problemRows: Record<string, Array<[string, string, string]>> = {
+  es: [['Play online', 'Jugar online', 'El juego del navegador es la primera acción: entra a jugar antes de leer.'], ['Can’t join?', '¿No puedes entrar?', 'Signing in bloqueado, lobby fallido, desconexiones, DNS/VPN/IPv6.'], ['Playing with friends?', '¿Juegas con amigos?', 'Sala privada, código, región, voz y mapas listos antes de invitar.'], ['Low FPS?', '¿FPS bajos?', 'Ajustes seguros para menos tirones, streaming y equipos modestos.'], ['Bad at painting?', '¿Pintas mal?', 'Practica cuentagotas, sombras, brillo y postura para camuflarte mejor.'], ['Get Play Kit', 'Obtener Play Kit', 'Un paquete de inicio para abrir partida, arreglar lobby y preparar rutas.'], ['Public lobby problems?', '¿Problemas en públicos?', 'Kicks, disparos al azar, espectadores, trampas y reglas de sala privada.'], ['Need maps?', '¿Necesitas mapas?', 'El atlas completo de 50 escondites está en mecchachameleon.art.']],
+  pt: [['Play online', 'Jogar online', 'O jogo no navegador vem primeiro: jogue antes de ler.'], ['Can’t join?', 'Não consegue entrar?', 'Signing in travado, lobby falhando, quedas, DNS/VPN/IPv6.'], ['Playing with friends?', 'Jogando com amigos?', 'Sala privada, código, região, voz e mapas prontos antes do convite.'], ['Low FPS?', 'FPS baixo?', 'Ajustes seguros para menos travadas, stream e PCs fracos.'], ['Bad at painting?', 'Pintura ruim?', 'Treine conta-gotas, sombras, brilho e postura para camuflar melhor.'], ['Get Play Kit', 'Pegar Play Kit', 'Pacote de início para jogar, corrigir lobby e preparar rotas.'], ['Public lobby problems?', 'Problemas em lobbies públicos?', 'Kicks, tiros aleatórios, espectadores, cheats e regras de sala privada.'], ['Need maps?', 'Precisa de mapas?', 'O atlas completo com 50 esconderijos está em mecchachameleon.art.']],
+  fr: [['Play online', 'Jouer en ligne', 'Le jeu navigateur d’abord : joue avant de lire.'], ['Can’t join?', 'Impossible de rejoindre ?', 'Signing in bloqué, lobby raté, déconnexions, DNS/VPN/IPv6.'], ['Playing with friends?', 'Avec des amis ?', 'Salle privée, code, région, voix et cartes prêts avant l’invitation.'], ['Low FPS?', 'FPS bas ?', 'Réglages sûrs pour moins de saccades, stream et petites machines.'], ['Bad at painting?', 'Peinture difficile ?', 'Travaille pipette, ombres, reflets et posture pour mieux te camoufler.'], ['Get Play Kit', 'Obtenir le Play Kit', 'Pack de départ pour lancer, corriger le lobby et préparer des routes.'], ['Public lobby problems?', 'Soucis en lobby public ?', 'Kicks, tirs au hasard, spectateurs, triche et règles de salle privée.'], ['Need maps?', 'Besoin de cartes ?', 'L’atlas complet de 50 cachettes est sur mecchachameleon.art.']],
+  de: [['Play online', 'Online spielen', 'Das Browsergame zuerst: spielen, dann lesen.'], ['Can’t join?', 'Join klappt nicht?', 'Signing in hängt, Lobbyfehler, Disconnects, DNS/VPN/IPv6.'], ['Playing with friends?', 'Mit Freunden?', 'Privatraum, Code, Region, Voice und Karten vor dem Invite klären.'], ['Low FPS?', 'Niedrige FPS?', 'Sichere Settings gegen Ruckeln, für Stream und schwächere PCs.'], ['Bad at painting?', 'Tarnung schwer?', 'Pipette, Schatten, Highlights und Pose für bessere Tarnung üben.'], ['Get Play Kit', 'Play Kit holen', 'Startpaket für schnelleres Spielen, Lobby-Fixes und Routenkarten.'], ['Public lobby problems?', 'Public-Lobby-Probleme?', 'Kicks, Random Shots, Spectator-Calls, Cheats und Privatraumregeln.'], ['Need maps?', 'Karten nötig?', 'Der komplette Atlas mit 50 Verstecken ist auf mecchachameleon.art.']],
+  nl: [['Play online', 'Online spelen', 'Eerst het browsergame: speel voordat je gaat lezen.'], ['Can’t join?', 'Kun je niet joinen?', 'Signing in blijft hangen, lobby faalt, disconnects, DNS/VPN/IPv6.'], ['Playing with friends?', 'Met vrienden?', 'Privékamer, code, regio, voice en maps klaarzetten.'], ['Low FPS?', 'Lage FPS?', 'Veilige instellingen voor minder hapering, stream en zwakkere pc’s.'], ['Bad at painting?', 'Slecht met verf?', 'Oefen pipet, schaduw, highlights en pose voor betere camo.'], ['Get Play Kit', 'Play Kit krijgen', 'Startpakket voor sneller starten, lobbyfixes en routekaarten.'], ['Public lobby problems?', 'Public lobby problemen?', 'Kicks, random shots, spectators, cheats en privékamerregels.'], ['Need maps?', 'Maps nodig?', 'De volledige atlas met 50 verstopplekken staat op mecchachameleon.art.']],
+  ja: [['Play online', 'オンラインで遊ぶ', 'まずブラウザゲームを開いて、読まずに先に遊べます。'], ['Can’t join?', '参加できない？', 'Signing in停止、ロビー失敗、切断、DNS/VPN/IPv6を確認。'], ['Playing with friends?', '友達と遊ぶ？', 'プライベート部屋、コード、地域、VC、マップを先に準備。'], ['Low FPS?', 'FPSが低い？', '低スペックや配信向けに戻せる安全な設定。'], ['Bad at painting?', '色合わせが苦手？', 'スポイト、影、ハイライト、姿勢を練習して迷彩を安定。'], ['Get Play Kit', 'Play Kit を入手', '素早い開始、ロビー修正、ルートカードをまとめた小パック。'], ['Public lobby problems?', '公開ロビーの問題？', 'キック、乱射、観戦報告、チート、プライベート部屋のルール。'], ['Need maps?', 'マップが必要？', '50か所の隠れ場所 atlas は mecchachameleon.art にあります。']],
+  ko: [['Play online', '온라인 플레이', '브라우저 게임을 먼저 열고, 읽기 전에 바로 플레이하세요.'], ['Can’t join?', '입장 안 되나요?', 'Signing in 멈춤, 로비 실패, 연결 끊김, DNS/VPN/IPv6 확인.'], ['Playing with friends?', '친구와 플레이?', '비공개 방, 코드, 지역, 음성, 맵을 초대 전에 준비하세요.'], ['Low FPS?', 'FPS 낮음?', '저사양, 방송, 녹화에 맞춘 되돌릴 수 있는 안전 설정.'], ['Bad at painting?', '색칠이 어렵나요?', '스포이트, 그림자, 하이라이트, 자세를 연습해 위장을 안정화하세요.'], ['Get Play Kit', 'Play Kit 받기', '빠른 시작, 로비 수정, 루트카드를 모은 작은 패키지.'], ['Public lobby problems?', '공개 로비 문제?', '킥, 무작위 사격, 관전자 콜, 치트, 비공개 방 규칙.'], ['Need maps?', '맵이 필요?', '50개 은신처 atlas는 mecchachameleon.art에 있습니다.']],
+  th: [['Play online', 'เล่นออนไลน์', 'เปิดเกมบนเบราว์เซอร์ก่อน เล่นก่อนอ่านคู่มือ.'], ['Can’t join?', 'เข้าห้องไม่ได้?', 'Signing in ค้าง ล็อบบี้ล้ม เหตุหลุด DNS/VPN/IPv6.'], ['Playing with friends?', 'เล่นกับเพื่อน?', 'เตรียมห้องส่วนตัว โค้ด โซน Voice และแผนที่ก่อนชวน.'], ['Low FPS?', 'FPS ต่ำ?', 'ตั้งค่าปลอดภัยเพื่อลดกระตุก สำหรับเครื่องอ่อนและสตรีม.'], ['Bad at painting?', 'พรางสีไม่เนียน?', 'ฝึกดูดสี เงา ไฮไลต์ และท่ายืนให้ซ่อนเนียนขึ้น.'], ['Get Play Kit', 'รับ Play Kit', 'แพ็กเริ่มเร็ว แก้ล็อบบี้ และเตรียมการ์ดเส้นทาง.'], ['Public lobby problems?', 'ปัญหาล็อบบี้สาธารณะ?', 'โดนเตะ ยิงมั่ว คนดูบอกตำแหน่ง สูตรโกง และกฎห้องส่วนตัว.'], ['Need maps?', 'ต้องการแผนที่?', 'atlas จุดซ่อน 50 จุดอยู่ที่ mecchachameleon.art.']],
+  ru: [['Play online', 'Играть онлайн', 'Сначала браузерная игра: играй до чтения гайда.'], ['Can’t join?', 'Не получается войти?', 'Signing in завис, лобби не пускает, дисконнекты, DNS/VPN/IPv6.'], ['Playing with friends?', 'Играешь с друзьями?', 'Приватная комната, код, регион, голос и карты до приглашения.'], ['Low FPS?', 'Низкий FPS?', 'Безопасные настройки против фризов, для стрима и слабых ПК.'], ['Bad at painting?', 'Плохо красишься?', 'Тренируй пипетку, тени, блики и позу для лучшего камуфляжа.'], ['Get Play Kit', 'Получить Play Kit', 'Стартовый пакет для быстрого входа, фиксов лобби и маршрутов.'], ['Public lobby problems?', 'Проблемы публичных лобби?', 'Кики, случайная стрельба, зрители, читы и правила приватной комнаты.'], ['Need maps?', 'Нужны карты?', 'Полный атлас 50 укрытий находится на mecchachameleon.art.']],
+  ar: [['Play online', 'العب على الإنترنت', 'افتح لعبة المتصفح أولًا والعب قبل قراءة الدليل.'], ['Can’t join?', 'لا يمكنك الدخول؟', 'تعليق Signing in أو فشل اللوبي أو الانقطاع: افحص DNS/VPN/IPv6.'], ['Playing with friends?', 'تلعب مع الأصدقاء؟', 'جهّز الغرفة الخاصة والكود والمنطقة والصوت والخرائط قبل الدعوة.'], ['Low FPS?', 'FPS منخفض؟', 'إعدادات آمنة لتقليل التقطيع والبث والأجهزة الضعيفة.'], ['Bad at painting?', 'التمويه صعب؟', 'تدرّب على القطارة والظل واللمعان والوضعية لتمويه أفضل.'], ['Get Play Kit', 'احصل على Play Kit', 'حزمة بداية للعب أسرع وإصلاح اللوبي وتجهيز بطاقات المسار.'], ['Public lobby problems?', 'مشاكل الردهات العامة؟', 'طرد، إطلاق عشوائي، نداءات المشاهدين، غش وقواعد الغرف الخاصة.'], ['Need maps?', 'تحتاج خرائط؟', 'الأطلس الكامل لـ 50 مكان اختباء موجود على mecchachameleon.art.']],
+};
+
+const toolRows: Record<string, Array<[string, string, string, string]>> = {
+  es: [['10-min start', 'Inicio 10 min', 'Más rápido', 'Controles, pintura, roles y errores de primera partida en una lista.'], ['Lobby fix', 'Arreglo lobby', 'Menos espera', 'Sala privada, región, código y mapas antes de invitar.'], ['FPS boost', 'Aumentar FPS', 'Más fluido', 'Ajustes reversibles para PC débil, stream y grabación.'], ['Camo practice', 'Practicar camo', 'Mejor escondite', 'Color, sombras y tarjeta de ruta antes de la ronda.']],
+  ja: [['10-min start', '10分スタート', '早く開始', '操作、ペイント、役割、初回ミスを1枚に。'], ['Lobby fix', 'ロビー修正', '待ち時間減', 'プライベート部屋、地域、コード、マップ確認。'], ['FPS boost', 'FPS改善', '滑らか', '低スペック、配信、録画向けに戻せる設定。'], ['Camo practice', '迷彩練習', '隠れやすい', '色、影、ルートカードをラウンド前に準備。']],
+  ar: [['10-min start', 'بداية 10 دقائق', 'أسرع', 'تحكم وتلوين وأدوار وأخطاء الجولة الأولى في قائمة واحدة.'], ['Lobby fix', 'إصلاح اللوبي', 'انتظار أقل', 'غرفة خاصة ومنطقة وكود وفحص الخرائط قبل الدعوة.'], ['FPS boost', 'تحسين FPS', 'أنعم', 'إعدادات قابلة للتراجع للأجهزة الضعيفة والبث والتسجيل.'], ['Camo practice', 'تدريب التمويه', 'اختباء أفضل', 'لون وظلال وبطاقة مسار قبل الجولة.']],
+};
+
+const rowsToProblemCards = (rows?: Array<[string, string, string]>) =>
+  Object.fromEntries((rows ?? []).map(([key, title, body]) => [key, { title, body }]));
+
+const rowsToToolCards = (rows?: Array<[string, string, string, string]>) =>
+  Object.fromEntries((rows ?? []).map(([key, title, risk, body]) => [key, { title, risk, body }]));
+
 const sharedControls: Partial<Record<string, Pair[]>> = {
   es: [['Mover', 'WASD / joystick'], ['Apuntar', 'Ratón / arrastrar táctil'], ['Pintar', 'Mantener acción principal'], ['Tomar color', 'Cuentagotas / acción derecha'], ['Congelar', 'Bloqueo de pose'], ['Buscar', 'Escaneo con linterna']],
   pt: [['Mover', 'WASD / joystick'], ['Mirar', 'Mouse / arrastar no toque'], ['Pintar', 'Segurar ação principal'], ['Pegar cor', 'Conta-gotas / ação direita'], ['Congelar', 'Travar pose'], ['Procurar', 'Varredura com lanterna']],
@@ -496,6 +592,7 @@ const defaultToolCardCopy = (locale: string) =>
 export const copyByLocale: Record<string, HomeCopy> = {
   en,
   zh,
+  'zh-TW': zhTW,
   vi,
   ...Object.fromEntries(
     Object.entries(localized).map(([locale, copy]) => [
@@ -506,8 +603,8 @@ export const copyByLocale: Record<string, HomeCopy> = {
         modes: sharedModes[locale] ?? en.modes,
         controls: sharedControls[locale] ?? en.controls,
         faqs: sharedFaqs[locale] ?? en.faqs,
-        problemCards: {},
-        toolCards: {},
+        problemCards: rowsToProblemCards(problemRows[locale]),
+        toolCards: rowsToToolCards(toolRows[locale]),
       },
     ])
   ),

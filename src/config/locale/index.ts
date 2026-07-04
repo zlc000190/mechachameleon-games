@@ -93,6 +93,7 @@ export const homepageSeoLocales: Locale[] = [
   'es',
   'pt',
   'zh',
+  'zh-TW',
   'fr',
   'de',
   'nl',
