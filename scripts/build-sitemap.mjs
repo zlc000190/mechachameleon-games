@@ -1,9 +1,8 @@
 // Build-time static sitemap generator.
 //
-// SEO rule for .games (2026-06-27 stop):
-//   - New site stabilizes English first.
-//   - Do not expose translated/fallback locales in sitemap or hreflang until
-//     target-country keyword research + native rewrites justify promotion.
+// SEO rule for .games:
+//   - Expose localized homepages first.
+//   - Keep deep guide pages conservative until they have full native rewrites.
 //   - x-default points to the default-locale (en) URL.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,11 +13,25 @@ const root = path.resolve(__dirname, '..');
 const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
-// SEO-approved locales.
-const allLocales = ['en', 'vi'];
+// SEO-approved homepage locales.
+const homepageLocales = [
+  'en',
+  'vi',
+  'es',
+  'pt',
+  'zh',
+  'fr',
+  'de',
+  'nl',
+  'ja',
+  'ko',
+  'th',
+  'ru',
+  'ar',
+];
 
-// Only native, reviewed locales get <url> entries.
-const indexableLocales = ['en', 'vi'];
+// Only native, reviewed deep-page locales get non-home <url> entries.
+const deepPageLocales = ['en', 'vi'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 
@@ -44,11 +57,13 @@ const marketingPages = [
 ];
 
 for (const page of marketingPages) {
-  for (const loc of indexableLocales) {
+  const pageLocales = page.path === '/' ? homepageLocales : deepPageLocales;
+  const alternateLocales = page.path === '/' ? homepageLocales : deepPageLocales;
+  for (const loc of pageLocales) {
     entries.push({
       loc: locUrl(loc, page.path),
       alternates: Object.fromEntries(
-        allLocales.map((l) => [l, locUrl(l, page.path)])
+        alternateLocales.map((l) => [l, locUrl(l, page.path)])
       ),
       'x-default': locUrl(defaultLocale, page.path),
       lastmod: now,
@@ -87,5 +102,5 @@ fs.mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf-8');
 console.log(`Wrote ${outPath} (${entries.length} entries, ${xml.length} bytes)`);
-console.log(`Indexable locales in <url>: ${indexableLocales.join(', ')}`);
-console.log(`Hreflang-only locales: ${allLocales.filter((l) => !indexableLocales.includes(l)).join(', ')}`);
+console.log(`Homepage locales in <url>: ${homepageLocales.join(', ')}`);
+console.log(`Deep-page locales in <url>: ${deepPageLocales.join(', ')}`);

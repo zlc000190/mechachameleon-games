@@ -103,7 +103,7 @@ export function getMetadata(
         title,
         description,
         siteName: appName,
-        images: [imageUrl.toString()],
+        images: [{ url: imageUrl.toString(), alt: title }],
       },
 
       twitter: {

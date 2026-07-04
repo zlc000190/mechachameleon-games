@@ -87,9 +87,24 @@ export const localeMessagesPaths = [
   'pages/updates',
 ];
 
-// New-site SEO stop: .games should stabilize English first.
-// Do not expose translated/fallback locales to Google until target-country
-// keyword research + native rewrites justify promotion.
+export const homepageSeoLocales: Locale[] = [
+  'en',
+  'vi',
+  'es',
+  'pt',
+  'zh',
+  'fr',
+  'de',
+  'nl',
+  'ja',
+  'ko',
+  'th',
+  'ru',
+  'ar',
+];
+
+// New-site SEO stop: .games exposes native localized homepages first.
+// Deep problem-guide pages stay conservative until they receive full native rewrites.
 export const fullyTranslatedLocales: Locale[] = ['en', 'vi'];
 export const seoLocales: Locale[] = ['en', 'vi'];
 

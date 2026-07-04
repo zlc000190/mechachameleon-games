@@ -23,13 +23,6 @@ export async function proxy(request: NextRequest) {
     ? pathname.slice(locale.length + 1)
     : pathname;
 
-  // Stop broad translated-locale exposure while the new .games site stabilizes.
-  // Vietnamese is currently promoted because traffic demand is active and the
-  // homepage has native copy.
-  if (isValidLocale && locale !== defaultLocale && locale !== 'vi') {
-    return NextResponse.redirect(new URL('/', request.url), 301);
-  }
-
   const isPublicPage =
     !pathWithoutLocale.startsWith('/admin') &&
     !pathWithoutLocale.startsWith('/settings') &&

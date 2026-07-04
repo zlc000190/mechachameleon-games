@@ -5,7 +5,7 @@ import { headers } from 'next/headers';
 import NextTopLoader from 'nextjs-toploader';
 
 import { envConfigs } from '@/config';
-import { isRtl, seoLocales } from '@/config/locale';
+import { homepageSeoLocales, isRtl, seoLocales } from '@/config/locale';
 import { UtmCapture } from '@/shared/blocks/common/utm-capture';
 import { getAllConfigs } from '@/shared/models/config';
 import { getAdsService } from '@/shared/services/ads';
@@ -43,10 +43,12 @@ export default async function RootLayout({
     /^\/(en|zh|ru|it|fr|de|es|pt|ja|ko|ar|th|vi|zh-TW|nl)(?=\/|$)/,
     ''
   ) || '/';
+  const altPath = strippedPath === '/' ? '' : strippedPath;
+  const alternatesLocales = strippedPath === '/' ? homepageSeoLocales : seoLocales;
   const altUrl = (loc: string) =>
     loc === 'en'
-      ? `${appUrl}${strippedPath === '/' ? '/' : strippedPath}`
-      : `${appUrl}/${loc}${strippedPath === '/' ? '/' : strippedPath}`;
+      ? `${appUrl}${altPath}`
+      : `${appUrl}/${loc}${altPath}`;
 
   // ads components
   let adsMetaTags = null;
@@ -122,10 +124,10 @@ export default async function RootLayout({
           }}
         />
 
-        {/* hreflang alternates — only SEO-approved locales are emitted while .games stabilizes. */}
-        {seoLocales ? (
+        {/* hreflang alternates: broad locale coverage on homepage, conservative on deep pages. */}
+        {alternatesLocales ? (
           <>
-            {seoLocales.map((loc) => (
+            {alternatesLocales.map((loc) => (
               <link
                 key={loc}
                 rel="alternate"

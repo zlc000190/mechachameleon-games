@@ -3,25 +3,267 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mechachameleon.games</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
   </url>
   <url>
     <loc>https://mechachameleon.games/vi</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
     <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/es</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/pt</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/zh</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/fr</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/de</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/nl</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/ja</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/ko</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/th</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/ru</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
+  </url>
+  <url>
+    <loc>https://mechachameleon.games/ar</loc>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://mechachameleon.games/vi"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://mechachameleon.games/es"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://mechachameleon.games/pt"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mechachameleon.games/zh"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mechachameleon.games/fr"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mechachameleon.games/de"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://mechachameleon.games/nl"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mechachameleon.games/ja"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://mechachameleon.games/ko"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://mechachameleon.games/th"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mechachameleon.games/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mechachameleon.games/ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mechachameleon.games"/>
   </url>
   <url>
     <loc>https://mechachameleon.games/new-player</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/new-player"/>
@@ -30,7 +272,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/new-player</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/new-player"/>
@@ -39,7 +281,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/connection-fix</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/connection-fix"/>
@@ -48,7 +290,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/connection-fix</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/connection-fix"/>
@@ -57,7 +299,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/play-with-friends</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/play-with-friends"/>
@@ -66,7 +308,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/play-with-friends</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/play-with-friends"/>
@@ -75,7 +317,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/fps-boost</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/fps-boost"/>
@@ -84,7 +326,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/fps-boost</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/fps-boost"/>
@@ -93,7 +335,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/color-matching</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/color-matching"/>
@@ -102,7 +344,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/color-matching</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/color-matching"/>
@@ -111,7 +353,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/public-lobby-guide</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/public-lobby-guide"/>
@@ -120,7 +362,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/public-lobby-guide</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/public-lobby-guide"/>
@@ -129,7 +371,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/tools</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/tools"/>
@@ -138,7 +380,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/tools</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/tools"/>
@@ -147,7 +389,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/camo-lab</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/camo-lab"/>
@@ -156,7 +398,7 @@
   </url>
   <url>
     <loc>https://mechachameleon.games/vi/camo-lab</loc>
-    <lastmod>2026-07-01T12:09:24.518Z</lastmod>
+    <lastmod>2026-07-04T01:35:56.106Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://mechachameleon.games/camo-lab"/>
