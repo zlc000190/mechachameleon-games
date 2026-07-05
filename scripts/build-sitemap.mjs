@@ -7,32 +7,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { getSupportedLocalesForPath } from '../src/core/i18n/page-locales.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
-// SEO-approved homepage locales.
-const homepageLocales = [
-  'en',
-  'vi',
-  'es',
-  'pt',
-  'zh',
-  'zh-TW',
-  'fr',
-  'de',
-  'nl',
-  'ja',
-  'ko',
-  'th',
-  'ru',
-  'ar',
-];
-
-// Only native, reviewed deep-page locales get non-home <url> entries.
-const deepPageLocales = ['en', 'vi'];
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 
@@ -58,8 +39,8 @@ const marketingPages = [
 ];
 
 for (const page of marketingPages) {
-  const pageLocales = page.path === '/' ? homepageLocales : deepPageLocales;
-  const alternateLocales = page.path === '/' ? homepageLocales : deepPageLocales;
+  const pageLocales = getSupportedLocalesForPath(page.path);
+  const alternateLocales = getSupportedLocalesForPath(page.path);
   for (const loc of pageLocales) {
     entries.push({
       loc: locUrl(loc, page.path),
@@ -103,5 +84,5 @@ fs.mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf-8');
 console.log(`Wrote ${outPath} (${entries.length} entries, ${xml.length} bytes)`);
-console.log(`Homepage locales in <url>: ${homepageLocales.join(', ')}`);
-console.log(`Deep-page locales in <url>: ${deepPageLocales.join(', ')}`);
+console.log(`Homepage locales in <url>: ${getSupportedLocalesForPath('/').join(', ')}`);
+console.log(`Deep-page locales in <url>: ${getSupportedLocalesForPath('/tools').join(', ')}`);

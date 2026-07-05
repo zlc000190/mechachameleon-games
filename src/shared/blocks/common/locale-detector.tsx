@@ -6,6 +6,7 @@ import { useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
 import { normalizeLocalePathname } from '@/core/i18n/pathname';
+import { getSupportedLocalesForPath } from '@/core/i18n/page-locales.js';
 import { usePathname, useRouter } from '@/core/i18n/navigation';
 import { envConfigs } from '@/config';
 import { localeNames, locales } from '@/config/locale';
@@ -27,6 +28,7 @@ export function LocaleDetector() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const availableLocales = getSupportedLocalesForPath(pathname ?? '/');
   const [dismissed, setDismissedState] = useState<boolean>(() => {
     if (typeof window === 'undefined') {
       return false;
@@ -85,6 +87,7 @@ export function LocaleDetector() {
   const showBanner =
     envConfigs.locale_detect_enabled === 'true' &&
     Boolean(browserLocale) &&
+    (browserLocale ? availableLocales.includes(browserLocale) : false) &&
     browserLocale !== currentLocale &&
     !dismissed &&
     !preferredLocale;
@@ -97,21 +100,7 @@ export function LocaleDetector() {
 
     hasCheckedRef.current = true;
 
-    // Get browser locale
-    // If user has previously clicked to switch locale, auto-switch to that preference
-    if (
-      preferredLocale &&
-      preferredLocale !== currentLocale &&
-      isSupportedLocale(preferredLocale)
-    ) {
-      const query = searchParams?.toString?.() ?? '';
-      const targetPath = normalizeLocalePathname(pathname);
-      const href = query ? `${targetPath}?${query}` : targetPath;
-      router.replace(href, { locale: preferredLocale });
-      cacheSet(PREFERRED_LOCALE_KEY, preferredLocale);
-      return;
-    }
-  }, [currentLocale, pathname, preferredLocale, router, searchParams]);
+  }, []);
 
   // Adjust header and layout spacing when banner visibility changes
   useEffect(() => {

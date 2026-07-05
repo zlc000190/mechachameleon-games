@@ -18,6 +18,12 @@ import {
 } from '@/shared/blocks/meccha/home-l10n';
 import { XCommunityWall } from '@/shared/blocks/meccha/x-community-wall';
 import { PlayKitCheckoutButton } from '@/shared/blocks/meccha/play-kit-checkout-button';
+import {
+  getPlayKitCompareAtLabel,
+  getPlayKitOfferLabel,
+  getPlayKitOfferNote,
+  getPlayKitPriceLabel,
+} from '@/shared/lib/play-kit';
 
 export const revalidate = 3600;
 
@@ -41,6 +47,10 @@ export default async function LandingPage({
   const activeProblemCards = getLocalizedProblemCards(locale);
   const activeToolsRadarCards = getLocalizedToolsRadarCards(locale);
   const artUrl = 'https://mecchachameleon.art/maps';
+  const salePriceLabel = getPlayKitPriceLabel();
+  const compareAtPriceLabel = getPlayKitCompareAtLabel();
+  const offerLabel = getPlayKitOfferLabel(locale);
+  const offerNote = getPlayKitOfferNote(locale);
 
   return (
     <main className="brick-wall text-ink-900 min-h-screen">
@@ -216,18 +226,24 @@ export default async function LandingPage({
               <div className="text-xs font-semibold uppercase tracking-widest text-brick-600">
                 {copy.priceEyebrow}
               </div>
-              <div className="mt-1 flex items-end gap-3">
-                <span className="text-4xl font-bold text-ink-900">$7</span>
-                <span className="pb-1 text-sm text-ink-500">
-                  {copy.priceNote}
+              <div className="mt-3 inline-flex rounded-full bg-[#fff3c9] px-3 py-1 text-xs font-semibold text-[#8B6A18]">
+                {offerLabel}
+              </div>
+              <div className="mt-3 flex flex-wrap items-end gap-3">
+                <span className="text-4xl font-bold text-ink-900">
+                  {salePriceLabel}
                 </span>
+                <span className="text-lg text-ink-400 line-through">
+                  {compareAtPriceLabel}
+                </span>
+                <span className="pb-1 text-sm text-ink-500">{offerNote}</span>
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <div className="w-full sm:w-auto">
                 <PlayKitCheckoutButton
-                  label={copy.checkoutLabel}
-                  priceLabel="$7"
+                  label={copy.checkoutLabel.replace('$7', salePriceLabel)}
+                  priceLabel={salePriceLabel}
                 />
               </div>
               <a

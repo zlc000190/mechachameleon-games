@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
 import { normalizeLocalePathname } from '@/core/i18n/pathname';
+import { getSupportedLocalesForPath } from '@/core/i18n/page-locales.js';
 import { usePathname, useRouter } from '@/core/i18n/navigation';
 import { localeNames } from '@/config/locale';
 import { Button } from '@/shared/components/ui/button';
@@ -25,6 +26,7 @@ export function LocaleSelector({
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const availableLocales = getSupportedLocalesForPath(pathname ?? '/');
 
   const handleSwitchLanguage = (value: string) => {
     if (value !== currentLocale) {
@@ -54,7 +56,7 @@ export function LocaleSelector({
         )}
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {Object.keys(localeNames).map((locale) => (
+        {availableLocales.map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => handleSwitchLanguage(locale)}

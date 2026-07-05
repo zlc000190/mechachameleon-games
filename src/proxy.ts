@@ -4,6 +4,11 @@ import createIntlMiddleware from 'next-intl/middleware';
 
 import { defaultLocale, locales } from '@/config/locale';
 import { routing } from '@/core/i18n/config';
+import {
+  isLocaleSupportedForPath,
+  normalizePublicPath,
+  stripLocalePrefix,
+} from '@/core/i18n/page-locales.js';
 
 const intlMiddleware = createIntlMiddleware(routing);
 
@@ -19,9 +24,16 @@ export async function proxy(request: NextRequest) {
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
   const isValidLocale = (locales as readonly string[]).includes(locale);
-  const pathWithoutLocale = isValidLocale
-    ? pathname.slice(locale.length + 1)
-    : pathname;
+  const pathWithoutLocale = stripLocalePrefix(pathname);
+
+  if (isValidLocale && !isLocaleSupportedForPath(locale, pathname)) {
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.pathname =
+      normalizePublicPath(pathWithoutLocale) === '/'
+        ? '/'
+        : normalizePublicPath(pathWithoutLocale);
+    return NextResponse.redirect(canonicalUrl, 301);
+  }
 
   const isPublicPage =
     !pathWithoutLocale.startsWith('/admin') &&
