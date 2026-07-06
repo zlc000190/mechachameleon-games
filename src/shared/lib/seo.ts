@@ -79,8 +79,10 @@ export function getMetadata(
       appName = envConfigs.app_name || '';
     }
 
+    const trailing = (value: string) => (value.endsWith('/') ? value : `${value}/`);
+
     return {
-      metadataBase: new URL(envConfigs.app_url),
+      metadataBase: new URL(trailing(envConfigs.app_url)),
       title:
         passedMetadata.title ||
         translatedMetadata.title ||
@@ -94,7 +96,7 @@ export function getMetadata(
         translatedMetadata.keywords ||
         defaultMetadata.keywords,
       alternates: {
-        canonical: canonicalUrl,
+        canonical: trailing(canonicalUrl),
       },
 
       openGraph: {
@@ -112,7 +114,7 @@ export function getMetadata(
         title,
         description,
         images: [imageUrl.toString()],
-        site: envConfigs.app_url,
+        site: trailing(envConfigs.app_url),
       },
 
       robots: {
@@ -120,7 +122,7 @@ export function getMetadata(
         follow: options.noIndex ? false : true,
       },
     };
-  };
+    }
 }
 
 const defaultMetadataKey = 'common.metadata';
@@ -156,7 +158,7 @@ export async function getCanonicalUrl(canonicalUrl: string, locale: string) {
 
     canonicalUrl = `${appUrl}${
       !locale || locale === defaultLocale ? '' : `/${locale}`
-    }${pathPart}`;
+    }${pathPart || '/'}`;
   }
 
   return canonicalUrl;

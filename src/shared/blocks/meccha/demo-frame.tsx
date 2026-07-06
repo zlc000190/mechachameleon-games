@@ -88,6 +88,8 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
   const [activeId, setActiveId] = useState<Demo['id']>('easy');
   const [showHint, setShowHint] = useState(true);
   const [easyFrameState, setEasyFrameState] = useState<'loading' | 'ready' | 'fallback'>('loading');
+  const [isDesktopPlay, setIsDesktopPlay] = useState(false);
+  const [isLandscape, setIsLandscape] = useState(false);
   const activeDemo = demos.find((demo) => demo.id === activeId) ?? demos[0];
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -95,6 +97,32 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
     const t = setTimeout(() => setShowHint(false), 9000);
     return () => clearTimeout(t);
   }, [activeId]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px) and (pointer: fine)');
+    const update = () => setIsDesktopPlay(mediaQuery.matches);
+    const raf = window.requestAnimationFrame(update);
+
+    mediaQuery.addEventListener('change', update);
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      mediaQuery.removeEventListener('change', update);
+    };
+  }, []);
+
+  useEffect(() => {
+    const landscapeQuery = window.matchMedia('(orientation: landscape)');
+    const update = () => setIsLandscape(landscapeQuery.matches);
+    const raf = window.requestAnimationFrame(update);
+
+    landscapeQuery.addEventListener('change', update);
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      landscapeQuery.removeEventListener('change', update);
+    };
+  }, []);
 
   useEffect(() => {
     if (activeDemo.id !== 'easy') return;
@@ -113,7 +141,6 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
         finish('ready');
       }
     };
-
     const timeoutId = window.setTimeout(() => {
       if (!finished) {
         setEasyFrameState((current) => (current === 'ready' ? current : 'fallback'));
@@ -142,6 +169,160 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
 
     iframeRef.current?.focus();
   };
+
+  const mobileAspect = isLandscape ? 'aspect-[16/9]' : 'aspect-[9/16]';
+  const mobileFrameSize = isLandscape
+    ? 'max-h-[78vh] max-w-[78vw]'
+    : 'max-h-[62vh] max-w-[92vw]';
+  const mobileFrameRadius = isLandscape ? 'rounded-2xl' : 'rounded-3xl';
+
+  if (!isDesktopPlay) {
+    const showMobileFallback = activeDemo.id === 'easy' && easyFrameState === 'fallback';
+    const showMobileReady = activeDemo.id === 'easy' && easyFrameState === 'ready';
+
+    return (
+      <div id="play" className="scroll-mt-24">
+        <div className="overflow-hidden rounded-lg border border-[#efc8d3] bg-gradient-to-br from-[#fff7c8] via-[#ffd2e1] to-[#cdefff] shadow-[0_18px_60px_rgba(134,103,124,0.18)]">
+          <div className="border-b border-white/70 px-4 py-3 text-[#2f2730]">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <div className="text-sm font-semibold">
+                  {zh ? 'Mecha Chameleon 在线游戏' : 'Mecha Chameleon Game'} · {activeDemo.label}
+                </div>
+                <div className="mt-1 text-xs text-[#4C3B35]">
+                  {activeDemo.title} via {activeDemo.source}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={openFallback}
+                className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-[#ff6f9a] px-4 text-sm font-semibold text-white transition hover:bg-[#e95a88]"
+              >
+                <ExternalLink className="h-4 w-4" />
+                {zh ? '在新标签里玩' : 'Play in new tab'}
+              </button>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Game mode">
+              {demos.map((demo) => (
+                <button
+                  key={demo.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeDemo.id === demo.id}
+                  onClick={() => {
+                    setActiveId(demo.id);
+                    setShowHint(true);
+                  }}
+                  className={`min-h-9 rounded-md border px-4 text-sm font-semibold transition ${
+                    activeDemo.id === demo.id
+                      ? 'border-[#29211D] bg-[#29211D] text-white'
+                      : 'border-[#efc8d3] bg-white text-[#29211D] hover:bg-[#fff7c8]'
+                  }`}
+                >
+                  {demo.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex min-h-[58vh] items-center justify-center bg-[#1f1230] p-4 sm:p-6">
+            {showMobileReady ? (
+              <div
+                className={`relative w-full ${mobileFrameSize} ${mobileAspect} ${mobileFrameRadius} overflow-hidden bg-black shadow-[0_18px_60px_rgba(0,0,0,0.35)]`}
+              >
+                <iframe
+                  key={`${activeDemo.id}-mobile-ready`}
+                  ref={iframeRef}
+                  title={`${activeDemo.title} browser game`}
+                  src={activeDemo.src}
+                  is={activeDemo.id === 'easy' ? 'x-frame-bypass' : undefined}
+                  className="absolute inset-0 h-full w-full"
+                  loading="eager"
+                  allow="autoplay; fullscreen; gamepad; pointer-lock; encrypted-media; web-share"
+                  allowFullScreen
+                  scrolling="no"
+                  referrerPolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-pointer-lock allow-top-navigation allow-presentation"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-black/70 to-transparent p-2">
+                  <button
+                    type="button"
+                    onClick={openFallback}
+                    className="pointer-events-auto inline-flex min-h-9 items-center gap-1.5 rounded-md border border-white/30 bg-white/95 px-3 text-xs font-semibold text-[#29211D] hover:bg-white"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    {zh ? '放大到新标签' : 'Open in new tab'}
+                  </button>
+                </div>
+              </div>
+            ) : showMobileFallback ? (
+              <button
+                type="button"
+                onClick={openFallback}
+                className="flex h-64 w-64 flex-col items-center justify-center gap-4 rounded-full bg-[#ff6f9a] text-white shadow-[0_18px_60px_rgba(0,0,0,0.35)] transition hover:bg-[#e95a88] sm:h-72 sm:w-72"
+              >
+                <Gamepad2 className="h-16 w-16" />
+                <span className="px-6 text-center text-2xl font-bold leading-tight sm:text-3xl">
+                  {zh ? '在新标签里玩' : 'Click to Play in New Tab'}
+                </span>
+                <span className="text-sm font-medium opacity-90">
+                  {activeDemo.label} · {activeDemo.title}
+                </span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={openFallback}
+                className={`relative w-full ${mobileFrameSize} ${mobileAspect} ${mobileFrameRadius} overflow-hidden bg-black/70 shadow-[0_18px_60px_rgba(0,0,0,0.35)]`}
+              >
+                <iframe
+                  key={`${activeDemo.id}-mobile-loading`}
+                  ref={iframeRef}
+                  title={`${activeDemo.title} browser game`}
+                  src={activeDemo.src}
+                  is={activeDemo.id === 'easy' ? 'x-frame-bypass' : undefined}
+                  className="absolute inset-0 h-full w-full"
+                  loading="eager"
+                  allow="autoplay; fullscreen; gamepad; pointer-lock; encrypted-media; web-share"
+                  allowFullScreen
+                  scrolling="no"
+                  referrerPolicy="origin"
+                  sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-pointer-lock allow-top-navigation allow-presentation"
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/45 via-black/15 to-black/55">
+                  <div className="pointer-events-auto flex max-w-xs flex-col items-center gap-3 rounded-2xl border border-white/20 bg-white/95 px-6 py-5 text-center text-sm text-[#29211D] shadow-2xl">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#ff6f9a] text-white">
+                      <span className="h-3 w-3 animate-pulse rounded-full bg-white" />
+                    </div>
+                    <div className="font-semibold">
+                      {zh ? '正在尝试轻量内嵌加载…' : 'Trying a lightweight embedded load…'}
+                    </div>
+                    <div className="text-xs text-[#4C3B35]">
+                      {zh ? '卡住的话，直接点下方按钮。' : 'If it stalls, tap the button below.'}
+                    </div>
+                    <span className="mt-1 inline-flex min-h-9 items-center gap-1.5 rounded-md bg-[#ff6f9a] px-4 text-xs font-semibold text-white">
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      {zh ? '在新标签里玩' : 'Play in new tab'}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            )}
+          </div>
+
+          <div className="border-t border-white/70 bg-white/60 px-4 py-3 text-xs leading-5 text-[#4C3B35]">
+            {zh
+              ? '手机首屏会按屏幕比例缩放游戏窗口；点屏幕可直接全屏玩，加载不动时显示居中的“新标签打开”按钮。'
+              : 'On mobile the embedded game is scaled to fit the screen. Tap the play button to open the full experience in a new tab if the embed stalls.'}
+            <div className="mt-2">
+              {zh ? zhNotes[activeDemo.id] : activeDemo.note}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div id="play" className="scroll-mt-24">
