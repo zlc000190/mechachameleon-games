@@ -24,8 +24,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isProduction = process.env.NODE_ENV === 'production';
-  const isDebug = process.env.NEXT_PUBLIC_DEBUG === 'true';
+  // ads components are loaded in every runtime except local dev, so that
+  // preview/prod/edge environments all expose the AdSense meta + script.
+  const isDev = process.env.NODE_ENV === 'development';
+  const enableThirdPartyTags = !isDev;
 
   // app url
   const appUrl = envConfigs.app_url || '';
@@ -79,7 +81,7 @@ export default async function RootLayout({
   let customerServiceHeadScripts = null;
   let customerServiceBodyScripts = null;
 
-  if (isProduction || isDebug) {
+  if (enableThirdPartyTags) {
     const configs = await getAllConfigs();
 
     const [adsService, analyticsService, affiliateService, customerService] =
@@ -118,6 +120,14 @@ export default async function RootLayout({
         <link rel="icon" href={envConfigs.app_favicon} />
         <link rel="alternate icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Google AdSense — required by AdSense policy; renders on every page so the crawler can verify. */}
+        <meta name="google-adsense-account" content="ca-pub-5387615281666707" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5387615281666707"
+          crossOrigin="anonymous"
+        />
 
         {/* Google tag (gtag.js) */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SX4C6C134"></script>
