@@ -1,16 +1,11 @@
-import { locales } from '@/config/locale';
-
-const LOCALE_PREFIX_PATTERN = new RegExp(
-  `^/(${[...locales].join('|')})(?=/|$)`
-);
+import { stripLocalePrefix } from '@/core/i18n/page-locales.js';
 
 export function normalizeLocalePathname(pathname: string | null | undefined) {
   if (!pathname || pathname === '/') {
     return '/';
   }
 
-  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
-  const strippedPath = normalizedPath.replace(LOCALE_PREFIX_PATTERN, '');
+  const strippedPath = stripLocalePrefix(pathname);
 
   return strippedPath || '/';
 }

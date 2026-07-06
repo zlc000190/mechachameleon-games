@@ -7,11 +7,13 @@ import NextTopLoader from 'nextjs-toploader';
 import { envConfigs } from '@/config';
 import {
   defaultLocale,
-  homepageSeoLocales,
   isRtl,
   locales,
-  seoLocales,
 } from '@/config/locale';
+import {
+  getSupportedLocalesForPath,
+  stripLocalePrefix,
+} from '@/core/i18n/page-locales.js';
 import { UtmCapture } from '@/shared/blocks/common/utm-capture';
 import { getAllConfigs } from '@/shared/models/config';
 import { getAdsService } from '@/shared/services/ads';
@@ -50,12 +52,9 @@ export default async function RootLayout({
     : await getLocale();
   setRequestLocale(locale || defaultLocale);
 
-  const strippedPath = currentPath.replace(
-    /^\/(en|zh|ru|it|fr|de|es|pt|ja|ko|ar|th|vi|zh-TW|nl)(?=\/|$)/,
-    ''
-  ) || '/';
+  const strippedPath = stripLocalePrefix(currentPath);
   const altPath = strippedPath === '/' ? '' : strippedPath;
-  const alternatesLocales = strippedPath === '/' ? homepageSeoLocales : seoLocales;
+  const alternatesLocales = getSupportedLocalesForPath(currentPath);
   const altUrl = (loc: string) =>
     loc === 'en'
       ? `${appUrl}${altPath}`
@@ -143,7 +142,7 @@ export default async function RootLayout({
           }}
         />
 
-        {/* hreflang alternates: broad locale coverage on homepage, conservative on deep pages. */}
+        {/* hreflang alternates: only emit locales whose page copy is actually supported. */}
         {alternatesLocales ? (
           <>
             {alternatesLocales.map((loc) => (

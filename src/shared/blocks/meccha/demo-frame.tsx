@@ -277,7 +277,7 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
           <a
             href={activeDemo.openInNewTab}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="nofollow noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-md border border-mortar bg-white px-3 py-1.5 font-semibold text-ink-900 hover:bg-brick-50"
           >
             <ExternalLink className="h-3.5 w-3.5" />

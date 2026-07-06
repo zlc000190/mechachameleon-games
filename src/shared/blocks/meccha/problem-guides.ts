@@ -627,11 +627,11 @@ export const problemGuides: Record<string, GuidePage> = {
       '把开局清单、联机修复、FPS 建议、伪装练习和路线卡放在一个包里，减少找资料的时间，让你更快进入对局。',
     viDescription:
       'Một bộ gọn cho người muốn vào Meccha Chameleon nhanh hơn: checklist vào nhanh, sửa lobby, FPS notes, luyện ngụy trang và route card để mở trước mỗi trận.',
-    primaryCta: { label: 'Get Play Kit - $7', href: '/tools?download=play-kit-7#download-tools' },
+    primaryCta: { label: 'Get Play Kit - $1.99', href: '/tools?download=play-kit-199#download-tools' },
     secondaryCta: { label: 'See what is inside', href: '#quick-checks' },
     quickAnswers: [
       ['What do I get?', 'A compact play kit: fast-start checklist, lobby fixes, FPS notes, camouflage drills, and route cards you can open before a match.'],
-      ['Why pay $7?', 'It saves the time you would spend hunting fixes across tabs and gives you one pack to keep nearby every session.'],
+      ['Why pay $1.99?', 'It is a low-friction launch offer that saves the time you would spend hunting fixes across tabs and gives you one pack to keep nearby every session.'],
       ['Is this a cheat?', 'No. It is a player convenience kit with guides, checklists, and practice helpers. It does not attach to the game process.'],
       ['Who is it for?', 'New players, returning players, friend groups, and streamers who want smoother starts and fewer failed lobbies.'],
     ],
@@ -660,7 +660,7 @@ export const problemGuides: Record<string, GuidePage> = {
         title: 'A small pack with clear day-to-day value',
         body: 'The one-time price is low because the pack is meant to save setup time every session. If you keep using it, it keeps paying back in less friction and fewer failed starts.',
         bullets: [
-          'One-time $7 pricing keeps the barrier low while covering a useful session pack.',
+          'The $1.99 launch offer keeps the barrier low while testing real player demand for a useful session pack.',
           'The CTA points to a single download instead of sending visitors away to scattered links.',
           'Return visits mean the pack is helping in real sessions, not just sounding nice in theory.',
           'The pack is meant to become a quick pre-match habit, not a one-off read.',
@@ -678,11 +678,11 @@ export const problemGuides: Record<string, GuidePage> = {
     ],
     vi: {
       eyebrow: 'Play Kit',
-      primaryCta: { label: 'Nhận Play Kit - $7', href: '/tools?download=play-kit-7#download-tools' },
+      primaryCta: { label: 'Nhận Play Kit - $1.99', href: '/tools?download=play-kit-199#download-tools' },
       secondaryCta: { label: 'Xem bên trong có gì', href: '#quick-checks' },
       quickAnswers: [
         ['Nhận được gì?', 'Một play kit gọn: checklist vào nhanh, sửa lobby, FPS notes, bài luyện ngụy trang và route card để mở trước mỗi trận.'],
-        ['Vì sao $7?', 'Nó tiết kiệm thời gian tìm lung tung và cho bạn một pack để mở trước mỗi buổi chơi.'],
+        ['Vì sao $1.99?', 'Đây là mức ưu đãi mở đầu thấp để bạn dễ thử, đồng thời giúp bạn đỡ mất thời gian tìm lung tung trước mỗi buổi chơi.'],
         ['Có phải cheat không?', 'Không. Đây là bộ tiện ích cho người chơi với guide, checklist và luyện tập. Nó không gắn vào tiến trình game.'],
         ['Dành cho ai?', 'Người mới, người chơi quay lại, nhóm bạn và streamer muốn khởi đầu mượt hơn và ít lỗi lobby hơn.'],
       ],
@@ -711,7 +711,7 @@ export const problemGuides: Record<string, GuidePage> = {
           title: 'Một mức giá nhỏ cho thứ bạn sẽ mở lại nhiều lần',
           body: 'Giá một lần được giữ thấp để bạn dễ thử. Nếu pack hữu ích, nó sẽ giúp bạn tiết kiệm thời gian setup ở nhiều buổi chơi chứ không chỉ một lần.',
           bullets: [
-            'Giá một lần $7 đủ thấp để dễ thử mà vẫn có giá trị thực.',
+            'Mức ưu đãi $1.99 trong 7 ngày đủ thấp để dễ thử mà vẫn có giá trị thực.',
             'CTA tập trung vào một bản tải duy nhất thay vì đẩy người dùng đi vòng.',
             'Pack này hữu ích nhất khi bạn mở lại trước mỗi buổi chơi.',
             'Nó được làm để giảm ma sát, không phải để bạn đọc xong rồi cất đi.',

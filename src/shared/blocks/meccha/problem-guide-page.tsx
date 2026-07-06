@@ -1,6 +1,12 @@
 import Image from 'next/image';
 import { ArrowLeft, ExternalLink, ShieldAlert, Sparkles } from 'lucide-react';
 
+import {
+  getPlayKitCompareAtLabel,
+  getPlayKitOfferLabel,
+  getPlayKitOfferNote,
+  getPlayKitPriceLabel,
+} from '@/shared/lib/play-kit';
 import { guideText, type GuidePage } from './problem-guides';
 import { PlayKitCheckoutButton } from './play-kit-checkout-button';
 
@@ -15,6 +21,10 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
   const Icon = guide.icon;
   const copy = guideText(guide, locale);
   const isToolsPage = guide.slug === 'tools';
+  const salePriceLabel = getPlayKitPriceLabel();
+  const compareAtPriceLabel = getPlayKitCompareAtLabel();
+  const offerLabel = getPlayKitOfferLabel(locale);
+  const offerNote = getPlayKitOfferNote(locale);
 
   return (
     <main className="min-h-screen bg-[#fff7f1] text-[#29211D]">
@@ -116,14 +126,25 @@ export function ProblemGuidePage({ guide, locale }: { guide: GuidePage; locale: 
                     <div className="text-sm text-white/60">
                       {locale === 'vi' ? 'Giá một lần' : zh ? '一次性价格' : 'One-time price'}
                     </div>
-                    <div className="mt-1 text-5xl font-bold">$7</div>
+                    <div className="mt-3 inline-flex rounded-full bg-[#39ff88]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[#39ff88]">
+                      {offerLabel}
+                    </div>
+                    <div className="mt-3 flex flex-wrap items-end gap-3">
+                      <span className="text-5xl font-bold">{salePriceLabel}</span>
+                      <span className="text-xl text-white/45 line-through">
+                        {compareAtPriceLabel}
+                      </span>
+                    </div>
                   </div>
                   <Sparkles className="h-8 w-8 text-[#39ff88]" />
                 </div>
+                <p className="mt-3 text-xs leading-5 text-white/55">
+                  {offerNote}
+                </p>
                 <div className="mt-5">
                   <PlayKitCheckoutButton
-                    label={locale === 'vi' ? 'Nhận Play Kit - $7' : zh ? '获取 Play Kit - $7' : 'Get Play Kit - $7'}
-                    priceLabel="$7"
+                    label={locale === 'vi' ? `Nhận Play Kit - ${salePriceLabel}` : zh ? `获取 Play Kit - ${salePriceLabel}` : `Get Play Kit - ${salePriceLabel}`}
+                    priceLabel={salePriceLabel}
                   />
                 </div>
                 <p className="mt-3 text-xs leading-5 text-white/55">
