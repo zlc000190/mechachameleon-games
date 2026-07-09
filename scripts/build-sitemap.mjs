@@ -17,9 +17,24 @@ const base = envUrl.replace(/\/$/, '');
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 
+// Locale homepage canonical uses a trailing slash (/ja/) so that the GSC
+// PageRank split between /ja and /ja/ collapses onto one URL. Deep pages
+// (/tools, /new-player, ...) intentionally stay without a trailing slash
+// because they currently rank well that way and we did NOT add a 301 for them.
+//
+// The default-locale root "/" stays without a trailing slash — it's already
+// ranking stably that way and forcing a canonical flip would risk its own
+// split cycle. Only NON-default locale homepages (/ja, /ru, /ar, ...) flip
+// to the with-slash form because that's where the GSC split is acute.
 const locUrl = (locale, routePath) => {
   const normalizedPath =
     routePath === '/' ? '' : routePath.replace(/\/+$/, '');
+  const isLocaleHomepage = normalizedPath === ''; // routePath === '/'
+  if (isLocaleHomepage) {
+    if (locale === defaultLocale) return `${base}`; // bare domain, no slash
+    return `${base}/${locale}/`; // non-default locale homepage: with slash
+  }
+  // Deep page: keep the no-trailing-slash form to avoid a fresh split.
   if (locale === defaultLocale) return `${base}${normalizedPath}`;
   return `${base}/${locale}${normalizedPath}`;
 };

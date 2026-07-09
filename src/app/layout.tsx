@@ -55,10 +55,19 @@ export default async function RootLayout({
   const strippedPath = stripLocalePrefix(currentPath);
   const altPath = strippedPath === '/' ? '' : strippedPath;
   const alternatesLocales = getSupportedLocalesForPath(currentPath);
-  const altUrl = (loc: string) =>
-    loc === 'en'
+  // Non-default locale homepages use a trailing slash (/ja/) to match the
+  // canonical URL produced by next.config.mjs redirects(). Deep pages and the
+  // default-locale root keep no trailing slash to avoid introducing a fresh
+  // PageRank split.
+  const altUrl = (loc: string) => {
+    const isLocaleHomepage = altPath === '';
+    if (isLocaleHomepage && loc !== 'en') {
+      return `${appUrl}/${loc}/`;
+    }
+    return loc === 'en'
       ? `${appUrl}${altPath}`
       : `${appUrl}/${loc}${altPath}`;
+  };
 
   // ads components
   let adsMetaTags = null;
