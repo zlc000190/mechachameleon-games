@@ -30,34 +30,7 @@ const nextConfig = {
     ],
   },
   async redirects() {
-    // Locale homepage canonical: force every locale prefix WITHOUT a trailing
-    // slash to 301-redirect to the WITH-slash version. This consolidates the
-    // PageRank split between /ja and /ja/ that GSC shows (e.g. /ja pos 6.1 +
-    // /ja/ pos 4.8 -> merge into /ja/ at top 3).
-    //
-    // We deliberately do NOT redirect the bare root "/" because the canonical
-    // is the no-slash form, and we do NOT touch deep pages (/tools,
-    // /new-player, etc.) because they currently rank well without a trailing
-    // slash and re-canonicalising them risks a fresh split cycle.
-    //
-    // NOTE: Next.js redirects() supports a `regex` source type since 14.x that
-    // lets us anchor the match exactly with ^...$ — path-to-regexp source
-    // strings can't express "match the locale segment but not when a slash
-    // follows it" precisely enough without catching /japan, /james, etc.
-    const localePrefixes = [
-      'en', 'vi', 'es', 'pt', 'zh', 'zh-TW', 'fr', 'de',
-      'nl', 'ja', 'ko', 'th', 'ru', 'ar',
-    ];
-    const alt = localePrefixes.join('|');
-    return [
-      {
-        // ^/(locale)$  — exact, no trailing slash
-        source: `/(${alt})$`,
-        destination: '/$1/',
-        permanent: true, // -> 301
-        regex: true,
-      },
-    ];
+    return [];
   },
   async headers() {
     return [
