@@ -67,9 +67,7 @@ const nextConfig = {
     // Disable mdxRs in container builds to avoid the Rust crate cold-start
     // cost on Linux Docker runners (Dokploy uses Docker images built by
     // GitHub Actions). The JS MDX parser is slower per file but stable.
-    ...(process.env.VERCEL || process.env.CI
-      ? {}
-      : { mdxRs: true }),
+    ...(process.env.VERCEL || process.env.CI ? {} : { mdxRs: true }),
   },
   reactCompiler: true,
 };

@@ -63,7 +63,8 @@ const demos: Demo[] = [
 const zhNotes: Record<Demo['id'], string> = {
   easy: EASY_STANDBY_NOTE_ZH,
   hard: 'Hard 使用 CrazyGames 的 Hide N Seek iframe。广告加载卡住时，用新标签打开。',
-  social: 'Social 使用偏朋友组队体验的 hide-and-seek 浏览器游戏，适合社交玩法搜索。',
+  social:
+    'Social 使用偏朋友组队体验的 hide-and-seek 浏览器游戏，适合社交玩法搜索。',
 };
 
 export function DemoFrame({ locale = 'en' }: { locale?: string }) {
@@ -84,28 +85,33 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
 
   return (
     <div id="play" className="scroll-mt-24">
-      <div className="overflow-hidden rounded-lg border border-mortar/70 bg-paper/94 shadow-[0_18px_60px_rgba(42,19,10,0.22)]">
-        <div className="border-b border-mortar/70 px-4 py-3 text-ink-900">
+      <div className="border-mortar/70 bg-paper/94 overflow-hidden rounded-lg border shadow-[0_18px_60px_rgba(42,19,10,0.22)]">
+        <div className="border-mortar/70 text-ink-900 border-b px-4 py-3">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
             <div>
               <div className="text-sm font-semibold">
-                {zh ? 'Mecha Chameleon 在线游戏' : 'Mecha Chameleon Game'} · {activeDemo.label}
+                {zh ? 'Mecha Chameleon 在线游戏' : 'Mecha Chameleon Game'} ·{' '}
+                {activeDemo.label}
               </div>
-              <div className="mt-1 text-xs text-ink-500">
+              <div className="text-ink-500 mt-1 text-xs">
                 {activeDemo.title} via {activeDemo.source}
               </div>
             </div>
             <button
               type="button"
               onClick={handlePrimaryAction}
-              className="inline-flex min-h-9 w-fit items-center gap-2 rounded-md bg-brick-500 px-4 text-sm font-semibold text-white transition hover:bg-brick-700"
+              className="bg-brick-500 hover:bg-brick-700 inline-flex min-h-9 w-fit items-center gap-2 rounded-md px-4 text-sm font-semibold text-white transition"
             >
               <Gamepad2 className="h-4 w-4" />
               {zh ? '点击开始' : 'Click to Play'}
             </button>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2" role="tablist" aria-label="Game mode">
+          <div
+            className="mt-4 flex flex-wrap gap-2"
+            role="tablist"
+            aria-label="Game mode"
+          >
             {demos.map((demo) => (
               <button
                 key={demo.id}
@@ -119,19 +125,21 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
                 className={`min-h-9 rounded-md border px-4 text-sm font-semibold transition ${
                   activeDemo.id === demo.id
                     ? 'border-ink-900 bg-ink-900 text-white'
-                    : 'border-mortar bg-white text-ink-900 hover:bg-brick-50'
+                    : 'border-mortar text-ink-900 hover:bg-brick-50 bg-white'
                 }`}
               >
                 {demo.label}
               </button>
             ))}
           </div>
-          <p className="mt-3 text-xs leading-5 text-ink-500">
+          <p className="text-ink-500 mt-3 text-xs leading-5">
             {zh ? zhNotes[activeDemo.id] : activeDemo.note}
           </p>
         </div>
 
-        <div className={`relative w-full overflow-hidden bg-brick-900 ${activeDemo.ratio}`}>
+        <div
+          className={`bg-brick-900 relative w-full overflow-hidden ${activeDemo.ratio}`}
+        >
           <iframe
             key={activeDemo.id}
             ref={iframeRef}
@@ -151,16 +159,20 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
                 <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
                 <div>
                   <div className="font-semibold">
-                    {zh ? '如果 iframe 加载卡住，点击下方新标签打开。' : 'If the iframe splash sticks, open the game in a new tab.'}
+                    {zh
+                      ? '如果 iframe 加载卡住，点击下方新标签打开。'
+                      : 'If the iframe splash sticks, open the game in a new tab.'}
                   </div>
                   <div className="mt-1 text-xs text-amber-900/80">
-                    {zh ? '第三方游戏源，非官方 Meccha Chameleon。' : 'Third-party game source, not the official Meccha Chameleon.'}
+                    {zh
+                      ? '第三方游戏源，非官方 Meccha Chameleon。'
+                      : 'Third-party game source, not the official Meccha Chameleon.'}
                   </div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setShowHint(false)}
-                  className="-mr-1 -mt-1 rounded p-1 text-amber-700 hover:bg-amber-200/60"
+                  className="-mt-1 -mr-1 rounded p-1 text-amber-700 hover:bg-amber-200/60"
                   aria-label="Dismiss hint"
                 >
                   ×
@@ -170,13 +182,17 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
           ) : null}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-mortar/70 bg-paper/90 px-4 py-3 text-xs text-ink-500">
-          <span>{zh ? '第三方游戏源直接嵌入，无需跳转。' : 'Third-party source embedded directly, no redirect required.'}</span>
+        <div className="border-mortar/70 bg-paper/90 text-ink-500 flex flex-wrap items-center justify-between gap-3 border-t px-4 py-3 text-xs">
+          <span>
+            {zh
+              ? '第三方游戏源直接嵌入，无需跳转。'
+              : 'Third-party source embedded directly, no redirect required.'}
+          </span>
           <a
             href={activeDemo.openInNewTab}
             target="_blank"
             rel="nofollow noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-mortar bg-white px-3 py-1.5 font-semibold text-ink-900 hover:bg-brick-50"
+            className="border-mortar text-ink-900 hover:bg-brick-50 inline-flex items-center gap-1.5 rounded-md border bg-white px-3 py-1.5 font-semibold"
           >
             <ExternalLink className="h-3.5 w-3.5" />
             {zh ? `打开 ${activeDemo.label}` : `Open ${activeDemo.title}`}
