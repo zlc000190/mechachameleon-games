@@ -78,10 +78,6 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
     return () => clearTimeout(t);
   }, [activeId]);
 
-  const openFallback = () => {
-    window.open(activeDemo.openInNewTab, '_blank', 'noopener,noreferrer');
-  };
-
   const handlePrimaryAction = () => {
     iframeRef.current?.focus();
   };
