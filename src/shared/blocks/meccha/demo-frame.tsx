@@ -14,27 +14,29 @@ type Demo = {
   openInNewTab: string;
 };
 
-// While the native Meccha Chameleon browser build is in development, the
-// "easy" slot embeds a same-genre hide-and-seek from GameDistribution (maze
-// cover + timer + seeker tag). The previous iframe pointed directly at
-// chameleon-game.com using x-frame-bypass; that direct embed is now retired.
+const SHARED_GAME_URL =
+  process.env.NEXT_PUBLIC_SHARED_GAME_URL ||
+  'https://pub-8954980549be475f97e5a9810a809587.r2.dev/index.html';
+
+// The primary slot embeds our own shared static game build. Host that build on
+// a neutral CDN/R2 subdomain, then let .art and .games wrap it with different
+// page copy, titles, screenshots, and internal links.
 const EASY_STANDBY_NOTE_EN =
-  'Playing Hide N Seek! while our native Meccha Chameleon build is in development. Same hide-and-seek genre - maze cover, round timer, seeker tag - embedded directly from GameDistribution.';
+  'Playing the shared Mecha Chameleon browser build. The game files are hosted separately from the guide pages so .art and .games can keep distinct page content while using the same playable source.';
 
 const EASY_STANDBY_NOTE_ZH =
-  '原生 Meccha Chameleon 版本开发中，这里先接入 GameDistribution 的 Hide N Seek! 替代（迷宫躲猫猫 + 倒计时 + Seeker 抓人，核心玩法一致）。';
+  '正在运行共享的 Mecha Chameleon 浏览器版。游戏文件独立托管，.art 和 .games 可以使用同一个可玩源，同时保留不同页面内容。';
 
 const demos: Demo[] = [
   {
     id: 'easy',
-    label: 'Easy',
-    title: 'Meccha Chameleon Browser Game',
-    source: 'GameDistribution',
+    label: 'Play',
+    title: 'Mecha Chameleon Browser Game',
+    source: 'Shared CDN',
     ratio: 'aspect-[16/9] min-h-[520px] max-h-[86vh]',
-    src: 'https://html5.gamedistribution.com/7eda2be289604aa89f3b97df59661bfe/',
+    src: SHARED_GAME_URL,
     note: EASY_STANDBY_NOTE_EN,
-    openInNewTab:
-      'https://html5.gamedistribution.com/7eda2be289604aa89f3b97df59661bfe/',
+    openInNewTab: SHARED_GAME_URL,
   },
   {
     id: 'hard',
@@ -185,8 +187,12 @@ export function DemoFrame({ locale = 'en' }: { locale?: string }) {
         <div className="border-mortar/70 bg-paper/90 text-ink-500 flex flex-wrap items-center justify-between gap-3 border-t px-4 py-3 text-xs">
           <span>
             {zh
-              ? '第三方游戏源直接嵌入，无需跳转。'
-              : 'Third-party source embedded directly, no redirect required.'}
+              ? activeDemo.id === 'easy'
+                ? '自有游戏源独立托管，当前页面只负责承载和说明。'
+                : '第三方游戏源直接嵌入，无需跳转。'
+              : activeDemo.id === 'easy'
+                ? 'Owned game build hosted separately; this page provides the play shell and guide context.'
+                : 'Third-party source embedded directly, no redirect required.'}
           </span>
           <a
             href={activeDemo.openInNewTab}
