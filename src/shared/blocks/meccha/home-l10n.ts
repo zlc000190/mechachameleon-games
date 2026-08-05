@@ -52,9 +52,9 @@ export type HomeCopy = {
 
 const en: HomeCopy = {
   eyebrow: 'Free browser game · no download',
-  title: 'Meccha Chameleon Game — Play Mecha Chameleon Free',
+  title: 'Play Mecha Chameleon Online - Free Hide & Seek Game',
   description:
-    'A game-first hub for Mecha Chameleon, Mech Chameleon, and Meccha Chameleon searches. Start the browser game first, then use controls, modes, and route ideas without leaving the page.',
+    'A free browser hide-and-seek game where you paint and blend in as a chameleon. Start instantly, no download, no signup. Play Mecha Chameleon online now.',
   startPlaying: 'Start playing',
   controlsCta: 'Controls',
   problemEyebrow: 'Player problem solver',
