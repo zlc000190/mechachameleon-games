@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSessionCookie } from 'better-auth/cookies';
 import createIntlMiddleware from 'next-intl/middleware';
 
-import { defaultLocale, locales } from '@/config/locale';
 import { routing } from '@/core/i18n/config';
 import {
   isLocaleSupportedForPath,
   normalizePublicPath,
   stripLocalePrefix,
 } from '@/core/i18n/page-locales.js';
+import { defaultLocale, locales } from '@/config/locale';
 
 const intlMiddleware = createIntlMiddleware(routing);
 

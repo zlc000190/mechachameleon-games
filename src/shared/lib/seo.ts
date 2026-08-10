@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
+import { DEEP_PAGE_LOCALES, HOMEPAGE_LOCALES } from '@/core/i18n/page-locales';
 import { envConfigs } from '@/config';
 import { defaultLocale } from '@/config/locale';
-import { HOMEPAGE_LOCALES, DEEP_PAGE_LOCALES } from '@/core/i18n/page-locales';
 
 const BASE_URL = envConfigs.app_url.replace(/\/$/, '');
 
@@ -19,7 +19,8 @@ function buildLanguageAlternates(
   const normalizedPath = path === '/' ? '' : path.replace(/\/+$/, '');
   const out: Record<string, string> = {};
   for (const loc of supportedLocales) {
-    const locPath = loc === defaultLocaleName ? normalizedPath : `/${loc}${normalizedPath}`;
+    const locPath =
+      loc === defaultLocaleName ? normalizedPath : `/${loc}${normalizedPath}`;
     out[loc] = `${BASE_URL}${locPath}`;
   }
   out['x-default'] = `${BASE_URL}${normalizedPath}`;
@@ -90,9 +91,7 @@ export function getMetadata(
     const requestedPath = options.canonicalUrl || '/';
     const isHomepage =
       requestedPath === '/' || requestedPath === '' || requestedPath === 'home';
-    const supportedLocales = isHomepage
-      ? HOMEPAGE_LOCALES
-      : DEEP_PAGE_LOCALES;
+    const supportedLocales = isHomepage ? HOMEPAGE_LOCALES : DEEP_PAGE_LOCALES;
 
     // language alternates for hreflang
     const languages = buildLanguageAlternates(

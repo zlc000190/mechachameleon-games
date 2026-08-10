@@ -6,10 +6,13 @@ import { envConfigs } from '@/config';
 //   - Indexed: /, /new-player, /connection-fix, /play-with-friends, /fps-boost,
 //     /color-matching, /public-lobby-guide, /tools, /camo-lab
 //   - Atlas (/maps/*) is allowed for crawl but lives in the official index on mecchachameleon.art
-//   - All shipany template pages (SaaS dashboard / auth / AI tools / blog / docs / pricing /
-//     settings / chat / activity / showcases / updates / auth-popup / auth-callback) are
-//     disallow:ed for both * and Googlebot so they never reach Google's index even via
-//     inbound links.
+//   - The disallow list only covers paths that exist as real routes on this
+//     site (admin / api / auth* / settings / sign-*). Shipany-template paths
+//     (/blog /chat /docs /pricing etc.) are NOT listed here — those routes
+//     are live with their own `<meta name="robots" content="noindex">`,
+//     which is a cleaner signal than the Disallow contradiction that
+//     previously triggered GSC's "indexed though blocked by robots.txt"
+//     report.
 const disallowPaths = [
   '/admin',
   '/api',
@@ -18,14 +21,6 @@ const disallowPaths = [
   '/settings',
   '/sign-in',
   '/sign-up',
-  // NOTE: the next batch are shipany-template paths whose routes do NOT
-  // exist on mechachameleon.games. Keeping them as Disallow was harmless
-  // until GSC flagged "indexed though blocked by robots.txt" entries —
-  // external backlinks pointed at /blog /pricing etc, Google crawled
-  // them, found them blocked, and reported "blocked but indexed" +
-  // "soft 404" patterns. We delete the disallow so Googlebot gets a
-  // clean 404 (and we have no inbound links that would surface these
-  // in SERPs). If a real route appears later, re-add the disallow.
 ];
 
 export default function robots(): MetadataRoute.Robots {
