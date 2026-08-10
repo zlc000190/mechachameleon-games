@@ -15,20 +15,17 @@ const disallowPaths = [
   '/api',
   '/auth-popup',
   '/auth-callback',
-  '/ai-image-generator',
-  '/ai-music-generator',
-  '/ai-video-generator',
-  '/blog',
-  '/chat',
-  '/docs',
-  '/no-permission',
-  '/pricing',
   '/settings',
-  '/showcases',
   '/sign-in',
   '/sign-up',
-  '/updates',
-  '/verify-email',
+  // NOTE: the next batch are shipany-template paths whose routes do NOT
+  // exist on mechachameleon.games. Keeping them as Disallow was harmless
+  // until GSC flagged "indexed though blocked by robots.txt" entries —
+  // external backlinks pointed at /blog /pricing etc, Google crawled
+  // them, found them blocked, and reported "blocked but indexed" +
+  // "soft 404" patterns. We delete the disallow so Googlebot gets a
+  // clean 404 (and we have no inbound links that would surface these
+  // in SERPs). If a real route appears later, re-add the disallow.
 ];
 
 export default function robots(): MetadataRoute.Robots {

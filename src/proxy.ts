@@ -21,6 +21,18 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(canonicalUrl, 301);
   }
 
+  // Collapse the default-locale prefix so `/en` and `/en/anything` never
+  // serve a crawlable duplicate of `/` and `/anything`. The English
+  // homepage is canonically at the root; this prevents GSC from seeing
+  // 14 languages × `/en` prefix × no-trailing-slash as separate URLs.
+  const defaultLocaleMatch = pathname.match(/^\/en(?=\/|$)/);
+  if (defaultLocaleMatch) {
+    const stripped = pathname.replace(/^\/en/, '') || '/';
+    const canonicalUrl = request.nextUrl.clone();
+    canonicalUrl.pathname = stripped;
+    return NextResponse.redirect(canonicalUrl, 301);
+  }
+
   // Extract locale from pathname
   const locale = pathname.split('/')[1];
   const isValidLocale = (locales as readonly string[]).includes(locale);

@@ -2,6 +2,29 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { envConfigs } from '@/config';
 import { defaultLocale } from '@/config/locale';
+import { HOMEPAGE_LOCALES, DEEP_PAGE_LOCALES } from '@/core/i18n/page-locales';
+
+const BASE_URL = envConfigs.app_url.replace(/\/$/, '');
+
+// Build the hreflang alternates map for a page.
+// `supportedLocales` is the locale allowlist for the page
+// (HOMEPAGE_LOCALES for the root, DEEP_PAGE_LOCALES for deep guide pages).
+// Returns Record<hreflang, absolute URL>. Always includes 'x-default'
+// pointing at the default-locale variant.
+function buildLanguageAlternates(
+  supportedLocales: readonly string[],
+  path: string,
+  defaultLocaleName: string
+): Record<string, string> {
+  const normalizedPath = path === '/' ? '' : path.replace(/\/+$/, '');
+  const out: Record<string, string> = {};
+  for (const loc of supportedLocales) {
+    const locPath = loc === defaultLocaleName ? normalizedPath : `/${loc}${normalizedPath}`;
+    out[loc] = `${BASE_URL}${locPath}`;
+  }
+  out['x-default'] = `${BASE_URL}${normalizedPath}`;
+  return out;
+}
 
 type MetadataText = {
   title: string;
@@ -58,6 +81,26 @@ export function getMetadata(
       locale || ''
     );
 
+    // Decide which locale allowlist this page exposes in hreflang.
+    // The root + locale homepages use HOMEPAGE_LOCALES (14 languages).
+    // Deep guide pages currently have only en + vi native rewrites,
+    // so they only declare alternates for those two — declaring a hreflang
+    // for a URL that 404s/redirects triggers GSC "alternate page with no
+    // user-selected canonical" errors.
+    const requestedPath = options.canonicalUrl || '/';
+    const isHomepage =
+      requestedPath === '/' || requestedPath === '' || requestedPath === 'home';
+    const supportedLocales = isHomepage
+      ? HOMEPAGE_LOCALES
+      : DEEP_PAGE_LOCALES;
+
+    // language alternates for hreflang
+    const languages = buildLanguageAlternates(
+      supportedLocales,
+      requestedPath,
+      defaultLocale
+    );
+
     const title =
       passedMetadata.title || translatedMetadata.title || defaultMetadata.title;
     const description =
@@ -95,6 +138,7 @@ export function getMetadata(
         defaultMetadata.keywords,
       alternates: {
         canonical: canonicalUrl,
+        languages,
       },
 
       openGraph: {
