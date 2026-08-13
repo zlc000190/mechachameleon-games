@@ -2,10 +2,10 @@
   "header": {
     "id": "header",
     "brand": {
-      "title": "Mecha Chameleon Game",
+      "title": "Meccha Chameleon - Play Free Online",
       "logo": {
         "src": "/logo.svg",
-        "alt": "Mecha Chameleon Game",
+        "alt": "Meccha Chameleon - Play Free Online (No Download)",
         "width": 100,
         "height": 100
       },
@@ -101,11 +101,11 @@
   "footer": {
     "id": "footer",
     "brand": {
-      "title": "Mecha Chameleon Game",
-      "description": "A red-brick play hub and practical problem-solver for Meccha Chameleon players: play online, connection fixes, friends, FPS, color matching, tools, public lobby survival, and map links.",
+      "title": "Meccha Chameleon - Play Free Online (No Download)",
+      "description": "A free browser play hub for Meccha Chameleon / Mecha Chameleon / Mech Chameleon players: play online without download, connection fixes, friends, FPS, color matching, tools, public lobby survival, and map links.",
       "logo": {
         "src": "/logo.svg",
-        "alt": "Mecha Chameleon Game",
+        "alt": "Meccha Chameleon - Play Free Online (No Download)",
         "width": 1024,
         "height": 1024
       },
@@ -114,10 +114,10 @@
     "nav": {
       "items": [
         {
-          "title": "Start Playing",
+          "title": "Start Playing Free",
           "children": [
             {
-              "title": "Play Online",
+              "title": "Play Free Online - No Download",
               "url": "/#play",
               "target": "_self"
             },
@@ -166,6 +166,11 @@
         {
           "title": "Tools",
           "children": [
+            {
+              "title": "Play Offline / Download Tools",
+              "url": "/offline",
+              "target": "_self"
+            },
             {
               "title": "Download Play Kit",
               "url": "/tools",

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import {
   BookOpen,
   Joystick,
@@ -5,7 +6,6 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import Image from 'next/image';
 import { setRequestLocale } from 'next-intl/server';
 
 import { AdsterraNativeBanner } from '@/extensions/ads';
@@ -16,8 +16,8 @@ import {
   getLocalizedProblemCards,
   getLocalizedToolsRadarCards,
 } from '@/shared/blocks/meccha/home-l10n';
-import { XCommunityWall } from '@/shared/blocks/meccha/x-community-wall';
 import { PlayKitCheckoutButton } from '@/shared/blocks/meccha/play-kit-checkout-button';
+import { XCommunityWall } from '@/shared/blocks/meccha/x-community-wall';
 import {
   getPlayKitCompareAtLabel,
   getPlayKitOfferLabel,
@@ -64,6 +64,11 @@ export default async function LandingPage({
               <h1 className="text-ink-900 max-w-4xl text-4xl leading-tight font-bold tracking-normal md:text-6xl">
                 {copy.title}
               </h1>
+              {copy.heroLongTail ? (
+                <h2 className="text-ink-700 mt-3 max-w-3xl text-lg leading-7 font-semibold md:text-xl">
+                  {copy.heroLongTail}
+                </h2>
+              ) : null}
               <p className="text-ink-500 mt-5 max-w-2xl text-base leading-7">
                 {copy.description}
               </p>
@@ -222,21 +227,21 @@ export default async function LandingPage({
             <p className="text-ink-500 mt-4 text-sm leading-6">
               {copy.assistantBody}
             </p>
-            <div className="mt-5 rounded-md border border-brick-200 bg-white p-4">
-              <div className="text-xs font-semibold uppercase tracking-widest text-brick-600">
+            <div className="border-brick-200 mt-5 rounded-md border bg-white p-4">
+              <div className="text-brick-600 text-xs font-semibold tracking-widest uppercase">
                 {copy.priceEyebrow}
               </div>
               <div className="mt-3 inline-flex rounded-full bg-[#fff3c9] px-3 py-1 text-xs font-semibold text-[#8B6A18]">
                 {offerLabel}
               </div>
               <div className="mt-3 flex flex-wrap items-end gap-3">
-                <span className="text-4xl font-bold text-ink-900">
+                <span className="text-ink-900 text-4xl font-bold">
                   {salePriceLabel}
                 </span>
-                <span className="text-lg text-ink-400 line-through">
+                <span className="text-ink-400 text-lg line-through">
                   {compareAtPriceLabel}
                 </span>
-                <span className="pb-1 text-sm text-ink-500">{offerNote}</span>
+                <span className="text-ink-500 pb-1 text-sm">{offerNote}</span>
               </div>
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -256,7 +261,7 @@ export default async function LandingPage({
             </div>
           </div>
           <div>
-            <div className="overflow-hidden rounded-lg border border-mortar/70 bg-ink-900 shadow-sm">
+            <div className="border-mortar/70 bg-ink-900 overflow-hidden rounded-lg border shadow-sm">
               <Image
                 src="/imgs/meccha/play-kit-promo.png"
                 alt="Meccha Chameleon Play Kit paid download preview"
