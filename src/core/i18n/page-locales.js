@@ -17,6 +17,8 @@ export const HOMEPAGE_LOCALES = [
 
 export const DEEP_PAGE_LOCALES = ['en', 'vi'];
 
+export const OFFLINE_LOCALES = ['en', 'es', 'pt'];
+
 export const LOCALE_PREFIX_PATTERN =
   /^\/(en|zh|ru|it|fr|de|es|pt|ja|ko|ar|th|vi|zh-TW|nl)(?=\/|$)/;
 
@@ -29,6 +31,7 @@ const DEEP_PAGE_PREFIXES = [
   '/color-matching',
   '/public-lobby-guide',
   '/camo-lab',
+  '/offline',
 ];
 
 export function normalizePublicPath(pathname) {
@@ -36,7 +39,9 @@ export function normalizePublicPath(pathname) {
     return '/';
   }
 
-  const ensuredLeadingSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const ensuredLeadingSlash = pathname.startsWith('/')
+    ? pathname
+    : `/${pathname}`;
   const withoutTrailingSlash = ensuredLeadingSlash.replace(/\/+$/, '');
 
   return withoutTrailingSlash || '/';
@@ -56,9 +61,16 @@ export function getSupportedLocalesForPath(pathname) {
     return HOMEPAGE_LOCALES;
   }
 
+  // /offline is a 3-locale page (en/es/pt) for non-online intent.
+  // Every other deep page stays en+vi only.
+  if (strippedPath === '/offline' || strippedPath.startsWith('/offline/')) {
+    return OFFLINE_LOCALES;
+  }
+
   if (
     DEEP_PAGE_PREFIXES.some(
-      (prefix) => strippedPath === prefix || strippedPath.startsWith(`${prefix}/`)
+      (prefix) =>
+        strippedPath === prefix || strippedPath.startsWith(`${prefix}/`)
     )
   ) {
     return DEEP_PAGE_LOCALES;

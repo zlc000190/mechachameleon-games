@@ -7,19 +7,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
 import { getSupportedLocalesForPath } from '../src/core/i18n/page-locales.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const envUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
+const envUrl =
+  process.env.NEXT_PUBLIC_APP_URL || 'https://mechachameleon.games';
 const base = envUrl.replace(/\/$/, '');
 
 const defaultLocale = 'en';
 const now = new Date().toISOString();
 
 const locUrl = (locale, routePath) => {
-  const normalizedPath =
-    routePath === '/' ? '' : routePath.replace(/\/+$/, '');
+  const normalizedPath = routePath === '/' ? '' : routePath.replace(/\/+$/, '');
   if (locale === defaultLocale) return `${base}${normalizedPath}`;
   return `${base}/${locale}${normalizedPath}`;
 };
@@ -36,11 +37,15 @@ const marketingPages = [
   { path: '/public-lobby-guide', changefreq: 'weekly', priority: '0.8' },
   { path: '/tools', changefreq: 'weekly', priority: '0.8' },
   { path: '/camo-lab', changefreq: 'weekly', priority: '0.75' },
+  { path: '/offline', changefreq: 'monthly', priority: '0.6' },
 ];
 
 for (const page of marketingPages) {
+  // /offline is a 3-locale page (en/es/pt) for non-online intent;
+  // every other deep page stays en+vi only. Centralized in
+  // getSupportedLocalesForPath().
   const pageLocales = getSupportedLocalesForPath(page.path);
-  const alternateLocales = getSupportedLocalesForPath(page.path);
+  const alternateLocales = pageLocales;
   for (const loc of pageLocales) {
     entries.push({
       loc: locUrl(loc, page.path),
@@ -83,6 +88,12 @@ const outDir = path.join(root, 'public');
 fs.mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf-8');
-console.log(`Wrote ${outPath} (${entries.length} entries, ${xml.length} bytes)`);
-console.log(`Homepage locales in <url>: ${getSupportedLocalesForPath('/').join(', ')}`);
-console.log(`Deep-page locales in <url>: ${getSupportedLocalesForPath('/tools').join(', ')}`);
+console.log(
+  `Wrote ${outPath} (${entries.length} entries, ${xml.length} bytes)`
+);
+console.log(
+  `Homepage locales in <url>: ${getSupportedLocalesForPath('/').join(', ')}`
+);
+console.log(
+  `Deep-page locales in <url>: ${getSupportedLocalesForPath('/tools').join(', ')}`
+);

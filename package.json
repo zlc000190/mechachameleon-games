@@ -21,7 +21,7 @@
     "build": "next build",
     "build:fast": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
-    "lint": "eslint 'src/app/[locale]/(landing)/page.tsx' 'src/app/[locale]/(landing)/maps/[mapSlug]/page.tsx' 'src/shared/blocks/meccha/*.tsx' 'src/shared/blocks/meccha/*.ts' eslint.config.mjs",
+    "lint": "eslint 'src/app/[locale]/(landing)/page.tsx' 'src/app/[locale]/(landing)/offline/page.tsx' 'src/app/[locale]/(landing)/maps/[mapSlug]/page.tsx' 'src/shared/blocks/meccha/*.tsx' 'src/shared/blocks/meccha/*.ts' eslint.config.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "db:generate": "tsx scripts/with-env.ts npx drizzle-kit generate --config=src/core/db/config.ts",
